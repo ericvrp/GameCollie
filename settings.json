@@ -1,7 +1,9 @@
 {
 	"gameCollection": {
-		"src": "/Volumes/games/roms",
-		"dst": "/Volumes/roms"
+		"#src": "/Volumes/games/roms",
+		"src": "testgames/src",
+		"#dst": "/Volumes/roms",
+		"dst": "testgames/dst"
 	},
 
 	"limit": {
