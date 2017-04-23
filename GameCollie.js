@@ -2,29 +2,13 @@ const settings   = require('./settings.json')
 // console.log(JSON.stringify(settings, null, 2))
 
 const fs         = require('fs')
-const xmldoc     = require('xmldoc') // https://github.com/nfarina/xmldoc
-const thegamesdb = require('thegamesdb') // https://github.com/nauzethc/thegamesdb-api && http://wiki.thegamesdb.net/index.php/API_Introduction
+// const xmldoc     = require('xmldoc') // https://github.com/nfarina/xmldoc
+// const thegamesdb = require('thegamesdb') // https://github.com/nauzethc/thegamesdb-api && http://wiki.thegamesdb.net/index.php/API_Introduction
+
+const Games = require('./Games')
 
 // returns list of subdirectories
 const lsdir = p => fs.readdirSync(p).filter(f => fs.statSync(p+'/'+f).isDirectory())
-
-// const logPlatform = (gamelistXml) => {
-//   // console.log(gamelistXml) // const gamelistXml = settings.gameCollection.src + '/psx/gamelist.xml'
-//
-//   const xml = fs.readFileSync(gamelistXml, 'utf8')
-//   const gameList = new xmldoc.XmlDocument(xml)
-//   const games = gameList.childrenNamed('game')
-//
-//   for (const game of games) {
-//     if (!game.attr.id) continue
-//     // note: we could cash the platform of all games so we don't have to access thegamedb
-//     // console.log(game.attr)
-//     thegamesdb.getGame({id: game.attr.id}).then(result => {
-//       console.log(gamelistXml, '=', result.platform)
-//     }).catch(reason => console.error(reason))
-//     break
-//   }
-// }
 
 const getDstPlatform = (srcPlatform) => {
   for (const dstPlatform in settings.platformAliases) {
@@ -37,7 +21,8 @@ const getDstPlatform = (srcPlatform) => {
 }
 
 // main
-const platformChoices = []
+const platformGames    = {}
+const platformChoices  = []
 const skippedPlatforms = [] // no gamelist.xml
 const srcPlatforms = lsdir(settings.gameCollection.src)
 for (const srcPlatform of srcPlatforms) {
@@ -50,18 +35,18 @@ for (const srcPlatform of srcPlatforms) {
     continue
   }
 
+  platformGames[dstPlatform] = Games.Xml2JSON(gamelistXml)
+
   const nNewChoices = settings.platformWeight[dstPlatform]
   for (let n = 0;n < nNewChoices;n++) {
     platformChoices.push(dstPlatform)
   }
 
-  console.log(srcPlatform, '=>', dstPlatform)
-
-  // logPlatform(gamelistXml)
+  console.log(srcPlatform, '=>', dstPlatform, 'with', Games.WithID(platformGames[dstPlatform]), 'out of', platformGames[dstPlatform].length, 'games found')
 }
 
 // console.log('Platform choices:', platformChoices.join(' '))
-console.warn('Skipped platforms without gamelist.xml:', skippedPlatforms)
+console.warn('Skipped platforms (without gamelist.xml):', skippedPlatforms.join(' '))
 
 if (settings.limit.maxDstPercentage) {
   console.error('Not supported: settings.limit.maxDstPercentage =', settings.limit.maxDstPercentage)
