@@ -21,6 +21,7 @@ const getDstPlatform = (srcPlatform) => {
 }
 
 // main
+const genres           = {}
 const platformGames    = {}
 const platformChoices  = []
 const skippedPlatforms = [] // no gamelist.xml
@@ -36,7 +37,11 @@ for (const srcPlatform of srcPlatforms) {
   }
 
   platformGames[dstPlatform] = Games.Xml2JSON(gamelistXml)
-  // TODO: use genreWeight, love and hate
+  platformGames[dstPlatform].forEach(game => genres[game.genre] = true)
+
+  // TODO: use genreWeight
+  Games.AdjustRanking(platformGames[dstPlatform], settings.love, +1.0)
+  Games.AdjustRanking(platformGames[dstPlatform], settings.hate, -1.0)
   Games.SortByRanking(platformGames[dstPlatform])
 
   const nNewChoices = settings.platformWeight[dstPlatform]
@@ -58,3 +63,5 @@ for (let n = 0;n < settings.limit.maxGames;n++) {
   var choice = platformChoices[Math.floor(Math.random() * platformChoices.length)]
   console.log('Pick game', n+1, 'from', choice)
 }
+
+// console.log('Genres:' + Object.keys(genres).join(' '))

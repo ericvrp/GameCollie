@@ -30,11 +30,25 @@ const Xml2JSON = (filename) => {
   for (const g of gameList.childrenNamed('game')) {
     const game = {id: g.attr.id, source: g.attr.source}
     g.eachChild(child => game[child.name] = child.val)
-    game.ranking = game.ranking || 0 // makes it easier later on (sorting...)
+    // preprocess to make live it easier later on (sorting...)
+    game.ranking = game.ranking || 0
+    game.genre   = game.genre.toLowerCase()
     games.push(game)
   }
 
   return games
+}
+
+const AdjustRanking = (games, phrases, adjustment) => {
+  games.forEach(game => {
+    const name = game.name.toLowerCase()
+    for (const phrase of phrases) {
+      if (name.includes(phrase.toLowerCase())) {
+        game.ranking += adjustment
+        // console.log(game.ranking, name)
+      }
+    }
+  })
 }
 
 const SortByRanking = (games) => {
@@ -52,6 +66,7 @@ const WithID = (games) => {
 
 module.exports = {
   Xml2JSON,
+  AdjustRanking,
   SortByRanking,
   WithID
 }

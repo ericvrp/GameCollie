@@ -24,9 +24,11 @@
 	"genreWeight": {
 		"platform": 10,
 		"puzzle": 5,
+		"strategy": 4,
 		"action": 3,
-		"fight": 1,
-		"race": 0,
+		"fighting": 1,
+		"shooter": 0,
+		"racing": 0,
 		"other": 0
 	},
 
