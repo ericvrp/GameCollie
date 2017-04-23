@@ -36,6 +36,8 @@ for (const srcPlatform of srcPlatforms) {
   }
 
   platformGames[dstPlatform] = Games.Xml2JSON(gamelistXml)
+  // TODO: use genreWeight, love and hate
+  Games.SortByRanking(platformGames[dstPlatform])
 
   const nNewChoices = settings.platformWeight[dstPlatform]
   for (let n = 0;n < nNewChoices;n++) {

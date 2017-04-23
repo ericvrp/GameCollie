@@ -30,10 +30,16 @@ const Xml2JSON = (filename) => {
   for (const g of gameList.childrenNamed('game')) {
     const game = {id: g.attr.id, source: g.attr.source}
     g.eachChild(child => game[child.name] = child.val)
+    game.ranking = game.ranking || 0 // makes it easier later on (sorting...)
     games.push(game)
   }
 
   return games
+}
+
+const SortByRanking = (games) => {
+  games.sort((a, b) => parseFloat(a.ranking) - parseFloat(b.ranking))
+  // games.reverse()
 }
 
 const WithID = (games) => {
@@ -46,5 +52,6 @@ const WithID = (games) => {
 
 module.exports = {
   Xml2JSON,
+  SortByRanking,
   WithID
 }
