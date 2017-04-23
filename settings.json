@@ -24,7 +24,22 @@
 	"genreWeight": {
 		"platform": 10,
 		"puzzle": 5,
-		"action": 1,
+		"action": 3,
+		"fight": 1,
+		"race": 0,
 		"other": 0
+	},
+
+	"love": ["metal gear", "frogger", "crash", "rayman"],
+	"hate": ["sonic", "tekken"],
+
+	"platformAliases": {
+		"psx": ["sony - psx", "sony playstation"],
+		"psp": ["sony - psp", "sony playstation portable"],
+		"n64": ["nintendo 64", "nintendo - nintendo 64"],
+		"nes": ["nintendo - nintendo entertainment system"],
+		"snes": ["nintendo - super nintendo", "nintendo - super nintendo entertainment system"],
+		"c64": ["commodore 64", "commodore - commodore 64"],
+		"atari2600": ["atari - atari 2600"]
 	}
 }
