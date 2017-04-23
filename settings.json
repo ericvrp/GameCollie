@@ -1,0 +1,28 @@
+{
+	"gameCollection": {
+		"src": "/Volumes/games/roms",
+		"dst": "/Volumes/roms"
+	},
+
+	"limit": {
+		"maxDstPercentage": 0,
+		"maxGames": 10
+	},
+
+	"platformWeight": {
+		"psx": 20,
+		"psp": 15,
+		"n64": 5,
+		"snes": 3,
+		"nes": 3,
+		"atari2600": 1,
+		"other": 0
+	},
+
+	"genreWeight": {
+		"platform": 10,
+		"puzzle": 5,
+		"action": 1,
+		"other": 0
+	}
+}
