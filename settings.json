@@ -8,7 +8,7 @@
 
 	"limit": {
 		"maxDstPercentage": 0,
-		"maxGames": 10
+		"maxGames": 100
 	},
 
 	"platformWeight": {
@@ -21,7 +21,7 @@
 		"other": 0
 	},
 
-	"rankingAdjustments": [
+	"ratingAdjustments": [
 		{"field": "name"     , "contains": "metal gear", "adjustment":  1.0},
 		{"field": "name"     , "contains": "frogger"   , "adjustment":  1.0},
 		{"field": "name"     , "contains": "crash"     , "adjustment":  1.0},

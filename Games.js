@@ -2,6 +2,8 @@ const fs     = require('fs')
 const xmldoc = require('xmldoc') // https://github.com/nfarina/xmldoc
 
 
+// const thegamesdb = require('thegamesdb') // https://github.com/nauzethc/thegamesdb-api && http://wiki.thegamesdb.net/index.php/API_Introduction
+//
 // const logPlatform = (gamelistXml) => {
 //   // console.log(gamelistXml) // const gamelistXml = settings.gameCollection.src + '/psx/gamelist.xml'
 //
@@ -32,7 +34,7 @@ const Xml2JSON = (filename, platform) => {
     g.eachChild(child => game[child.name] = child.val)
     // preprocess to make live it easier later on (sorting...)
     game.platform = platform
-    game.ranking  = game.ranking || -0.5 // prefer identifyable games
+    game.rating   = game.rating ? parseFloat(game.rating) : -0.5 // prefer identifyable games
     game.players  = game.players || 1
     game.genre    = game.genre.toLowerCase()
     games.push(game)
@@ -41,22 +43,20 @@ const Xml2JSON = (filename, platform) => {
   return games
 }
 
-const AdjustRanking = (games, rankingAdjustments) => {
+const AdjustRating = (games, ratingAdjustments) => {
   games.forEach(game => {
     // console.log(game)
-    for (const rankingAdjustment of rankingAdjustments) {
-      // console.log(rankingAdjustment)
-      if (game[rankingAdjustment.field].toString().toLowerCase().includes(rankingAdjustment.contains.toLowerCase())) {
-        // const oldRanking = game.ranking
-        game.ranking += rankingAdjustment.adjustment
-        // console.log(oldRanking, game, rankingAdjustment)
+    for (const ratingAdjustment of ratingAdjustments) {
+      // console.log(ratingAdjustment)
+      if (game[ratingAdjustment.field].toString().toLowerCase().includes(ratingAdjustment.contains.toLowerCase())) {
+        game.rating += ratingAdjustment.adjustment
       }
     }
   })
 }
 
-const SortByRanking = (games) => {
-  games.sort((a, b) => parseFloat(a.ranking) - parseFloat(b.ranking))
+const SortByRating = (games) => {
+  games.sort((a, b) => parseFloat(a.rating) - parseFloat(b.rating))
   // games.reverse()
 }
 
@@ -70,7 +70,7 @@ const WithID = (games) => {
 
 module.exports = {
   Xml2JSON,
-  AdjustRanking,
-  SortByRanking,
+  AdjustRating,
+  SortByRating,
   WithID
 }
