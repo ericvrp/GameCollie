@@ -22,7 +22,7 @@ const xmldoc = require('xmldoc') // https://github.com/nfarina/xmldoc
 //   }
 // }
 
-const Xml2JSON = (filename, platform) => {
+const Xml2JSON = (filename, srcPlatform, dstPlatform) => {
   // console.log('GamelistXml2JSON', filename)
 
   const xml      = fs.readFileSync(filename, 'utf8')
@@ -33,10 +33,12 @@ const Xml2JSON = (filename, platform) => {
     const game = {id: g.attr.id, source: g.attr.source}
     g.eachChild(child => game[child.name] = child.val)
     // preprocess to make live it easier later on (sorting...)
-    game.platform = platform
-    game.rating   = game.rating ? parseFloat(game.rating) : -0.5 // prefer identifyable games
-    game.players  = game.players || 1
-    game.genre    = game.genre.toLowerCase()
+    game.srcPlatform = srcPlatform
+    game.platform    = dstPlatform
+    game.path        = game.path.startsWith('./') ? game.path.slice(2) : game.path
+    game.rating      = game.rating ? parseFloat(game.rating) : -0.5 // prefer identifyable games
+    game.players     = game.players || 1
+    game.genre       = game.genre.toLowerCase()
     games.push(game)
   }
 
