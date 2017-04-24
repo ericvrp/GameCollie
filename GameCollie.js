@@ -57,25 +57,35 @@ for (const srcPlatform of srcPlatforms) {
 
 // debug && console.log('Genres:' + Object.keys(genres).join(' '))
 // debug && console.log('Platform choices:', platformChoices.join(' '))
-debug && console.warn('Skipped platforms (without gamelist.xml):', skippedPlatforms.join(' '))
-debug && console.log('')
+if (skippedPlatforms.length) {
+  console.warn('Skipped platforms (without gamelist.xml):', skippedPlatforms.join(' '))
+}
 
 
 // pick the games
 for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0;n++) {
+  // TODO: skip games that differ only by file extension or game.id
+
   const choice = platformChoices[Math.floor(Math.random() * platformChoices.length)]
-  // debug && console.log(choice, platformGames[choice].length)
   const game   = platformGames[choice].pop()
-  // debug && console.log(game)
-  // debug && console.log((n+1) + '.', choice, ':', game.name, ': rating', game.rating)
+  console.log((n+1) + '.', choice, ':', game.name, ': rating', game.rating)
+
   let dstPath = settings.gameCollection.dst + '/' + game.platform
   let folders = game.path.split('/')
   folders.pop() // remove filename
   if (folders.length) dstPath += '/' + folders.join('/')
-
-  // console.log(`mkdir -p "${dstPath}"`)
   mkdirp.sync(dstPath)
-  console.log(`cp "${settings.gameCollection.src}/${game.srcPlatform}/${game.path}" "${settings.gameCollection.dst}/${game.platform}/${game.path}"`)
+
+  const srcFilename = `${settings.gameCollection.src}/${game.srcPlatform}/${game.path}`
+  // console.log('srcFilename', srcFilename)
+  const dstFilename = `${settings.gameCollection.dst}/${game.platform}/${game.path}`
+  // console.log('dstFilename', dstFilename)
+  // if (!fs.existsSync(srcFilename)) console.error('Not found:', srcFilename)
+  const srcFile = fs.readFileSync(srcFilename)
+  fs.writeFileSync(dstFilename, srcFile)
+
+  // TODO: write gamelist.xml for every platform
+  // TODO: write images for every used game
 
   if (platformGames[choice].length === 0) {
     platformChoices = platformChoices.filter(v => v !== choice)

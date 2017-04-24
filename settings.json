@@ -33,12 +33,13 @@
 		{"field": "platform" , "contains": "platform"  , "adjustment":  0.3},
 		{"field": "platform" , "contains": "strategy"  , "adjustment":  0.2},
 		{"field": "platform" , "contains": "puzzle"    , "adjustment":  0.1},
-		{"field": "platform" , "contains": "racing"    , "adjustment": -0.1},
+		{"field": "platform" , "contains": "sports"    , "adjustment": -0.1},
+		{"field": "platform" , "contains": "racing"    , "adjustment": -0.2},
 		{"field": "platform" , "contains": "action"    , "adjustment": -0.2},
-		{"field": "platform" , "contains": "fighting"  , "adjustment": -0.2},
+		{"field": "platform" , "contains": "fighting"  , "adjustment": -0.3},
 		{"field": "platform" , "contains": "shooter"   , "adjustment": -0.3},
 
-		{"field": "developer", "contains": "rare"      , "adjustment":  0.1},
+		{"field": "developer", "contains": "nintendo"  , "adjustment":  0.1},
 
 		{"field": "players"  , "contains": "2"         , "adjustment":  0.2},
 		{"field": "players"  , "contains": "3"         , "adjustment":  0.2},

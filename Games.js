@@ -36,9 +36,10 @@ const Xml2JSON = (filename, srcPlatform, dstPlatform) => {
     game.srcPlatform = srcPlatform
     game.platform    = dstPlatform
     game.path        = game.path.startsWith('./') ? game.path.slice(2) : game.path
-    game.rating      = game.rating ? parseFloat(game.rating) : -0.5 // prefer identifyable games
     game.players     = game.players || 1
     game.genre       = game.genre.toLowerCase()
+    game.rating      = game.rating ? parseFloat(game.rating) : -0.5 // prefer identifyable games
+    // TODO: find playability on my platform 
     games.push(game)
   }
 
