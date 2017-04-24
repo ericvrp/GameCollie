@@ -20,7 +20,7 @@ const xmldoc = require('xmldoc') // https://github.com/nfarina/xmldoc
 //   }
 // }
 
-const Xml2JSON = (filename) => {
+const Xml2JSON = (filename, platform) => {
   // console.log('GamelistXml2JSON', filename)
 
   const xml      = fs.readFileSync(filename, 'utf8')
@@ -31,21 +31,25 @@ const Xml2JSON = (filename) => {
     const game = {id: g.attr.id, source: g.attr.source}
     g.eachChild(child => game[child.name] = child.val)
     // preprocess to make live it easier later on (sorting...)
-    game.ranking = game.ranking || 0
-    game.genre   = game.genre.toLowerCase()
+    game.platform = platform
+    game.ranking  = game.ranking || -0.5 // prefer identifyable games
+    game.players  = game.players || 1
+    game.genre    = game.genre.toLowerCase()
     games.push(game)
   }
 
   return games
 }
 
-const AdjustRanking = (games, phrases, adjustment) => {
+const AdjustRanking = (games, rankingAdjustments) => {
   games.forEach(game => {
-    const name = game.name.toLowerCase()
-    for (const phrase of phrases) {
-      if (name.includes(phrase.toLowerCase())) {
-        game.ranking += adjustment
-        // console.log(game.ranking, name)
+    // console.log(game)
+    for (const rankingAdjustment of rankingAdjustments) {
+      // console.log(rankingAdjustment)
+      if (game[rankingAdjustment.field].toString().toLowerCase().includes(rankingAdjustment.contains.toLowerCase())) {
+        // const oldRanking = game.ranking
+        game.ranking += rankingAdjustment.adjustment
+        // console.log(oldRanking, game, rankingAdjustment)
       }
     }
   })

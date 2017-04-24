@@ -36,12 +36,11 @@ for (const srcPlatform of srcPlatforms) {
     continue
   }
 
-  platformGames[dstPlatform] = Games.Xml2JSON(gamelistXml)
+  platformGames[dstPlatform] = Games.Xml2JSON(gamelistXml, dstPlatform)
   platformGames[dstPlatform].forEach(game => genres[game.genre] = true)
 
   // TODO: use genreWeight
-  Games.AdjustRanking(platformGames[dstPlatform], settings.love, +1.0)
-  Games.AdjustRanking(platformGames[dstPlatform], settings.hate, -1.0)
+  Games.AdjustRanking(platformGames[dstPlatform], settings.rankingAdjustments)
   Games.SortByRanking(platformGames[dstPlatform])
 
   const nNewChoices = settings.platformWeight[dstPlatform]
