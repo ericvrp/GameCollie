@@ -8,17 +8,21 @@
 
 	"limit": {
 		"maxDstPercentage": 0,
-		"maxGames": 500
+		"maxGames": 750
 	},
 
 	"platformWeight": {
-		"psx": 20,
-		"psp": 10,
-		"n64": 8,
-		"snes": 5,
-		"nes": 5,
-		"nds": 3,
-		"default": 1
+		"psx"      : 50,
+		"psp"      : 40,
+		"n64"      : 30,
+		"snes"     : 25,
+		"nes"      : 20,
+		"nds"      : 15,
+		"3ds"      : 15,
+		"gba"      : 10,
+		"atari2600":  8,
+		"gb"       :  5,
+		"default"  :  1
 	},
 
 	"ratingAdjustments": [
@@ -59,6 +63,7 @@
 		"nes": ["nintendo - nintendo entertainment system"],
 		"snes": ["nintendo - super nintendo", "nintendo - super nintendo entertainment system"],
 		"c64": ["commodore 64", "commodore - commodore 64"],
+		"mame": ["arcade machines - mame"],
 		"atari2600": ["atari - atari 2600"]
 	}
 }

@@ -31,8 +31,18 @@ const getFileExtension = (path) => { // this is not very elegant
 }
 
 const copyFile = (srcFilename, dstFilename) => {
-  const srcFile = fs.readFileSync(srcFilename)
-  fs.writeFileSync(dstFilename, srcFile)
+  if (fs.existsSync(dstFilename)) return
+
+  let srcFile = undefined
+  try {
+    srcFile = fs.readFileSync(srcFilename)
+  } catch (err) {
+    console.warn('Read error on', srcFilename, '. Is file too big for this filesystem (>=2.0G on Fat32)?')
+  }
+
+  if (!srcFile) {
+    fs.writeFileSync(dstFilename, srcFile)
+  }
 }
 
 // copy the gamelist.xml files and images
@@ -98,17 +108,26 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0;n++) {
 
   const choice = platformChoices[Math.floor(Math.random() * platformChoices.length)]
   const game   = platformGames[choice].pop()
-  console.log((n+1) + '.', choice, ':', game.name, ': rating', game.rating)
 
   let dstPath = settings.gameCollection.dst + '/' + game.platform
   let folders = game.path.split('/')
   folders.pop() // remove filename
   if (folders.length) dstPath += '/' + folders.join('/')
-  mkdirp.sync(dstPath)
 
   const srcFilename = `${settings.gameCollection.src}/${game.srcPlatform}/${game.path}`
   // const dstFilename = `${dstPath}/${game.name}.${getFileExtension(game.path)}` // rename game file. For this to work we need to change game.path in gamelist.xml
   const dstFilename = `${settings.gameCollection.dst}/${game.platform}/${game.path}`
+
+  if (!fs.existsSync(srcFilename)) {
+    // console.info('Not found.', choice, ':', game.name)
+    n-- // try another one
+    continue
+  }
+
+  console.log((n+1) + '.', choice, ':', game.name, ': rating', game.rating)
+
+  mkdirp.sync(dstPath)
+
   copyFile(srcFilename, dstFilename)
 
   if (game.image) {
