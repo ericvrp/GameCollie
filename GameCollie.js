@@ -15,13 +15,14 @@ const Games  = require('./Games')
 const lsdir = p => fs.readdirSync(p).filter(f => fs.statSync(p+'/'+f).isDirectory())
 
 const getDstPlatform = (srcPlatform) => {
+  const s = srcPlatform.toLowerCase()
   for (const dstPlatform in settings.platformAliases) {
-    const s = srcPlatform.toLowerCase()
-    if (s === dstPlatform || settings.platformAliases[dstPlatform].includes(s)) {
-      return dstPlatform
+    const alias = dstPlatform.toLowerCase()
+    if (s === alias || settings.platformAliases[alias].includes(s)) {
+      return alias
     }
   }
-  return '<unknown platform>'
+  return s // '<unknown platform>'
 }
 
 const getFileExtension = (path) => { // this is not very elegant
@@ -74,7 +75,7 @@ for (const srcPlatform of srcPlatforms) {
   Games.AdjustRating(platformGames[dstPlatform], settings.ratingAdjustments)
   Games.SortByRating(platformGames[dstPlatform])
 
-  const nNewChoices = settings.platformWeight[dstPlatform]
+  const nNewChoices = settings.platformWeight[dstPlatform] || settings.platformWeight['default']
   for (let n = 0;n < nNewChoices;n++) {
     platformChoices.push(dstPlatform)
   }
@@ -86,8 +87,8 @@ copyGamelistsAndCreateImagesFolder(srcPlatforms, skippedPlatforms)
 
 // debug && console.log('Genres:' + Object.keys(genres).join(' '))
 // debug && console.log('Platform choices:', platformChoices.join(' '))
-if (skippedPlatforms.length) {
-  console.warn('Skipped platforms (without gamelist.xml):', skippedPlatforms.join(' '))
+for (const skippedPlatform of skippedPlatforms) {
+  console.warn('Skipped platforms (without gamelist.xml):', skippedPlatform)
 }
 
 
