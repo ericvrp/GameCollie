@@ -45,6 +45,14 @@ const copyFile = (srcFilename, dstFilename) => {
   }
 }
 
+// seedable random function
+var seed = 1  // KISS
+const random= () => {
+    var x = Math.sin(seed++) * 10000
+    return x - Math.floor(x)
+}
+
+
 // copy the gamelist.xml files and images
 const copyGamelistsAndCreateImagesFolder = (srcPlatforms, skippedPlatforms) => {
   for (const srcPlatform of srcPlatforms) {
@@ -106,7 +114,7 @@ for (const skippedPlatform of skippedPlatforms) {
 for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0;n++) {
   // TODO: skip games that differ only by file extension or game.id
 
-  const choice = platformChoices[Math.floor(Math.random() * platformChoices.length)]
+  const choice = platformChoices[Math.floor(random() * platformChoices.length)]
   const game   = platformGames[choice].pop()
 
   let dstPath = settings.gameCollection.dst + '/' + game.platform
