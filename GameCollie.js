@@ -29,6 +29,28 @@ const getFileExtension = (path) => { // this is not very elegant
   return t[t.length - 1]
 }
 
+const copyFile = (srcFilename, dstFilename) => {
+  const srcFile = fs.readFileSync(srcFilename)
+  fs.writeFileSync(dstFilename, srcFile)
+}
+
+// copy the gamelist.xml files and images
+const copyGamelistsAndCreateImagesFolder = (srcPlatforms, skippedPlatforms) => {
+  for (const srcPlatform of srcPlatforms) {
+    const dstPlatform = getDstPlatform(srcPlatform)
+    if (skippedPlatforms.includes(dstPlatform)) continue
+
+    const srcDir = `${settings.gameCollection.src}/${srcPlatform}`
+    const dstDir = `${settings.gameCollection.dst}/${dstPlatform}`
+    mkdirp.sync(`${dstDir}/images`)
+
+    const srcGamelistXml = `${srcDir}/gamelist.xml`
+    const dstGamelistXml = `${dstDir}/gamelist.xml`
+    // console.log(srcGamelistXml, '=>', dstGamelistXml)
+    copyFile(srcGamelistXml, dstGamelistXml)
+  }
+}
+
 
 // determine game ratings and platforms we will select games for
 const genres           = {}
@@ -60,6 +82,8 @@ for (const srcPlatform of srcPlatforms) {
   debug && console.log(srcPlatform, '=>', dstPlatform, 'with', Games.WithID(platformGames[dstPlatform]), 'out of', platformGames[dstPlatform].length, 'games found')
 }
 
+copyGamelistsAndCreateImagesFolder(srcPlatforms, skippedPlatforms)
+
 // debug && console.log('Genres:' + Object.keys(genres).join(' '))
 // debug && console.log('Platform choices:', platformChoices.join(' '))
 if (skippedPlatforms.length) {
@@ -82,29 +106,17 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0;n++) {
   mkdirp.sync(dstPath)
 
   const srcFilename = `${settings.gameCollection.src}/${game.srcPlatform}/${game.path}`
-  // console.log('srcFilename', srcFilename)
-  const dstFilename = `${dstPath}/${game.name}.${getFileExtension(game.path)}`
-  // console.log('dstFilename', dstFilename)
+  // const dstFilename = `${dstPath}/${game.name}.${getFileExtension(game.path)}` // rename game file. For this to work we need to change game.path in gamelist.xml
+  const dstFilename = `${settings.gameCollection.dst}/${game.platform}/${game.path}`
+  copyFile(srcFilename, dstFilename)
 
-  const srcFile = fs.readFileSync(srcFilename)
-  fs.writeFileSync(dstFilename, srcFile)
-
-  // TODO: write images for every game found
+  if (game.image) {
+    const srcImageFilename = `${settings.gameCollection.src}/${game.srcPlatform}/${game.image}`
+    const dstImageFilename = `${settings.gameCollection.dst}/${game.platform}/${game.image}`
+    copyFile(srcImageFilename, dstImageFilename)
+  }
 
   if (platformGames[choice].length === 0) {
     platformChoices = platformChoices.filter(v => v !== choice)
   }
-}
-
-// copy the gamelist.xml files
-for (const srcPlatform of srcPlatforms) {
-  const dstPlatform = getDstPlatform(srcPlatform)
-  if (skippedPlatforms.includes(dstPlatform)) continue
-
-  const srcFilename = `${settings.gameCollection.src}/${srcPlatform}/gamelist.xml`
-  const dstFilename = `${settings.gameCollection.dst}/${dstPlatform}/gamelist.xml`
-  // console.log(srcFilename, '=>', dstFilename)
-
-  const srcFile = fs.readFileSync(srcFilename)
-  fs.writeFileSync(dstFilename, srcFile)
 }
