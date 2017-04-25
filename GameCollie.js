@@ -24,6 +24,11 @@ const getDstPlatform = (srcPlatform) => {
   return '<unknown platform>'
 }
 
+const getFileExtension = (path) => { // this is not very elegant
+  const t = path.split('.')
+  return t[t.length - 1]
+}
+
 
 // determine game ratings and platforms we will select games for
 const genres           = {}
@@ -62,7 +67,7 @@ if (skippedPlatforms.length) {
 }
 
 
-// pick the games
+// pick and copy the games
 for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0;n++) {
   // TODO: skip games that differ only by file extension or game.id
 
@@ -78,16 +83,28 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0;n++) {
 
   const srcFilename = `${settings.gameCollection.src}/${game.srcPlatform}/${game.path}`
   // console.log('srcFilename', srcFilename)
-  const dstFilename = `${settings.gameCollection.dst}/${game.platform}/${game.path}`
+  const dstFilename = `${dstPath}/${game.name}.${getFileExtension(game.path)}`
   // console.log('dstFilename', dstFilename)
-  // if (!fs.existsSync(srcFilename)) console.error('Not found:', srcFilename)
+
   const srcFile = fs.readFileSync(srcFilename)
   fs.writeFileSync(dstFilename, srcFile)
 
-  // TODO: write gamelist.xml for every platform
-  // TODO: write images for every used game
+  // TODO: write images for every game found
 
   if (platformGames[choice].length === 0) {
     platformChoices = platformChoices.filter(v => v !== choice)
   }
+}
+
+// copy the gamelist.xml files
+for (const srcPlatform of srcPlatforms) {
+  const dstPlatform = getDstPlatform(srcPlatform)
+  if (skippedPlatforms.includes(dstPlatform)) continue
+
+  const srcFilename = `${settings.gameCollection.src}/${srcPlatform}/gamelist.xml`
+  const dstFilename = `${settings.gameCollection.dst}/${dstPlatform}/gamelist.xml`
+  // console.log(srcFilename, '=>', dstFilename)
+
+  const srcFile = fs.readFileSync(srcFilename)
+  fs.writeFileSync(dstFilename, srcFile)
 }
