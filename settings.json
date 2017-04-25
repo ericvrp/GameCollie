@@ -32,14 +32,14 @@
 		{"field": "name"     , "contains": "sonic"     , "adjustment": -1.0},
 		{"field": "name"     , "contains": "tekken"    , "adjustment": -1.0},
 
-		{"field": "platform" , "contains": "platform"  , "adjustment":  0.3},
-		{"field": "platform" , "contains": "strategy"  , "adjustment":  0.2},
-		{"field": "platform" , "contains": "puzzle"    , "adjustment":  0.1},
-		{"field": "platform" , "contains": "sports"    , "adjustment": -0.1},
-		{"field": "platform" , "contains": "racing"    , "adjustment": -0.2},
-		{"field": "platform" , "contains": "action"    , "adjustment": -0.2},
-		{"field": "platform" , "contains": "fighting"  , "adjustment": -0.3},
-		{"field": "platform" , "contains": "shooter"   , "adjustment": -0.3},
+		{"field": "genre"    , "contains": "platform"  , "adjustment":  0.3},
+		{"field": "genre"    , "contains": "strategy"  , "adjustment":  0.2},
+		{"field": "genre"    , "contains": "puzzle"    , "adjustment":  0.1},
+		{"field": "genre"    , "contains": "sports"    , "adjustment": -0.1},
+		{"field": "genre"    , "contains": "racing"    , "adjustment": -0.2},
+		{"field": "genre"    , "contains": "action"    , "adjustment": -0.2},
+		{"field": "genre"    , "contains": "fighting"  , "adjustment": -0.3},
+		{"field": "genre"    , "contains": "shooter"   , "adjustment": -0.3},
 
 		{"field": "developer", "contains": "nintendo"  , "adjustment":  0.1},
 
