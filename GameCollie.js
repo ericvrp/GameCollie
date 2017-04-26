@@ -40,7 +40,7 @@ const copyFile = (srcFilename, dstFilename) => {
     console.warn('Read error on', srcFilename, '. Is file too big for this filesystem (>=2.0G on Fat32)?')
   }
 
-  if (!srcFile) {
+  if (srcFile) {
     fs.writeFileSync(dstFilename, srcFile)
   }
 }
