@@ -1,14 +1,15 @@
 {
 	"gameCollection": {
 		"src": "/Volumes/GAMES/roms",
-		"#src": "testgames/src",
 		"#dst": "/Volumes/RETROPIE/roms",
+		"#dst": "/Volumes/KALLA/roms",
 		"dst": "testgames/dst"
 	},
 
 	"limit": {
-		"maxDstPercentage": 0,
-		"maxGames": 750
+		"minRating": "0.2",
+		"maxGB": 24,
+		"maxGames": 99999
 	},
 
 	"platformWeight": {

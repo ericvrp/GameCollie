@@ -1,14 +1,12 @@
 const settings   = require('./settings.json')
 // console.log(JSON.stringify(settings, null, 2))
-if (settings.limit.maxDstPercentage) {
-  console.error('Not supported: settings.limit.maxDstPercentage =', settings.limit.maxDstPercentage)
-}
 debug = false
 
 const fs     = require('fs')
 const mkdirp = require('mkdirp') // https://github.com/substack/node-mkdirp
 const Games  = require('./Games')
 
+let nBytesUsed = 0
 
 
 // returns list of subdirectories
@@ -31,7 +29,12 @@ const getFileExtension = (path) => { // this is not very elegant
 }
 
 const copyFile = (srcFilename, dstFilename) => {
-  if (fs.existsSync(dstFilename)) return
+  if (fs.existsSync(dstFilename)) {
+    const stats = fs.statSync(dstFilename)
+    // console.log('dstFilename is', stats.size, 'bytes.', dstFilename, 'nBytesUsed', nBytesUsed)
+    nBytesUsed += stats.size
+    return stats.size
+  }
 
   let srcFile = undefined
   try {
@@ -40,9 +43,16 @@ const copyFile = (srcFilename, dstFilename) => {
     console.warn('Read error on', srcFilename, '. Is file too big for this filesystem (>=2.0G on Fat32)?')
   }
 
-  if (srcFile) {
-    fs.writeFileSync(dstFilename, srcFile)
+  if (!srcFile) {
+    return 0 // copied 0 bytes with read error
   }
+
+  // note: an optimization would be to queue a (max) number of writes which would works well when we read from and write to different physical devices.
+
+  // console.log('srcFilename is ', srcFile.length, 'bytes.', srcFilename, 'nBytesUsed', nBytesUsed)
+  fs.writeFileSync(dstFilename, srcFile)
+  nBytesUsed += srcFile.length
+  return srcFile.length
 }
 
 // seedable random function
@@ -101,7 +111,7 @@ for (const srcPlatform of srcPlatforms) {
   debug && console.log(srcPlatform, '=>', dstPlatform, 'with', Games.WithID(platformGames[dstPlatform]), 'out of', platformGames[dstPlatform].length, 'games found')
 }
 
-copyGamelistsAndCreateImagesFolder(srcPlatforms, skippedPlatforms)
+copyGamelistsAndCreateImagesFolder(srcPlatforms, skippedPlatforms) // TODO: do this later when first game for a given platform is copied.
 
 // debug && console.log('Genres:' + Object.keys(genres).join(' '))
 // debug && console.log('Platform choices:', platformChoices.join(' '))
@@ -111,7 +121,7 @@ for (const skippedPlatform of skippedPlatforms) {
 
 
 // pick and copy the games
-for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0;n++) {
+for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nBytesUsed < settings.limit.maxGB * 1024 * 1024 * 1024;n++) {
   // TODO: skip games that differ only by file extension or game.id
 
   const choice = platformChoices[Math.floor(random() * platformChoices.length)]
@@ -126,8 +136,8 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0;n++) {
   // const dstFilename = `${dstPath}/${game.name}.${getFileExtension(game.path)}` // rename game file. For this to work we need to change game.path in gamelist.xml
   const dstFilename = `${settings.gameCollection.dst}/${game.platform}/${game.path}`
 
-  if (!fs.existsSync(srcFilename)) {
-    // console.info('Not found.', choice, ':', game.name)
+  if (!fs.existsSync(srcFilename) || game.rating < settings.limit.minRating) {
+    // console.info('Not found or rating too low', choice, ':', game.name)
     n-- // try another one
     continue
   }
