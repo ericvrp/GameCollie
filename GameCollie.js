@@ -28,8 +28,8 @@ const getFileExtension = (path) => { // this is not very elegant
   return t[t.length - 1]
 }
 
-const copyFile = (srcFilename, dstFilename) => {
-  if (fs.existsSync(dstFilename)) {
+const copyFile = (srcFilename, dstFilename, copyAlways = false) => {
+  if (!copyAlways && fs.existsSync(dstFilename)) {
     const stats = fs.statSync(dstFilename)
     // console.log('dstFilename is', stats.size, 'bytes.', dstFilename, 'nBytesUsed', nBytesUsed)
     nBytesUsed += stats.size
@@ -75,8 +75,9 @@ const copyGamelistsAndCreateImagesFolder = (srcPlatforms, skippedPlatforms) => {
 
     const srcGamelistXml = `${srcDir}/gamelist.xml`
     const dstGamelistXml = `${dstDir}/gamelist.xml`
+    const copyAlways     = true
     // console.log(srcGamelistXml, '=>', dstGamelistXml)
-    copyFile(srcGamelistXml, dstGamelistXml)
+    copyFile(srcGamelistXml, dstGamelistXml, copyAlways)
   }
 }
 

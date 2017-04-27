@@ -48,9 +48,9 @@
 
 		{"field": "developer", "contains": "nintendo"  , "adjustment":  0.1},
 
-		{"field": "players"  , "contains": "2"         , "adjustment":  0.2},
-		{"field": "players"  , "contains": "3"         , "adjustment":  0.2},
-		{"field": "players"  , "contains": "4"         , "adjustment":  0.2}
+		{"field": "players"  , "contains": "2"         , "adjustment":  0.5},
+		{"field": "players"  , "contains": "3"         , "adjustment":  0.5},
+		{"field": "players"  , "contains": "4"         , "adjustment":  0.5}
 	],
 
 	"platformAliases": {
