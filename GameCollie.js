@@ -148,7 +148,7 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
     continue
   }
 
-  console.log((n+1) + '.', choice, ':', game.name, ': rating', game.rating)
+  console.log(`${n+1}/${(nBytesUsed / 1024 / 1024 / 1024).toFixed(2)}GB. ${choice}: ${game.name}: rating ${game.rating.toFixed(1)}`)
 
   mkdirp.sync(dstPath)
 
