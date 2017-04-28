@@ -117,6 +117,7 @@ copyGamelistsAndCreateImagesFolder(srcPlatforms, skippedPlatforms) // TODO: do t
 // debug && console.log('Genres:' + Object.keys(genres).join(' '))
 // debug && console.log('Platform choices:', platformChoices.join(' '))
 for (const skippedPlatform of skippedPlatforms) {
+  // TODO: pretend all unknown games have the same rating (or determined by settings?)
   console.warn('Skipped platforms (without gamelist.xml):', skippedPlatform)
 }
 
@@ -127,6 +128,10 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
 
   const choice = platformChoices[Math.floor(random() * platformChoices.length)]
   const game   = platformGames[choice].pop()
+
+  if (platformGames[choice].length === 0) {
+    platformChoices = platformChoices.filter(v => v !== choice)
+  }
 
   let dstPath = settings.gameCollection.dst + '/' + game.platform
   let folders = game.path.split('/')
@@ -153,9 +158,5 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
     const srcImageFilename = `${settings.gameCollection.src}/${game.srcPlatform}/${game.image}`
     const dstImageFilename = `${settings.gameCollection.dst}/${game.platform}/${game.image}`
     copyFile(srcImageFilename, dstImageFilename)
-  }
-
-  if (platformGames[choice].length === 0) {
-    platformChoices = platformChoices.filter(v => v !== choice)
   }
 }

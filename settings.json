@@ -1,14 +1,13 @@
 {
 	"gameCollection": {
 		"src": "/Volumes/GAMES/roms",
-		"#dst": "/Volumes/RETROPIE/roms",
-		"#dst": "/Volumes/KALLA/roms",
-		"dst": "testgames/dst"
+		"#dst": "testgames/dst",
+		"dst": "/Volumes/roms"
 	},
 
 	"limit": {
 		"minRating": "0.2",
-		"maxGB": 24,
+		"maxGB": 32,
 		"maxGames": 99999
 	},
 
@@ -18,9 +17,8 @@
 		"n64"      : 30,
 		"snes"     : 25,
 		"nes"      : 20,
-		"nds"      : 15,
-		"3ds"      : 15,
-		"gba"      : 10,
+		"nds"      : 10,
+		"gba"      :  9,
 		"atari2600":  8,
 		"gb"       :  5,
 		"default"  :  1
@@ -29,6 +27,7 @@
 	"ratingAdjustments": [
 		{"field": "name"     , "contains": "mario"     , "adjustment":  1.0},
 		{"field": "name"     , "contains": "zelda"     , "adjustment":  1.0},
+		{"field": "name"     , "contains": "donkey"    , "adjustment":  0.9},
 		{"field": "name"     , "contains": "crash"     , "adjustment":  0.9},
 		{"field": "name"     , "contains": "rayman"    , "adjustment":  0.8},
 		{"field": "name"     , "contains": "frogger"   , "adjustment":  0.7},
