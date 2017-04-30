@@ -83,9 +83,10 @@ const copyGamelistsAndCreateImagesFolder = (srcPlatforms, skippedPlatforms) => {
 
 
 // determine game ratings and platforms we will select games for
-const genres           = {}
-const platformGames    = {}
-let   platformChoices  = []
+// const genres        = {} // per platform (psx/psp/n64/...)
+const copiedGameName   = {} // per platform (psx/psp/n64/...)
+const platformGames    = {} // per platform (psx/psp/n64/...)
+let   platformChoices  = [] // psx psx psx psp psp n64
 const skippedPlatforms = [] // no gamelist.xml
 const srcPlatforms = lsdir(settings.gameCollection.src)
 for (const srcPlatform of srcPlatforms) {
@@ -98,8 +99,9 @@ for (const srcPlatform of srcPlatforms) {
     continue
   }
 
+  copiedGameName[dstPlatform] = {}
   platformGames[dstPlatform] = Games.Xml2JSON(gamelistXml, srcPlatform, dstPlatform)
-  platformGames[dstPlatform].forEach(game => genres[game.genre] = true)
+  // platformGames[dstPlatform].forEach(game => genres[game.genre] = true)
 
   Games.AdjustRating(platformGames[dstPlatform], settings.ratingAdjustments)
   Games.SortByRating(platformGames[dstPlatform])
@@ -142,13 +144,15 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
   // const dstFilename = `${dstPath}/${game.name}.${getFileExtension(game.path)}` // rename game file. For this to work we need to change game.path in gamelist.xml
   const dstFilename = `${settings.gameCollection.dst}/${game.platform}/${game.path}`
 
-  if (!fs.existsSync(srcFilename) || game.rating < settings.limit.minRating) {
-    // console.info('Not found or rating too low', choice, ':', game.name)
+  if (!fs.existsSync(srcFilename) || game.rating < settings.limit.minRating || copiedGameName[game.platform][game.name]) {
+    // console.info('Not found or rating too low or already copied', choice, ':', game.name)
     n-- // try another one
     continue
   }
 
   console.log(`${n+1}/${(nBytesUsed / 1024 / 1024 / 1024).toFixed(2)}GB. ${choice}: ${game.name}: rating ${game.rating.toFixed(1)}`)
+  copiedGameName[game.platform][game.name] = true
+  // console.log(game.platform, ':', copiedGameName[game.platform])
   mkdirp.sync(dstPath)
   copyFile(srcFilename, dstFilename)
 
