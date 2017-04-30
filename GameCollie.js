@@ -112,7 +112,8 @@ for (const srcPlatform of srcPlatforms) {
   Games.AdjustRating(platformGames[dstPlatform], settings.ratingAdjustments)
   Games.SortByRating(platformGames[dstPlatform])
 
-  const nNewChoices = settings.platformWeight[dstPlatform] || settings.platformWeight['default']
+  const c = settings.platformWeight[dstPlatform]
+  const nNewChoices = typeof c !== 'undefined' ? c : settings.platformWeight['default']
   for (let n = 0;n < nNewChoices;n++) {
     platformChoices.push(dstPlatform)
   }
