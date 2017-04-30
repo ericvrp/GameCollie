@@ -55,7 +55,7 @@ const copyFile = (srcFilename, dstFilename, copyAlways = false) => {
 
   // note: an optimization would be to queue a (max) number of writes which would works well when we read from and write to different physical devices.
 
-  // console.log('srcFilename is ', srcFile.length, 'bytes.', srcFilename, 'nBytesUsed', nBytesUsed)
+  // console.log('srcFilename is ', srcFile.length, 'bytes.', srcFilename, 'nBytesUsed', nBytesUsed, 'dstFilename', dstFilename)
   fs.writeFileSync(dstFilename, srcFile)
   nBytesUsed += srcFile.length
   return srcFile.length

@@ -85,7 +85,8 @@ const AdjustRating = (games, ratingAdjustments) => {
     // console.log(game)
     for (const ratingAdjustment of ratingAdjustments) {
       // console.log(ratingAdjustment)
-      if (game[ratingAdjustment.field].toString().toLowerCase().includes(ratingAdjustment.contains.toLowerCase())) {
+      const field = game[ratingAdjustment.field]
+      if (field && field.toString().toLowerCase().includes(ratingAdjustment.contains.toLowerCase())) {
         game.rating += ratingAdjustment.adjustment
       }
     }

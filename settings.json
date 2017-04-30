@@ -15,7 +15,7 @@
 
 	"limit": {
 		"minRating": "0.2",
-		"maxGB": 32,
+		"maxGB": 8,
 		"maxGames": 99999
 	},
 
@@ -45,13 +45,18 @@
 		{"field": "name"     , "contains": "metal gear", "adjustment":  0.6},
 
 		{"field": "genre"    , "contains": "platform"  , "adjustment":  0.3},
+		{"field": "genre"    , "contains": "rpg"       , "adjustment":  0.3},
+		{"field": "genre"    , "contains": "role-playing","adjustment": 0.3},
 		{"field": "genre"    , "contains": "strategy"  , "adjustment":  0.2},
 		{"field": "genre"    , "contains": "puzzle"    , "adjustment":  0.1},
 		{"field": "genre"    , "contains": "sports"    , "adjustment": -0.1},
-		{"field": "genre"    , "contains": "racing"    , "adjustment": -0.2},
+		{"field": "genre"    , "contains": "racing"    , "adjustment": -0.1},
 		{"field": "genre"    , "contains": "action"    , "adjustment": -0.2},
 		{"field": "genre"    , "contains": "fighting"  , "adjustment": -0.3},
 		{"field": "genre"    , "contains": "shooter"   , "adjustment": -0.3},
+
+		{"field": "image"    , "contains": ".jpg"      , "adjustment":  0.2},
+		{"field": "image"    , "contains": ".png"      , "adjustment":  0.2},
 
 		{"field": "players"  , "contains": "2"         , "adjustment":  0.5},
 		{"field": "players"  , "contains": "3"         , "adjustment":  0.5},
