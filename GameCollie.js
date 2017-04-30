@@ -89,23 +89,25 @@ const copyGamelistsAndCreateImagesFolder = (srcPlatforms, skippedPlatforms) => {
 
 
 // determine game ratings and platforms we will select games for
-// const genres        = {} // per platform (psx/psp/n64/...)
-const copiedGame       = {} // per platform (psx/psp/n64/...)
-const platformGames    = {} // per platform (psx/psp/n64/...)
+// const genres        = {} // per platform
+const platformGames    = {} // per destination platform (psx/psp/n64/...)
+const platformGamesCopied = {} // per destination platform (psx/psp/n64/...)
+const platformGamesCopiedInfo = {} // extra info to prevend duplicate exports
 let   platformChoices  = [] // psx psx psx psp psp n64
-const skippedPlatforms = [] // no gamelist.xml
+const skippedPlatforms = [] // per destinatin platform (no gamelist.xml)
 const srcPlatforms = lsdir(settings.gameCollection.src)
 for (const srcPlatform of srcPlatforms) {
   const gamelistXml = settings.gameCollection.src + '/' + srcPlatform + '/gamelist.xml'
   const hasGameListXml = fs.existsSync(gamelistXml)
 
   const dstPlatform = getDstPlatform(srcPlatform)
+  platformGamesCopied[dstPlatform] = []
   if (!hasGameListXml) {
     skippedPlatforms.push(dstPlatform)
     continue
   }
 
-  copiedGame[dstPlatform] = {}
+  platformGamesCopiedInfo[dstPlatform] = {}
   platformGames[dstPlatform] = Games.Xml2JSON(gamelistXml, srcPlatform, dstPlatform)
   // platformGames[dstPlatform].forEach(game => genres[game.genre] = true)
 
@@ -149,16 +151,16 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
   // const dstFilename = `${dstPath}/${game.name}.${getFileExtension(game.path)}` // rename game file. For this to work we need to change game.path in gamelist.xml
   const dstFilename = `${settings.gameCollection.dst}/${game.platform}/${game.path}`
 
-  if (!fs.existsSync(srcFilename) || game.rating < settings.limit.minRating || copiedGame[game.platform][game.name] || copiedGame[game.platform][getWithoutFileExtension(game.path)]) {
+  if (!fs.existsSync(srcFilename) || game.rating < settings.limit.minRating || platformGamesCopiedInfo[game.platform][game.name] || platformGamesCopiedInfo[game.platform][getWithoutFileExtension(game.path)]) {
     // console.info('Not found or rating too low or already copied', choice, ':', game.name)
     n-- // try another one
     continue
   }
 
-  console.log(`${n+1}/${(nBytesUsed / 1024 / 1024 / 1024).toFixed(2)}GB. ${choice}: ${game.name}/${getWithoutFileExtension(game.path)}: rating ${game.rating.toFixed(1)}`)
-  copiedGame[game.platform][game.name] = true
-  copiedGame[game.platform][getWithoutFileExtension(game.path)] = true
-  // console.log(game.platform, ':', copiedGame[game.platform])
+  console.log(`${n+1}/${(nBytesUsed / 1024 / 1024 / 1024).toFixed(2)}GB. ${choice}: ${game.name}: rating ${game.rating.toFixed(1)}`)
+  platformGamesCopied[game.platform].push(game)
+  platformGamesCopiedInfo[game.platform][game.name] = true
+  platformGamesCopiedInfo[game.platform][getWithoutFileExtension(game.path)] = true
   mkdirp.sync(dstPath)
   copyFile(srcFilename, dstFilename)
 
@@ -174,6 +176,8 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
     dst2[dst2.length - 1] = dependency.dependencyExt
     const dstFilename2 = dst2.join('.')
 
+    if (!fs.existsSync(srcFilename2)) continue
+
     // console.log(srcFilename2, dstFilename2)
     copyFile(srcFilename2, dstFilename2)
   }
@@ -184,3 +188,12 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
     copyFile(srcImageFilename, dstImageFilename)
   }
 }
+
+
+// Output gamelist.xml per platform
+for (const srcPlatform of srcPlatforms) {
+  const dstPlatform = getDstPlatform(srcPlatform)
+  if (skippedPlatforms.includes(dstPlatform)) continue
+
+  Games.JSON2Xml(`${settings.gameCollection.dst}/${dstPlatform}/gamelist-test.xml`, platformGamesCopied[dstPlatform])
+} // next srcPlatform
