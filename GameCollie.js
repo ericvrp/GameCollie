@@ -79,11 +79,11 @@ const copyGamelistsAndCreateImagesFolder = (srcPlatforms, skippedPlatforms) => {
     const dstDir = `${settings.gameCollection.dst}/${dstPlatform}`
     mkdirp.sync(`${dstDir}/images`)
 
-    const srcGamelistXml = `${srcDir}/gamelist.xml`
-    const dstGamelistXml = `${dstDir}/gamelist.xml`
-    const copyAlways     = true
-    // console.log(srcGamelistXml, '=>', dstGamelistXml)
-    copyFile(srcGamelistXml, dstGamelistXml, copyAlways)
+    // const srcGamelistXml = `${srcDir}/gamelist.xml`
+    // const dstGamelistXml = `${dstDir}/gamelist.xml`
+    // const copyAlways     = true
+    // // console.log(srcGamelistXml, '=>', dstGamelistXml)
+    // copyFile(srcGamelistXml, dstGamelistXml, copyAlways)
   }
 }
 
@@ -195,5 +195,5 @@ for (const srcPlatform of srcPlatforms) {
   const dstPlatform = getDstPlatform(srcPlatform)
   if (skippedPlatforms.includes(dstPlatform)) continue
 
-  Games.JSON2Xml(`${settings.gameCollection.dst}/${dstPlatform}/gamelist-test.xml`, platformGamesCopied[dstPlatform])
+  Games.JSON2Xml(`${settings.gameCollection.dst}/${dstPlatform}/gamelist.xml`, platformGamesCopied[dstPlatform])
 } // next srcPlatform

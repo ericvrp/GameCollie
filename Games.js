@@ -47,8 +47,8 @@ const Xml2JSON = (filename, srcPlatform, dstPlatform) => {
     // preprocess to make live it easier later on (sorting...)
     game.srcPlatform = srcPlatform
     game.platform    = dstPlatform
-    game.path        = game.path.startsWith('./')  ? game.path.slice(2)  : game.path
-    game.image       = game.image && game.image.startsWith('./') ? game.image.slice(2) : game.image
+    // game.path        = game.path.startsWith('./')  ? game.path.slice(2)  : game.path
+    // game.image       = game.image && game.image.startsWith('./') ? game.image.slice(2) : game.image
     game.players     = game.players || 1
     game.genre       = game.genre.toLowerCase()
     game.rating      = game.rating ? parseFloat(game.rating) : -0.5 // prefer identifyable games
@@ -69,8 +69,6 @@ const JSON2Xml = (filename, games) => {
   file.write('  <gameList>\n')
   for (const game of games) {
     file.write(`    <game id="${game.id}" source="${game.source}">\n`)
-    //       <game id="237" source="theGamesDB.net">
-    //       </game>
     for (const key of Object.keys(game)) {
       if (key === 'id' || key === 'source') continue
       file.write(`      <${key}>${game[key]}</${key}>\n`)

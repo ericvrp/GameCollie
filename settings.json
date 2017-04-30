@@ -64,6 +64,7 @@
 
 		{"field": "path"     , "contains": ".cue"      , "adjustment": -9.9},
 
+		{"field": "region"   , "contains": "korea"     , "adjustment": -9.9},
 		{"field": "region"   , "contains": "j"      	 , "adjustment": -9.9}
 	],
 
