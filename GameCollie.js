@@ -28,6 +28,12 @@ const getFileExtension = (path) => { // this is not very elegant
   return t[t.length - 1]
 }
 
+const getWithoutFileExtension = (path) => { // this is not very elegant
+  const t = path.split('.')
+  t.pop()
+  return t.join('.')
+}
+
 const copyFile = (srcFilename, dstFilename, copyAlways = false) => {
   if (!copyAlways && fs.existsSync(dstFilename)) {
     const stats = fs.statSync(dstFilename)
@@ -84,7 +90,7 @@ const copyGamelistsAndCreateImagesFolder = (srcPlatforms, skippedPlatforms) => {
 
 // determine game ratings and platforms we will select games for
 // const genres        = {} // per platform (psx/psp/n64/...)
-const copiedGameName   = {} // per platform (psx/psp/n64/...)
+const copiedGame       = {} // per platform (psx/psp/n64/...)
 const platformGames    = {} // per platform (psx/psp/n64/...)
 let   platformChoices  = [] // psx psx psx psp psp n64
 const skippedPlatforms = [] // no gamelist.xml
@@ -99,7 +105,7 @@ for (const srcPlatform of srcPlatforms) {
     continue
   }
 
-  copiedGameName[dstPlatform] = {}
+  copiedGame[dstPlatform] = {}
   platformGames[dstPlatform] = Games.Xml2JSON(gamelistXml, srcPlatform, dstPlatform)
   // platformGames[dstPlatform].forEach(game => genres[game.genre] = true)
 
@@ -126,8 +132,6 @@ for (const skippedPlatform of skippedPlatforms) {
 
 // pick and copy the games
 for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nBytesUsed < settings.limit.maxGB * 1024 * 1024 * 1024;n++) {
-  // TODO: skip games that differ only by file extension or game.id
-
   const choice = platformChoices[Math.floor(random() * platformChoices.length)]
   const game   = platformGames[choice].pop()
 
@@ -144,15 +148,16 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
   // const dstFilename = `${dstPath}/${game.name}.${getFileExtension(game.path)}` // rename game file. For this to work we need to change game.path in gamelist.xml
   const dstFilename = `${settings.gameCollection.dst}/${game.platform}/${game.path}`
 
-  if (!fs.existsSync(srcFilename) || game.rating < settings.limit.minRating || copiedGameName[game.platform][game.name]) {
+  if (!fs.existsSync(srcFilename) || game.rating < settings.limit.minRating || copiedGame[game.platform][game.name] || copiedGame[game.platform][getWithoutFileExtension(game.path)]) {
     // console.info('Not found or rating too low or already copied', choice, ':', game.name)
     n-- // try another one
     continue
   }
 
-  console.log(`${n+1}/${(nBytesUsed / 1024 / 1024 / 1024).toFixed(2)}GB. ${choice}: ${game.name}: rating ${game.rating.toFixed(1)}`)
-  copiedGameName[game.platform][game.name] = true
-  // console.log(game.platform, ':', copiedGameName[game.platform])
+  console.log(`${n+1}/${(nBytesUsed / 1024 / 1024 / 1024).toFixed(2)}GB. ${choice}: ${game.name}/${getWithoutFileExtension(game.path)}: rating ${game.rating.toFixed(1)}`)
+  copiedGame[game.platform][game.name] = true
+  copiedGame[game.platform][getWithoutFileExtension(game.path)] = true
+  // console.log(game.platform, ':', copiedGame[game.platform])
   mkdirp.sync(dstPath)
   copyFile(srcFilename, dstFilename)
 
