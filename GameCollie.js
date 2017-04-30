@@ -109,7 +109,7 @@ for (const srcPlatform of srcPlatforms) {
     platformChoices.push(dstPlatform)
   }
 
-  debug && console.log(srcPlatform, '=>', dstPlatform, 'with', Games.WithID(platformGames[dstPlatform]), 'out of', platformGames[dstPlatform].length, 'games found')
+  debug && console.log(srcPlatform, '=>', dstPlatform, 'with', Games.NumberOfGamesWithID(platformGames[dstPlatform]), 'out of', platformGames[dstPlatform].length, 'games found')
 }
 
 copyGamelistsAndCreateImagesFolder(srcPlatforms, skippedPlatforms) // TODO: do this later when first game for a given platform is copied.
@@ -149,10 +149,24 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
   }
 
   console.log(`${n+1}/${(nBytesUsed / 1024 / 1024 / 1024).toFixed(2)}GB. ${choice}: ${game.name}: rating ${game.rating.toFixed(1)}`)
-
   mkdirp.sync(dstPath)
-
   copyFile(srcFilename, dstFilename)
+
+  const fileExtension = getFileExtension(srcFilename).toLowerCase()
+  for (const dependency of settings.dependencies) {
+    if (fileExtension !== dependency.ext) continue
+
+    const src2 = srcFilename.split('.')
+    src2[src2.length - 1] = dependency.dependencyExt
+    const srcFilename2 = src2.join('.')
+
+    const dst2 = dstFilename.split('.')
+    dst2[dst2.length - 1] = dependency.dependencyExt
+    const dstFilename2 = dst2.join('.')
+
+    // console.log(srcFilename2, dstFilename2)
+    copyFile(srcFilename2, dstFilename2)
+  }
 
   if (game.image) {
     const srcImageFilename = `${settings.gameCollection.src}/${game.srcPlatform}/${game.image}`

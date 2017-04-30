@@ -22,6 +22,18 @@ const xmldoc = require('xmldoc') // https://github.com/nfarina/xmldoc
 //   }
 // }
 
+const GetRegion = (game) => { // P.S. I'm on good with regular expression. Can you tell?
+  const s = (game.name || game.path).toLowerCase()
+  // console.log(s)
+  const startIndex = s.indexOf('(')
+  const endIndex   = s.lastIndexOf(')')
+  if (startIndex === -1 || endIndex === -1) return 'unknown'
+
+  const region = s.substring(startIndex+1, endIndex).replace(' ', '')
+  // console.log('region', region, 'game', s)
+  return region
+}
+
 const Xml2JSON = (filename, srcPlatform, dstPlatform) => {
   // console.log('GamelistXml2JSON', filename)
 
@@ -39,11 +51,18 @@ const Xml2JSON = (filename, srcPlatform, dstPlatform) => {
     game.players     = game.players || 1
     game.genre       = game.genre.toLowerCase()
     game.rating      = game.rating ? parseFloat(game.rating) : -0.5 // prefer identifyable games
-    // TODO: find playability on my platform 
+    game.region      = GetRegion(game)
+
+    // TODO: find playability on my platform
+
     games.push(game)
   }
 
   return games
+}
+
+const JSON2Xml = (games, filename) => {
+  console.log('TODO: JSON2Xml')
 }
 
 const AdjustRating = (games, ratingAdjustments) => {
@@ -63,7 +82,11 @@ const SortByRating = (games) => {
   // games.reverse()
 }
 
-const WithID = (games) => {
+const GroupBy = (groupBy) => {
+  console.log('TODO: GroupBy', groupBy)
+}
+
+const NumberOfGamesWithID = (games) => {
   let n = 0
   for (const game of games) {
     if (game.id)  n++
@@ -75,5 +98,7 @@ module.exports = {
   Xml2JSON,
   AdjustRating,
   SortByRating,
-  WithID
+  GroupBy,
+  NumberOfGamesWithID,
+  JSON2Xml,
 }

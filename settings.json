@@ -1,8 +1,16 @@
 {
-	"gameCollection": {
+	"#gameCollection": {
 		"src": "/Volumes/GAMES/roms",
-		"#dst": "testgames/dst",
 		"dst": "/Volumes/roms"
+	},
+
+	"gameCollection": {
+		"src": "testgames/src",
+		"dst": "testgames/dst"
+	},
+
+	"reorganize": {
+		"groupBy": "platform/genre/rating/<anyfieldname>"
 	},
 
 	"limit": {
@@ -21,8 +29,11 @@
 		"gba"      :  9,
 		"atari2600":  8,
 		"gb"       :  5,
+		"3ds"			 :  0,
 		"default"  :  1
 	},
+
+	"#ratingAdjustmentsFields": "id, source, srcPlatform, platform, developer, name, path, genre, players, region",
 
 	"ratingAdjustments": [
 		{"field": "name"     , "contains": "mario"     , "adjustment":  1.0},
@@ -33,9 +44,6 @@
 		{"field": "name"     , "contains": "frogger"   , "adjustment":  0.7},
 		{"field": "name"     , "contains": "metal gear", "adjustment":  0.6},
 
-		{"field": "name"     , "contains": "sonic"     , "adjustment": -1.0},
-		{"field": "name"     , "contains": "tekken"    , "adjustment": -1.0},
-
 		{"field": "genre"    , "contains": "platform"  , "adjustment":  0.3},
 		{"field": "genre"    , "contains": "strategy"  , "adjustment":  0.2},
 		{"field": "genre"    , "contains": "puzzle"    , "adjustment":  0.1},
@@ -45,11 +53,17 @@
 		{"field": "genre"    , "contains": "fighting"  , "adjustment": -0.3},
 		{"field": "genre"    , "contains": "shooter"   , "adjustment": -0.3},
 
-		{"field": "developer", "contains": "nintendo"  , "adjustment":  0.1},
-
 		{"field": "players"  , "contains": "2"         , "adjustment":  0.5},
 		{"field": "players"  , "contains": "3"         , "adjustment":  0.5},
-		{"field": "players"  , "contains": "4"         , "adjustment":  0.5}
+		{"field": "players"  , "contains": "4"         , "adjustment":  0.5},
+
+		{"field": "path"     , "contains": ".cue"      , "adjustment": -9.9},
+
+		{"field": "region"   , "contains": "j"      	 , "adjustment": -9.9}
+	],
+
+	"dependencies": [
+		{"ext": "bin", "dependencyExt": "cue"}
 	],
 
 	"platformAliases": {
