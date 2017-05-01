@@ -142,13 +142,8 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
     platformChoices = platformChoices.filter(v => v !== choice)
   }
 
-  let dstPath = settings.gameCollection.dst + '/' + game.platform
-  let folders = game.path.split('/')
-  folders.pop() // remove filename
-  if (folders.length) dstPath += '/' + folders.join('/')
-
   const srcFilename = `${settings.gameCollection.src}/${game.srcPlatform}/${game.path}`
-  // const dstFilename = `${dstPath}/${game.name}.${getFileExtension(game.path)}` // rename game file. For this to work we need to change game.path in gamelist.xml
+  game.path = `./${game.name}.${getFileExtension(game.path)}` // move file to this platform's root
   const dstFilename = `${settings.gameCollection.dst}/${game.platform}/${game.path}`
 
   if (!fs.existsSync(srcFilename) || game.rating < settings.limit.minRating || platformGamesCopiedInfo[game.platform][game.name] || platformGamesCopiedInfo[game.platform][getWithoutFileExtension(game.path)]) {
@@ -159,11 +154,10 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
 
   console.log(`${n+1}/${(nBytesUsed / 1024 / 1024 / 1024).toFixed(2)}GB. ${choice}: ${game.name}: rating ${game.rating.toFixed(1)}`)
 
-
   platformGamesCopied[game.platform].push(game)
   platformGamesCopiedInfo[game.platform][game.name] = true
   platformGamesCopiedInfo[game.platform][getWithoutFileExtension(game.path)] = true
-  mkdirp.sync(dstPath)
+  mkdirp.sync(`${settings.gameCollection.dst}/${game.platform}`)
   copyFile(srcFilename, dstFilename)
 
   // note: also copy dependent files

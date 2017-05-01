@@ -14,8 +14,8 @@
 	},
 
 	"limit": {
-		"minRating": "0.2",
-		"maxGB": 8,
+		"minRating": "0.3",
+		"maxGB": 32,
 		"maxGames": 99999
 	},
 

@@ -43,7 +43,10 @@ const GetCleanName = (game) => { // P.S. I'm on good with regular expression. Ca
   i = name.indexOf('[')
   if (i >= 0) name = name.slice(0, i)
 
-  return name.replace('_', ' ').trim()
+  name = name.replace('/', '-')
+  name = name.replace(':', '-')
+  name = name.replace('_', ' ')
+  return name.trim()
 }
 
 const Xml2JSON = (filename, srcPlatform, dstPlatform) => {
