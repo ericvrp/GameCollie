@@ -84,7 +84,14 @@ const JSON2Xml = (filename, games) => {
     file.write(`    <game id="${game.id}" source="${game.source}">\n`)
     for (const key of Object.keys(game)) {
       if (key === 'id' || key === 'source') continue
-      file.write(`      <${key}>${game[key]}</${key}>\n`)
+
+      let value = game[key]
+      // if (key.indexOf('psx') >= 0) and value.indexOf('.bin') >= 0) {
+      //   // XXX this is a little hack because RetroPie's emulationstation doesn't show pictures when we use the .bin extension
+      //   value = s.replace('.bin', '.cue')
+      // }
+
+      file.write(`      <${key}>${value}</${key}>\n`)
     }
     file.write('    </game>\n')
   }

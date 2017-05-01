@@ -158,12 +158,15 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
   }
 
   console.log(`${n+1}/${(nBytesUsed / 1024 / 1024 / 1024).toFixed(2)}GB. ${choice}: ${game.name}: rating ${game.rating.toFixed(1)}`)
+
+
   platformGamesCopied[game.platform].push(game)
   platformGamesCopiedInfo[game.platform][game.name] = true
   platformGamesCopiedInfo[game.platform][getWithoutFileExtension(game.path)] = true
   mkdirp.sync(dstPath)
   copyFile(srcFilename, dstFilename)
 
+  // note: also copy dependent files
   const fileExtension = getFileExtension(srcFilename).toLowerCase()
   for (const dependency of settings.dependencies) {
     if (fileExtension !== dependency.ext) continue
@@ -182,12 +185,13 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
     copyFile(srcFilename2, dstFilename2)
   }
 
+  // if possible add a thumbnail to the images folder
   if (game.image) {
     const srcImageFilename = `${settings.gameCollection.src}/${game.srcPlatform}/${game.image}`
     const dstImageFilename = `${settings.gameCollection.dst}/${game.platform}/${game.image}`
     copyFile(srcImageFilename, dstImageFilename)
   }
-}
+} // next game, until a limit is reached
 
 
 // Output gamelist.xml per platform
