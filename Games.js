@@ -34,6 +34,18 @@ const GetRegion = (game) => { // P.S. I'm on good with regular expression. Can y
   return region
 }
 
+const GetCleanName = (game) => { // P.S. I'm on good with regular expression. Can you tell?
+  let { name } = game
+
+  let i = name.indexOf('(')
+  if (i >= 0) name = name.slice(0, i)
+
+  i = name.indexOf('[')
+  if (i >= 0) name = name.slice(0, i)
+
+  return name.replace('_', ' ').trim()
+}
+
 const Xml2JSON = (filename, srcPlatform, dstPlatform) => {
   // console.log('GamelistXml2JSON', filename)
 
@@ -53,6 +65,7 @@ const Xml2JSON = (filename, srcPlatform, dstPlatform) => {
     game.genre       = game.genre.toLowerCase()
     game.rating      = game.rating ? parseFloat(game.rating) : -0.5 // prefer identifyable games
     game.region      = GetRegion(game)
+    game.name        = GetCleanName(game)
 
     // TODO: find playability on my platform
 
