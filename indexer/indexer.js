@@ -8,8 +8,9 @@
 
 var fs = require('fs');
 var path = require('path');
-var SHA256 = require("crypto-js/sha256"); // https://github.com/brix/crypto-js
-var MD5 = require("crypto-js/md5"); // https://github.com/brix/crypto-js
+var CryptoJS = require("crypto-js"); // https://github.com/brix/crypto-js
+var md5 = require("md5") // https://github.com/pvorb/node-md5
+var crc32 = require('buffer-crc32'); // https://github.com/brianloveswords/buffer-crc32
 
 skipPrefixes   = ['.']
 skipExtensions = ['.xml', '.jpg', '.png']
@@ -38,8 +39,8 @@ var walk = function(directoryName) {
         if (f.isDirectory()) {
           walk(d)
         } else {
-          content = fs.readFileSync(d, {encoding: 'utf8'})
-          console.log(`${d}, sha256:${SHA256(content)}, md5:${MD5(content)}`)
+          const content = fs.readFileSync(d)
+          console.log(`\{"path":"${d}", "sha256":${CryptoJS.SHA256(content)}, "md5":${md5(content)}, "crc32":${crc32.unsigned(content).toString(16)}\},`)
         }
       })
     })
