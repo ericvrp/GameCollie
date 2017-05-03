@@ -1,2 +1,5 @@
-node_modules/
-.idea/
+.DS_Store
+settings-production.json
+npm-debug.log
+
+node_modules
