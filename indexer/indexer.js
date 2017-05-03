@@ -17,34 +17,36 @@ skipExtensions = ['.xml', '.jpg', '.png']
 
 var walk = function(directoryName) {
 
-  fs.readdir(directoryName, function(e, files) {
-    files.forEach(function(file) {
-      fs.stat(directoryName + path.sep + file, function(e, f) {
-        const d = directoryName + path.sep + file
+  const files = fs.readdirSync(directoryName)
 
-        for (const pre of skipPrefixes) {
-          if (file.startsWith(pre)) {
-            // console.log('Skipping (prefix):', d)
-            return
-          }
-        }
+  files.forEach(function(file) {
+    const d = directoryName + path.sep + file
+    const f = fs.statSync(d)
 
-        for (const ext of skipExtensions) {
-          if (file.endsWith(ext)) {
-            // console.log('Skipping (ext):', d)
-            return
-          }
-        }
+    for (const pre of skipPrefixes) {
+      if (file.startsWith(pre)) {
+        // console.log('Skipping (prefix):', d)
+        return
+      }
+    }
 
-        if (f.isDirectory()) {
-          walk(d)
-        } else {
-          const content = fs.readFileSync(d)
-          console.log(`\{"path":"${d}", "sha256":${CryptoJS.SHA256(content)}, "md5":${md5(content)}, "crc32":${crc32.unsigned(content).toString(16)}\},`)
-        }
-      })
-    })
+    for (const ext of skipExtensions) {
+      if (file.endsWith(ext)) {
+        // console.log('Skipping (ext):', d)
+        return
+      }
+    }
+
+    if (f.isDirectory()) {
+      walk(d)
+    } else {
+      const content = fs.readFileSync(d)
+      console.log(`  \{"path":"${d}", "sha256":${CryptoJS.SHA256(content)}, "md5":${md5(content)}, "crc32":${crc32.unsigned(content).toString(16)}\},`)
+    }
   })
 }
 
+console.log('const itemHashes = [')
 walk('.')
+console.log(']')
+console.log('export default itemHashes')
