@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "buffer-crc32": "^0.2.13",
-    "crypto-js": "^3.1.9-1",
-    "md5": "^2.2.1"
+    "crypto-js": "^3.1.9-1"
   }
 }

@@ -9,8 +9,17 @@
 var fs = require('fs');
 var path = require('path');
 var CryptoJS = require("crypto-js"); // https://github.com/brix/crypto-js
-var md5 = require("md5") // https://github.com/pvorb/node-md5
 var crc32 = require('buffer-crc32'); // https://github.com/brianloveswords/buffer-crc32
+
+
+function arrayBufferToWordArray(ab) {
+  var i8a = new Uint8Array(ab);
+  var a = [];
+  for (var i = 0; i < i8a.length; i += 4) {
+    a.push(i8a[i] << 24 | i8a[i + 1] << 16 | i8a[i + 2] << 8 | i8a[i + 3]);
+  }
+  return CryptoJS.lib.WordArray.create(a, i8a.length);
+}
 
 skipPrefixes   = ['.']
 skipExtensions = ['.xml', '.jpg', '.png']
@@ -41,10 +50,11 @@ var walk = function(directoryName) {
       walk(d)
     } else {
       const content = fs.readFileSync(d)
-      const _sha256  = String(CryptoJS.SHA256(content)).toUpperCase()
-      const _md5     = String(md5(content)).toUpperCase()
-      const _crc32   = crc32.unsigned(content).toString(16).toUpperCase()
-      console.log(`  \{"path":"${d}", "sha256":"0x${_sha256}", "md5":"0x${_md5}", "crc32":"0x${_crc32}"\},`)
+      const aw      = arrayBufferToWordArray(content)
+      const sha256  = String(CryptoJS.SHA256(aw)).toUpperCase()
+      const md5     = String(CryptoJS.MD5(aw)).toUpperCase()
+      const crc32_  = crc32.unsigned(content).toString(16).toUpperCase()
+      console.log(`  \{"path":"${d}", "sha256":"0x${sha256}", "md5":"0x${md5}", "crc32":"0x${crc32_}"\},`)
     }
   })
 }
