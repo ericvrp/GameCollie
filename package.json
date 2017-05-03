@@ -6,5 +6,8 @@
     "mkdirp": "^0.5.1",
     "thegamesdb": "^0.1.2",
     "xmldoc": "^1.0.0"
+  },
+  "devDependencies": {
+    "meteor-desktop": "^0.6.2"
   }
 }

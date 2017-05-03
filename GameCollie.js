@@ -23,6 +23,11 @@ const getDstPlatform = (srcPlatform) => {
   return s // '<unknown platform>'
 }
 
+const getFilename = (path) => { // this is not very elegant
+  const t = path.split('/')
+  return t[t.length - 1]
+}
+
 const getFileExtension = (path) => { // this is not very elegant
   const t = path.split('.')
   return t[t.length - 1]
@@ -143,7 +148,11 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
   }
 
   const srcFilename = `${settings.gameCollection.src}/${game.srcPlatform}/${game.path}`
-  game.path = `./${game.name}.${getFileExtension(game.path)}` // move file to this platform's root
+/*  if (game.platform === 'psx') {
+    game.path = `./${getFileName(game.path)}` // move file to this platform's root but don't rename (because it will be referenced by name in the associated .cue file!)
+  } else*/ {
+    game.path = `./${game.name}.${getFileExtension(game.path)}` // move file to this platform's root
+  }
   const dstFilename = `${settings.gameCollection.dst}/${game.platform}/${game.path}`
 
   if (!fs.existsSync(srcFilename) || game.rating < settings.limit.minRating || platformGamesCopiedInfo[game.platform][game.name] || platformGamesCopiedInfo[game.platform][getWithoutFileExtension(game.path)]) {
@@ -160,23 +169,24 @@ for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nByt
   mkdirp.sync(`${settings.gameCollection.dst}/${game.platform}`)
   copyFile(srcFilename, dstFilename)
 
+
+  // P.S. TODO'S
+  //    - often it's the cue files that have a rating. So we have to make this work the other way around to!
+  //    - cue files contain contain the .bin filename. This does not work when we rename the .bin file.
+  //      so either we do not rename psx .bin files or we patch the associated .cue file.
+  //    - when the original gamelist.xml contained.cue files then we need to add this 'game' to our newly generated gamelist.xml also.
+
   // note: also copy dependent files
-  const fileExtension = getFileExtension(srcFilename).toLowerCase()
+  const fileExtension = '.' + getFileExtension(srcFilename).toLowerCase()
   for (const dependency of settings.dependencies) {
     if (fileExtension !== dependency.ext) continue
 
-    const src2 = srcFilename.split('.')
-    src2[src2.length - 1] = dependency.dependencyExt
-    const srcFilename2 = src2.join('.')
-
-    const dst2 = dstFilename.split('.')
-    dst2[dst2.length - 1] = dependency.dependencyExt
-    const dstFilename2 = dst2.join('.')
-
+    const srcFilename2 = srcFilename.replace(fileExtension, dependency.dependencyExt)
     if (!fs.existsSync(srcFilename2)) continue
 
+    const dstFilename2 = dstFilename.replace(fileExtension, dependency.dependencyExt)
     // console.log(srcFilename2, dstFilename2)
-    copyFile(srcFilename2, dstFilename2)
+    copyFile(srcFilename2, dstFilename2) // this often gives NodeJS write errors. Is this a Samba problem? I don't understand.
   }
 
   // if possible add a thumbnail to the images folder
