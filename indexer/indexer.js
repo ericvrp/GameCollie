@@ -41,7 +41,10 @@ var walk = function(directoryName) {
       walk(d)
     } else {
       const content = fs.readFileSync(d)
-      console.log(`  \{"path":"${d}", "sha256":${CryptoJS.SHA256(content)}, "md5":${md5(content)}, "crc32":${crc32.unsigned(content).toString(16)}\},`)
+      const _sha256  = String(CryptoJS.SHA256(content)).toUpperCase()
+      const _md5     = String(md5(content)).toUpperCase()
+      const _crc32   = crc32.unsigned(content).toString(16).toUpperCase()
+      console.log(`  \{"path":"${d}", "sha256":"0x${_sha256}", "md5":"0x${_md5}", "crc32":"0x${_crc32}"\},`)
     }
   })
 }
