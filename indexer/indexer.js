@@ -10,18 +10,19 @@ var crc32 = require('buffer-crc32'); // https://github.com/brianloveswords/buffe
 // creating filelist...
 const isSkippedFile = (filename) => {
   const skipPrefixes   = ['.']
-  const skipExtensions = ['.xml', '.jpg', '.png', '.zip', '.log', '.nfo', '.url']
+  const skipExtensions = ['.xml', '.jpg', '.png', '.log', '.nfo', '.url', '.txt', '.doc', '.docx', '.dll', '.conf', '.xdb', '.dtd', '.exe', '.bat', '.msg', '.manifest', '.mo', '.po', '.pot', '.def']
 
+  const filenameLowercase = filename.toLowerCase()
   for (const pre of skipPrefixes) {
-    if (filename.startsWith(pre)) {
-      // console.log('Skipping (prefix):', filename)
+    if (filenameLowercase.startsWith(pre)) {
+      // console.log('Skipping (prefix):', filenameLowercase)
       return true
     }
   }
 
   for (const ext of skipExtensions) {
-    if (filename.endsWith(ext)) {
-      // console.log('Skipping (ext):', filename)
+    if (filenameLowercase.endsWith(ext)) {
+      // console.log('Skipping (ext):', filenameLowercase)
       return true
     }
   }
@@ -53,19 +54,39 @@ var walk = function(directoryName, filelist=[]) {
 // hashing...
 const hashFile = Promise.promisify(hash_file)
 
-const hashFilelist = (filelist, index = 0) => {
+const hashFilelist = (filelist, maxIndex, index = 0) => {
   const filename = filelist[index]
-  // console.log(index, '/', filelist.length, filelist[index])
+  // console.log(index, '/', maxIndex, filename)
 
-  const crc32_ = crc32.unsigned(fs.readFileSync(filename)).toString(16)
+  let content = undefined
+  try {
+    content = fs.readFileSync(filename)
+  } catch(e) {
+    throw new Error(e)
+  }
 
+  if (!content) {
+    if (index < maxIndex-1) return hashFilelist(filelist, maxIndex, index+1)
+  }
+
+  const crc32_ = crc32.unsigned(content).toString(16)
+
+  // or content instead of filename?
   Promise.join(hashFile(filename, 'md5'), hashFile(filename, 'sha256'), (md5_, sha256_) => {
     console.log(`  \{"path":"${filename}", "sha256":"0x${sha256_.toUpperCase()}", "md5":"0x${md5_.toUpperCase()}", "crc32":"0x${crc32_.toUpperCase()}"\},`)
-    if (index < filelist.length - 1) hashFilelist(filelist, index+1)
+    if (index < maxIndex-1) hashFilelist(filelist, maxIndex, index+1)
   })
 }
 
 
 // main...
 const filelist = walk('.')
-hashFilelist(filelist)
+// filelist.splice(10) // keep only first 10 elements
+// console.log('filelist.length', filelist.length)
+
+const maxBatchSize = 10000
+for (let index = 0;index < filelist.length;index += maxBatchSize) {
+  const maxIndex = Math.min(filelist.length, index + maxBatchSize)
+  // console.log('maxIndex', maxIndex)
+  hashFilelist(filelist, maxIndex, index)
+}
