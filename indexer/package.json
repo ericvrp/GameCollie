@@ -9,7 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "buffer-crc32": "^0.2.13",
-    "crypto-js": "^3.1.9-1"
+    "crypto-js": "^3.1.9-1",
+    "hash_file": "^0.1.1",
+    "md5": "^2.2.1",
+    "sha256": "^0.2.0",
+    "web3": "^0.18.4"
   }
 }
