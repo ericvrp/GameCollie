@@ -13,7 +13,7 @@ const Items = () => (
             <Button
               bsStyle="success"
               className="pull-right"
-            >New Document</Button>
+            >New Item</Button>
           </Link>
         </div>
         <ItemsList />

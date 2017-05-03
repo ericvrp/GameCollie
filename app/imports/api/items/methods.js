@@ -8,13 +8,14 @@ export const upsertItem = new ValidatedMethod({
   name: 'item.upsert',
   validate: new SimpleSchema({
     _id: { type: String, optional: true },
-    title: { type: String, optional: true },
-//    body: { type: String, optional: true },
+    title: { type: String, optional: true }
   }).validator(),
   run(item) {
-    return Item.upsert({ _id: item._id }, { $set: item });
+    console.log('upsert item' + JSON.stringify(item, 0,4));
+    return Items.upsert({ _id: item._id }, { $set: item });
   },
 });
+//    body: { type: String, optional: true },
 
 export const removeItem = new ValidatedMethod({
   name: 'item.remove',
@@ -22,7 +23,7 @@ export const removeItem = new ValidatedMethod({
     _id: { type: String },
   }).validator(),
   run({ _id }) {
-    Item.remove(_id);
+    Items.remove(_id);
   },
 });
 

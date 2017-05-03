@@ -8,7 +8,7 @@ import itemEditor from '../../modules/item-editor.js';
 export default class ItemEditor extends React.Component {
   componentDidMount() {
     itemEditor({ component: this });
-    setTimeout(() => { item.querySelector('[name="title"]').focus(); }, 0);
+    setTimeout(() => { document.querySelector('[name="title"]').focus(); }, 0);
   }
 
   render() {

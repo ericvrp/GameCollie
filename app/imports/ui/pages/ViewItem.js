@@ -38,11 +38,12 @@ const ViewItem = ({ item }) => {
           </ButtonGroup>
         </ButtonToolbar>
       </div>
-      { item }
+      LATER SOME INFO ABOUT THIS ITEM WILL BE ADDED!!!
     </div>
   ) : <NotFound />;
 };
-// && item.body
+//      { item && item.body }
+
 
 ViewItem.propTypes = {
   item: PropTypes.object,
