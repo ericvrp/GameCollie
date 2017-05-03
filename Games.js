@@ -109,9 +109,20 @@ const AdjustRating = (games, ratingAdjustments) => {
       const field = game[ratingAdjustment.field]
       if (field && field.toString().toLowerCase().includes(ratingAdjustment.contains.toLowerCase())) {
         game.rating += ratingAdjustment.adjustment
-      }
+
+        if (game.platform === 'psx' && game.name.toLowerCase().includes('oddworld')) {
+          console.log('YES', ratingAdjustment)
+        }
+      } else         if (game.platform === 'psx' && game.name.toLowerCase().includes('oddworld')) {
+                console.log('NO ', ratingAdjustment)
+              }
+
     }
+    if (game.platform === 'psx' && game.name.toLowerCase().includes('oddworld')) {
+              console.log(game)
+            }
   })
+
 }
 
 const SortByRating = (games) => {

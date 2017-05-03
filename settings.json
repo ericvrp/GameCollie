@@ -58,6 +58,8 @@
 		{"field": "image"    , "contains": ".jpg"      , "adjustment":  0.2},
 		{"field": "image"    , "contains": ".png"      , "adjustment":  0.2},
 
+		{"field": "platform" , "contains": "psx"       , "adjustment":  0.8},
+
 		{"field": "players"  , "contains": "2"         , "adjustment":  0.5},
 		{"field": "players"  , "contains": "3"         , "adjustment":  0.5},
 		{"field": "players"  , "contains": "4"         , "adjustment":  0.5},
@@ -69,7 +71,7 @@
 	],
 
 	"dependencies": [
-		{"ext": "bin", "dependencyExt": "cue"}
+		{"ext": ".bin", "dependencyExt": ".cue"}
 	],
 
 	"platformAliases": {
