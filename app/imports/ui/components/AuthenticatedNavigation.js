@@ -15,8 +15,14 @@ const userName = () => {
 const AuthenticatedNavigation = () => (
   <div>
     <Nav>
-      <LinkContainer to="/documents">
-        <NavItem eventKey={ 2 } href="/documents">Documents</NavItem>
+      <LinkContainer to="/files">
+        <NavItem eventKey={ 2 } href="/files">files</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/items">
+        <NavItem eventKey={ 2 } href="/items">Items</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/ingest">
+        <NavItem eventKey={ 2 } href="/ingest">Ingest</NavItem>
       </LinkContainer>
     </Nav>
     <Nav pullRight>
@@ -26,5 +32,10 @@ const AuthenticatedNavigation = () => (
     </Nav>
   </div>
 );
+
+//       <LinkContainer to="/documents">
+//        <NavItem eventKey={ 2 } href="/documents">Documents</NavItem>
+//      </LinkContainer>
+
 
 export default AuthenticatedNavigation;
