@@ -27,7 +27,6 @@ export default container((props, onData) => {
   const subscription = Meteor.subscribe('files.list');
   if (subscription.ready()) {
     const files = Files.find().fetch();
-    console.log(JSON.stringify(files, 0,4))
     onData(null, { files });
   }
 }, FileList);

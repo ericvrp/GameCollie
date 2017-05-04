@@ -1,6 +1,5 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
-import { Factory } from 'meteor/dburles:factory';
 
 const Items = new Mongo.Collection('Items');
 export default Items;
@@ -17,20 +16,46 @@ Items.deny({
   remove: () => true,
 });
 
-Items.schema = new SimpleSchema({
+export const ItemInfoSchema = new SimpleSchema({
   title: {
     type: String,
     label: 'The title of the item.',
   },
-  // body: {
+  cover: {
+    type: String,
+    label: 'The cover image of the item.',
+  },
+  description: {
+    type: String,
+    label: 'The description of the item.',
+  },
+});
+
+export const ItemDataSourceSchema = new SimpleSchema({
+  'name': {
+    type: String,
+    label: "Datasource name",
+    defaultValue: 'available'
+  },
+  'id': {
+    type: String,
+    label: "ID",
+    defaultValue: ''
+  },
+  // 'lastretrieved': {
   //   type: String,
-  //   label: 'The body of the item.',
+  //   label: "Last Retrieved Date",
+  //   defaultValue: ''
   // },
 });
 
-Items.attachSchema(Items.schema);
-
-Factory.define('item', Items, {
-  title: () => 'Factory Title',
-  // body: () => 'Factory Body',
+Items.schema = new SimpleSchema({
+  info: {
+    type: ItemInfoSchema,
+  },
+  datasources: {
+    type: ItemDataSourceSchema,
+  },
 });
+
+Items.attachSchema(Items.schema);

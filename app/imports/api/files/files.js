@@ -1,6 +1,5 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
-import { Factory } from 'meteor/dburles:factory';
 
 const Files = new Mongo.Collection('Files');
 export default Files;
@@ -38,9 +37,3 @@ Files.schema = new SimpleSchema({
 
 Files.attachSchema(Files.schema);
 
-Factory.define('file', Files, {
-  path: () => 'Factory Path',
-  hash_sha256: () => 'Factory Hash SHA256',
-  hash_md5: () => 'Factory Hash MD5',
-  hash_crc32: () => 'Factory Hash CRC32',
-});

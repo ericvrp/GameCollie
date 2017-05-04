@@ -1,0 +1,1991 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="datas.xsd">
+	<configuration>
+		<datName>ADVANsCEne Sony PSV Collection</datName>
+		<datVersion>0020</datVersion>
+		<system>Sony Playstation Vita</system>
+		<screenshotsWidth>480</screenshotsWidth>
+		<screenshotsHeight>272</screenshotsHeight>
+		<infos>
+			<title visible="false" inNamingOption="true" default="false"/>
+			<location visible="true" inNamingOption="true" default="true"/>
+			<publisher visible="true" inNamingOption="true" default="true"/>
+			<sourceRom visible="true" inNamingOption="true" default="true"/>
+			<saveType visible="true" inNamingOption="true" default="true"/>
+			<romSize visible="false" inNamingOption="false" default="false"/>
+			<releaseNumber visible="true" inNamingOption="true" default="false"/>
+			<languageNumber visible="true" inNamingOption="true" default="false"/>
+			<comment visible="false" inNamingOption="true" default="true"/>
+			<romCRC visible="true" inNamingOption="true" default="true"/>
+			<im1CRC visible="true" inNamingOption="false" default="false"/>
+			<im2CRC visible="true" inNamingOption="false" default="false"/>
+			<languages visible="true" inNamingOption="true" default="true"/>
+		</infos>
+		<canOpen>
+			<extension>.vpk</extension>
+		</canOpen>
+		<newDat>
+ 			<datVersionURL>http://www.advanscene.com/offline/version/ADVANsCEne_PSV.txt</datVersionURL>
+			<datURL fileName="ADVANsCEne_PSV.zip">http://www.advanscene.com/offline/datas/ADVANsCEne_PSV.zip</datURL>
+			<imURL>http://www.advanscene.com/offline/imgs/ADVANsCEne_PSV/</imURL>
+		</newDat>
+		<search>
+			<to value="location" default="true" auto="true"/>
+			<to value="languages" default="true" auto="true"/>
+			<to value="publisher" default="true" auto="true"/>
+		</search>
+		<romTitle>%e - %n %o</romTitle>
+	</configuration>
+	<games>
+		<game>
+			<imageNumber>1</imageNumber>
+			<releaseNumber>1</releaseNumber>
+			<title>Criminal Girls - Invite Only</title>
+			<saveType>Required 9216 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>NIS America</publisher>
+			<location>1</location>
+			<sourceRom>Criminal_Girls_Invite_Only_PSV-TRSI</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">F430F55B</romCRC>
+			</files>
+			<im1CRC>EFBFFFBF</im1CRC>
+			<im2CRC>818CA9B1</im2CRC>
+			<comment>0001</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>2</imageNumber>
+			<releaseNumber>2</releaseNumber>
+			<title>Minecraft - PlayStation Vita Edition</title>
+			<saveType>Minimum 25 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>Minecraft.EUR.PSV-BigBlueBox</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">AA118B57</romCRC>
+			</files>
+			<im1CRC>066E0454</im1CRC>
+			<im2CRC>6F988A55</im2CRC>
+			<comment>0002</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>3</imageNumber>
+			<releaseNumber>3</releaseNumber>
+			<title>Terraria</title>
+			<saveType>Minimum 20 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>505 Games</publisher>
+			<location>0</location>
+			<sourceRom>Terraria.EUR.PSV-BigBlueBox</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">FDDB3297</romCRC>
+			</files>
+			<im1CRC>1C2E1BAF</im1CRC>
+			<im2CRC>081709B8</im2CRC>
+			<comment>0003</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>4</imageNumber>
+			<releaseNumber>4</releaseNumber>
+			<title>Danganronpa - Trigger Happy Havoc</title>
+			<saveType>Required 834 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>NIS America</publisher>
+			<location>1</location>
+			<sourceRom>Danganronpa.Trigger.Happy.Havoc.USA.PSV-BigBlueBox</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">774F515B</romCRC>
+			</files>
+			<im1CRC>DAF4C930</im1CRC>
+			<im2CRC>C05FAB94</im2CRC>
+			<comment>0004</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>5</imageNumber>
+			<releaseNumber>5</releaseNumber>
+			<title>Danganronpa 2 - Goodbye Despair</title>
+			<saveType>Required 1700 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>NIS America</publisher>
+			<location>1</location>
+			<sourceRom>Danganronpa.2.Goodbye.Despair.USA.PSV-BigBlueBox</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">8FE006BA</romCRC>
+			</files>
+			<im1CRC>D37918B5</im1CRC>
+			<im2CRC>5402367F</im2CRC>
+			<comment>0005</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>6</imageNumber>
+			<releaseNumber>6</releaseNumber>
+			<title>Lumines - Electronic Symphony</title>
+			<saveType>Required 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>UbiSoft</publisher>
+			<location>1</location>
+			<sourceRom>Lumines.Electronic.Symphony.USA.WORKING.READNFO.PSV-BigBlueBox</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">EED240C8</romCRC>
+			</files>
+			<im1CRC>5E8643BB</im1CRC>
+			<im2CRC>B9B9A286</im2CRC>
+			<comment>0006</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>7</imageNumber>
+			<releaseNumber>7</releaseNumber>
+			<title>Final Fantasy X - HD Remaster</title>
+			<saveType>Minimum 9826 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Square Enix</publisher>
+			<location>0</location>
+			<sourceRom>Final_Fantasy_X_HD_Remaster_MULTi5_REPACK_WORKING_READNFO_PSV-TRSI</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">D0AEC80E</romCRC>
+			</files>
+			<im1CRC>DA2A2CF1</im1CRC>
+			<im2CRC>54D4C314</im2CRC>
+			<comment>0007</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>8</imageNumber>
+			<releaseNumber>8</releaseNumber>
+			<title>Tearaway</title>
+			<saveType>Required 4 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEA</publisher>
+			<location>1</location>
+			<sourceRom>Tearaway.USA.PSV-BigBlueBox</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">5C576826</romCRC>
+			</files>
+			<im1CRC>70A9DFD8</im1CRC>
+			<im2CRC>2D919C48</im2CRC>
+			<comment>0008</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>9</imageNumber>
+			<releaseNumber>9</releaseNumber>
+			<title>Sorcery Saga - Curse of the Great Curry God</title>
+			<saveType>Required 5120 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Aksys Games</publisher>
+			<location>1</location>
+			<sourceRom>Sorcery.Saga.Curse.of.the.Great.Curry.God.USA.PSV-BigBlueBox</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">1007CBE6</romCRC>
+			</files>
+			<im1CRC>9EA3E895</im1CRC>
+			<im2CRC>5D18EA62</im2CRC>
+			<comment>0009</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>10</imageNumber>
+			<releaseNumber>10</releaseNumber>
+			<title>F1 2011</title>
+			<saveType>Minimum 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Codemasters</publisher>
+			<location>0</location>
+			<sourceRom>F1_2011_MULTi8_PSV-TRSI</sourceRom>
+			<language>14563</language>
+			<files>
+				<romCRC extension=".vpk">27AEED31</romCRC>
+			</files>
+			<im1CRC>C1642123</im1CRC>
+			<im2CRC>90D4E3A9</im2CRC>
+			<comment>0010</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>11</imageNumber>
+			<releaseNumber>11</releaseNumber>
+			<title>Akiba's Trip 2</title>
+			<saveType>Required 5120 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Acquire</publisher>
+			<location>22</location>
+			<sourceRom>Akiba.Strip.2.KOR.PSV-BigBlueBox</sourceRom>
+			<language>256</language>
+			<files>
+				<romCRC extension=".vpk">AC365DA0</romCRC>
+			</files>
+			<im1CRC>18A8BDC0</im1CRC>
+			<im2CRC>5C8693B7</im2CRC>
+			<comment>0011</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>12</imageNumber>
+			<releaseNumber>12</releaseNumber>
+			<title>Dragon Ball Z - Battle of Z</title>
+			<saveType>Minimum 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Bandai Namco Games</publisher>
+			<location>0</location>
+			<sourceRom>Dragon.Ball.Z.Battle.of.Z.EUR.PSV-BigBlueBox</sourceRom>
+			<language>258</language>
+			<files>
+				<romCRC extension=".vpk">9D2B2B49</romCRC>
+			</files>
+			<im1CRC>32687408</im1CRC>
+			<im2CRC>05182A93</im2CRC>
+			<comment>0012</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>13</imageNumber>
+			<releaseNumber>13</releaseNumber>
+			<title>Everybody's Golf</title>
+			<saveType>Minimum 4096 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>Everybodys.Golf.EUR.WORKING.READNFO.PSV-BigBlueBox</sourceRom>
+			<language>195</language>
+			<files>
+				<romCRC extension=".vpk">C5DC3471</romCRC>
+			</files>
+			<im1CRC>12990C02</im1CRC>
+			<im2CRC>63D10363</im2CRC>
+			<comment>0013</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>14</imageNumber>
+			<releaseNumber>14</releaseNumber>
+			<title>J-Stars Victory Vs +</title>
+			<saveType>Minimum 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Bandai Namco Games</publisher>
+			<location>0</location>
+			<sourceRom>J.Stars.Victory.VS.Plus.EUR.PSV-BigBlueBox</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">64265F5D</romCRC>
+			</files>
+			<im1CRC>76EC1806</im1CRC>
+			<im2CRC>47C18CA5</im2CRC>
+			<comment>0014</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>15</imageNumber>
+			<releaseNumber>15</releaseNumber>
+			<title>Luftrausers (PSN)</title>
+			<saveType>TBC</saveType>
+			<romSize>0</romSize>
+			<publisher>Devolver Digital</publisher>
+			<location>1</location>
+			<sourceRom>Luftrausers_PSN_PSV-TRSI</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">79A570FB</romCRC>
+			</files>
+			<im1CRC>1F8E04C8</im1CRC>
+			<im2CRC>5BFC44DB</im2CRC>
+			<comment>s001</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>16</imageNumber>
+			<releaseNumber>16</releaseNumber>
+			<title>PixelJunk Monsters - Ultimate HD (PSN)</title>
+			<saveType>TBC</saveType>
+			<romSize>0</romSize>
+			<publisher>Double Eleven</publisher>
+			<location>1</location>
+			<sourceRom>PixelJunk_Monsters_Ultimate_HD_MULTi5_PSN_PSV-TRSI</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">B0A1D03D</romCRC>
+			</files>
+			<im1CRC>9AAB5591</im1CRC>
+			<im2CRC>0B6290B3</im2CRC>
+			<comment>s002</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>17</imageNumber>
+			<releaseNumber>17</releaseNumber>
+			<title>Sonic &amp; All-Stars Racing Transformed (Limited Edition)</title>
+			<saveType>TBC</saveType>
+			<romSize>0</romSize>
+			<publisher>SEGA</publisher>
+			<location>0</location>
+			<sourceRom>Sonic.and.All.Stars.Racing.Transformed.EUR.PSV-BigBlueBox</sourceRom>
+			<language>4307</language>
+			<files>
+				<romCRC extension=".vpk">64DFA7B7</romCRC>
+			</files>
+			<im1CRC>18292BE6</im1CRC>
+			<im2CRC>6DA37DA5</im2CRC>
+			<comment>0015</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>18</imageNumber>
+			<releaseNumber>18</releaseNumber>
+			<title>SteamWorld Dig (PSN)</title>
+			<saveType>TBC</saveType>
+			<romSize>0</romSize>
+			<publisher>Image &amp; Form</publisher>
+			<location>1</location>
+			<sourceRom>SteamWorld.Dig.USA.PSV-BigBlueBox</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">CC1B67DD</romCRC>
+			</files>
+			<im1CRC>B562E20C</im1CRC>
+			<im2CRC>B23AAA54</im2CRC>
+			<comment>s003</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>19</imageNumber>
+			<releaseNumber>19</releaseNumber>
+			<title>LEGO Movie - Videogame, The</title>
+			<saveType>Required 5 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>WB Interactive</publisher>
+			<location>1</location>
+			<sourceRom>LEGO_Movie_Videogame_PSV-TRSI</sourceRom>
+			<language>6147</language>
+			<files>
+				<romCRC extension=".vpk">8B0A77D6</romCRC>
+			</files>
+			<im1CRC>3F497E5D</im1CRC>
+			<im2CRC>54A8B812</im2CRC>
+			<comment>0016</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>20</imageNumber>
+			<releaseNumber>20</releaseNumber>
+			<title>To Heart 2 - Dungeon Travelers</title>
+			<saveType>Minimum 780 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Aqua Plus</publisher>
+			<location>7</location>
+			<sourceRom>To.Heart.2.Dungeon.Travelers.JPN.PSV-BigBlueBox</sourceRom>
+			<language>256</language>
+			<files>
+				<romCRC extension=".vpk">8EBFC3F9</romCRC>
+			</files>
+			<im1CRC>29977A87</im1CRC>
+			<im2CRC>6DB8D2FA</im2CRC>
+			<comment>0017</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>21</imageNumber>
+			<releaseNumber>21</releaseNumber>
+			<title>Mutant Mudds Deluxe (PSN)</title>
+			<saveType>TBC</saveType>
+			<romSize>0</romSize>
+			<publisher>Renegade Kid</publisher>
+			<location>1</location>
+			<sourceRom>Mutant.Mudds.Deluxe.USA.PSV-BigBlueBox</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">B48F06CE</romCRC>
+			</files>
+			<im1CRC>2B037A70</im1CRC>
+			<im2CRC>80E419D4</im2CRC>
+			<comment>s004</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>22</imageNumber>
+			<releaseNumber>22</releaseNumber>
+			<title>Spelunky (PSN)</title>
+			<saveType>TBC</saveType>
+			<romSize>0</romSize>
+			<publisher>Mossmouth</publisher>
+			<location>1</location>
+			<sourceRom>Splunky.USA.PSV-BigBlueBox</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">195F630B</romCRC>
+			</files>
+			<im1CRC>A4FA1797</im1CRC>
+			<im2CRC>97289236</im2CRC>
+			<comment>s005</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>23</imageNumber>
+			<releaseNumber>23</releaseNumber>
+			<title>Fez (PSN)</title>
+			<saveType>TBC</saveType>
+			<romSize>0</romSize>
+			<publisher>Polytron Corp.</publisher>
+			<location>1</location>
+			<sourceRom>FEZ.USA.PSV-BigBlueBox</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">0092AA36</romCRC>
+			</files>
+			<im1CRC>A1C057F7</im1CRC>
+			<im2CRC>DA5F4ADE</im2CRC>
+			<comment>s006</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>24</imageNumber>
+			<releaseNumber>24</releaseNumber>
+			<title>Uncharted - Golden Abyss</title>
+			<saveType>Minimum 64 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>Uncharted_Golden_Abyss_EUR_PROPER_READNFO_PSV-PSiCO</sourceRom>
+			<language>7170</language>
+			<files>
+				<romCRC extension=".vpk">46D7216C</romCRC>
+			</files>
+			<im1CRC>9777F8D8</im1CRC>
+			<im2CRC>020381D0</im2CRC>
+			<comment>0018</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>25</imageNumber>
+			<releaseNumber>25</releaseNumber>
+			<title>WipEout 2048</title>
+			<saveType>Minimum 8 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>WipEout_2048_EUR_PROPER_PSV-PSiCO</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">A2E44EEC</romCRC>
+			</files>
+			<im1CRC>32BB6E3F</im1CRC>
+			<im2CRC>D99A792E</im2CRC>
+			<comment>0019</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>26</imageNumber>
+			<releaseNumber>26</releaseNumber>
+			<title>Ridge Racer</title>
+			<saveType>Minimum 20480 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Namco Bandai Games</publisher>
+			<location>0</location>
+			<sourceRom>Ridge_Racer_EUR_PSV-PSiCO</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">663C374A</romCRC>
+			</files>
+			<im1CRC>2F3462C3</im1CRC>
+			<im2CRC>F1B44527</im2CRC>
+			<comment>0020</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>27</imageNumber>
+			<releaseNumber>27</releaseNumber>
+			<title>Resistance - Burning Skies</title>
+			<saveType>Minimum 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>Resistance_Burning_Skies_EUR_READNFO_PSV-PSiCO</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">F401315D</romCRC>
+			</files>
+			<im1CRC>02DB85B2</im1CRC>
+			<im2CRC>ABAAA2F9</im2CRC>
+			<comment>0021</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>28</imageNumber>
+			<releaseNumber>28</releaseNumber>
+			<title>Assassin's Creed III - Liberation</title>
+			<saveType>Minimum 200 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>UbiSoft</publisher>
+			<location>0</location>
+			<sourceRom>Assassins_Creed_III_Liberation_EUR_PSV-PSiCO</sourceRom>
+			<language>4307</language>
+			<files>
+				<romCRC extension=".vpk">8B2CBE3A</romCRC>
+			</files>
+			<im1CRC>F2AFBB59</im1CRC>
+			<im2CRC>16FA032B</im2CRC>
+			<comment>0022</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>29</imageNumber>
+			<releaseNumber>29</releaseNumber>
+			<title>Call of Duty - Black Ops - Declassified</title>
+			<saveType>Minimum 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Activision</publisher>
+			<location>0</location>
+			<sourceRom>Call_of_Duty_Black_Ops_Declassified_EUR_PSV-PSiCO</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">2E69F1DA</romCRC>
+			</files>
+			<im1CRC>9CC1C7FC</im1CRC>
+			<im2CRC>FF8119EB</im2CRC>
+			<comment>0023</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>30</imageNumber>
+			<releaseNumber>30</releaseNumber>
+			<title>Gravity Rush</title>
+			<saveType>Minimum 4 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>Gravity_Rush_EUR_PSV-PSiCO</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">3CAC3E81</romCRC>
+			</files>
+			<im1CRC>A08C2335</im1CRC>
+			<im2CRC>D2988B21</im2CRC>
+			<comment>0024</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>31</imageNumber>
+			<releaseNumber>31</releaseNumber>
+			<title>Need for Speed -  Most Wanted - A Criterion Game</title>
+			<saveType>Minimum 8 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Electronic Arts</publisher>
+			<location>0</location>
+			<sourceRom>Need_for_Speed_Most_Wanted_EUR_PSV-PSiCO</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">2B28AF31</romCRC>
+			</files>
+			<im1CRC>A74CDC36</im1CRC>
+			<im2CRC>7A2140B9</im2CRC>
+			<comment>0025</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>32</imageNumber>
+			<releaseNumber>32</releaseNumber>
+			<title>Killzone - Mercenary</title>
+			<saveType>Minimum 200 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>Killzone_Mercenary_PROPER_EUR_MULTi7_PSV-PUSSYCAT</sourceRom>
+			<language>6355</language>
+			<files>
+				<romCRC extension=".vpk">8C8E3194</romCRC>
+			</files>
+			<im1CRC>8A3AB7CC</im1CRC>
+			<im2CRC>B3C451F9</im2CRC>
+			<comment>0026</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>33</imageNumber>
+			<releaseNumber>33</releaseNumber>
+			<title>Tearaway</title>
+			<saveType>Minimum 4 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>Tearaway_EUR_PROPER_PSV-PSiCO</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">903DAC93</romCRC>
+			</files>
+			<im1CRC>6D964B4E</im1CRC>
+			<im2CRC>9DC24B76</im2CRC>
+			<comment>0027</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>34</imageNumber>
+			<releaseNumber>34</releaseNumber>
+			<title>Batman - Arkham Origins Blackgate</title>
+			<saveType>Minimum 8192 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Warner Bros. Interactive</publisher>
+			<location>0</location>
+			<sourceRom>Batman_Arkham_Origins_Blackgate_EUR_PSV-PSiCO</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">F9742AE9</romCRC>
+			</files>
+			<im1CRC>8538B982</im1CRC>
+			<im2CRC>7B644AA9</im2CRC>
+			<comment>0028</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>35</imageNumber>
+			<releaseNumber>35</releaseNumber>
+			<title>Borderlands 2</title>
+			<saveType>Minimum 10 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>Borderlands_2_PROPER_EUR_MULTi3_PSV-PUSSYCAT</sourceRom>
+			<language>67</language>
+			<files>
+				<romCRC extension=".vpk">1C80F00B</romCRC>
+			</files>
+			<im1CRC>25D5EC8A</im1CRC>
+			<im2CRC>5031D664</im2CRC>
+			<comment>0029</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>36</imageNumber>
+			<releaseNumber>36</releaseNumber>
+			<title>LittleBigPlanet PS Vita</title>
+			<saveType>Minimum 51 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>LittleBigPlanet_PS_Vita_EUR_PROPER_PSV-PSiCO</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">6EBA9F42</romCRC>
+			</files>
+			<im1CRC>AA29922A</im1CRC>
+			<im2CRC>68420172</im2CRC>
+			<comment>0030</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>37</imageNumber>
+			<releaseNumber>37</releaseNumber>
+			<title>Dead or Alive - Xtreme 3 - Venus</title>
+			<saveType>Minimum 4096 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Koei Tecmo Games</publisher>
+			<location>3</location>
+			<sourceRom>Dead_or_Alive_Xtreme_3_Venus_ASIA_READNFO_PSV-PSiCO</sourceRom>
+			<language>256</language>
+			<files>
+				<romCRC extension=".vpk">B2B41A0D</romCRC>
+			</files>
+			<im1CRC>AA6353EE</im1CRC>
+			<im2CRC>F2699303</im2CRC>
+			<comment>0031</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>38</imageNumber>
+			<releaseNumber>38</releaseNumber>
+			<title>BlazBlue - Continuum Shift - EXTEND</title>
+			<saveType>Required 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Aksys Games</publisher>
+			<location>1</location>
+			<sourceRom>BlazBlue_Continuum_Shift_EXTEND_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">EF91F418</romCRC>
+			</files>
+			<im1CRC>CD314BC8</im1CRC>
+			<im2CRC>7F4165A0</im2CRC>
+			<comment>0032</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>39</imageNumber>
+			<releaseNumber>39</releaseNumber>
+			<title>Freedom Wars</title>
+			<saveType>Required 3,5 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEA</publisher>
+			<location>1</location>
+			<sourceRom>Freedom_Wars_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">6FC5153F</romCRC>
+			</files>
+			<im1CRC>2F65F3A9</im1CRC>
+			<im2CRC>E49F3157</im2CRC>
+			<comment>0033</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>40</imageNumber>
+			<releaseNumber>40</releaseNumber>
+			<title>LEGO Star Wars - The Force Awakens</title>
+			<saveType>Required 100 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Warner Bros. Interactive</publisher>
+			<location>1</location>
+			<sourceRom>LEGO_Star_Wars_The_Force_Awakens_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">1C90E22F</romCRC>
+			</files>
+			<im1CRC>975A150E</im1CRC>
+			<im2CRC>CF5A816F</im2CRC>
+			<comment>0034</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>41</imageNumber>
+			<releaseNumber>41</releaseNumber>
+			<title>Shiren the Wanderer - The Tower of Fortune and the Dice of Fate</title>
+			<saveType>Required 1500 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Aksys Games</publisher>
+			<location>1</location>
+			<sourceRom>Shiren_The_Wanderer_The_Tower_of_Fortune_and_the_Dice_of_Fate_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">31206F64</romCRC>
+			</files>
+			<im1CRC>518B93C8</im1CRC>
+			<im2CRC>253B8B46</im2CRC>
+			<comment>0035</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>42</imageNumber>
+			<releaseNumber>42</releaseNumber>
+			<title>Sly Cooper - Thieves in Time</title>
+			<saveType>Required 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEA</publisher>
+			<location>1</location>
+			<sourceRom>Sly_Cooper_Thieves_in_Time_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">88D251C2</romCRC>
+			</files>
+			<im1CRC>B06174A8</im1CRC>
+			<im2CRC>80193271</im2CRC>
+			<comment>0036</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>43</imageNumber>
+			<releaseNumber>43</releaseNumber>
+			<title>Soul Sacrifice</title>
+			<saveType>Required 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEA</publisher>
+			<location>1</location>
+			<sourceRom>Soul_Sacrifice_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">283E2C2B</romCRC>
+			</files>
+			<im1CRC>D6756006</im1CRC>
+			<im2CRC>3FBBC55A</im2CRC>
+			<comment>0037</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>44</imageNumber>
+			<releaseNumber>44</releaseNumber>
+			<title>Wolf Among Us, The</title>
+			<saveType>Required 60 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Telltale Games</publisher>
+			<location>1</location>
+			<sourceRom>The_Wolf_Among_Us_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">726C748A</romCRC>
+			</files>
+			<im1CRC>83FC3323</im1CRC>
+			<im2CRC>540C6CB9</im2CRC>
+			<comment>0038</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>45</imageNumber>
+			<releaseNumber>45</releaseNumber>
+			<title>ModNation Racers - Road Trip</title>
+			<saveType>Required 1056 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEA</publisher>
+			<location>1</location>
+			<sourceRom>ModNation_Racers_Road_Trip_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">0FCB265E</romCRC>
+			</files>
+			<im1CRC>639E566B</im1CRC>
+			<im2CRC>E3B12155</im2CRC>
+			<comment>0039</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>46</imageNumber>
+			<releaseNumber>46</releaseNumber>
+			<title>PlayStation Vita Pets</title>
+			<saveType>Minimum 1 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>Playstation_Vita_Pets_MULTI4_PSV-LiGHTFORCE</sourceRom>
+			<language>195</language>
+			<files>
+				<romCRC extension=".vpk">88648650</romCRC>
+			</files>
+			<im1CRC>DEDA2DA9</im1CRC>
+			<im2CRC>D7822775</im2CRC>
+			<comment>0040</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>47</imageNumber>
+			<releaseNumber>47</releaseNumber>
+			<title>Unit 13</title>
+			<saveType>Minimum 8192 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>Unit_13_MULTI4_PSV-LiGHTFORCE</sourceRom>
+			<language>195</language>
+			<files>
+				<romCRC extension=".vpk">9798210D</romCRC>
+			</files>
+			<im1CRC>A4CC1717</im1CRC>
+			<im2CRC>57E22113</im2CRC>
+			<comment>0041</comment>
+			<duplicateID>1836</duplicateID>
+		</game>
+		<game>
+			<imageNumber>48</imageNumber>
+			<releaseNumber>48</releaseNumber>
+			<title>Disney Infinity - Marvel Super Heroes - 2.0 edition</title>
+			<saveType>Memory Required for DLC</saveType>
+			<romSize>0</romSize>
+			<publisher>Disney Interactive Studios</publisher>
+			<location>1</location>
+			<sourceRom>Disney_Infinity_2.0_Edition_Marvel_Super_Heroes_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">8C4E00B9</romCRC>
+			</files>
+			<im1CRC>DC1A6C87</im1CRC>
+			<im2CRC>89DCFD99</im2CRC>
+			<comment>0042</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>49</imageNumber>
+			<releaseNumber>49</releaseNumber>
+			<title>Little Deviants</title>
+			<saveType>Required 1 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEA</publisher>
+			<location>1</location>
+			<sourceRom>Little_Deviants_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">BD55F0AA</romCRC>
+			</files>
+			<im1CRC>79FA08CC</im1CRC>
+			<im2CRC>E4D723E1</im2CRC>
+			<comment>0043</comment>
+			<duplicateID>1833</duplicateID>
+		</game>
+		<game>
+			<imageNumber>50</imageNumber>
+			<releaseNumber>50</releaseNumber>
+			<title>Zero Escape - Zero Time Dilemma</title>
+			<saveType>Required 657 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Aksys Games</publisher>
+			<location>1</location>
+			<sourceRom>Zero_Escape_Zero_Time_Dilemma_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">F191229E</romCRC>
+			</files>
+			<im1CRC>D1300D2D</im1CRC>
+			<im2CRC>4F565869</im2CRC>
+			<comment>0044</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>51</imageNumber>
+			<releaseNumber>51</releaseNumber>
+			<title>FIFA Soccer 13</title>
+			<saveType>Required 4096 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Electronic Arts</publisher>
+			<location>1</location>
+			<sourceRom>FIFA_Soccer_13_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">5C2730A3</romCRC>
+			</files>
+			<im1CRC>9FDCB9D8</im1CRC>
+			<im2CRC>832BE01F</im2CRC>
+			<comment>0045</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>52</imageNumber>
+			<releaseNumber>52</releaseNumber>
+			<title>MLB 12 - The Show</title>
+			<saveType>Required 6000 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Electronic Arts</publisher>
+			<location>1</location>
+			<sourceRom>MLB_12_The_Show_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">B2BA5F71</romCRC>
+			</files>
+			<im1CRC>E90DD33F</im1CRC>
+			<im2CRC>2CD4C0BE</im2CRC>
+			<comment>0046</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>53</imageNumber>
+			<releaseNumber>53</releaseNumber>
+			<title>MLB 13 - The Show</title>
+			<saveType>Required 6000 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Electronic Arts</publisher>
+			<location>1</location>
+			<sourceRom>MLB_13_The_Show_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">0926C0AD</romCRC>
+			</files>
+			<im1CRC>68705F0C</im1CRC>
+			<im2CRC>C9BE18E5</im2CRC>
+			<comment>0047</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>54</imageNumber>
+			<releaseNumber>54</releaseNumber>
+			<title>Little Deviants</title>
+			<saveType>Minimum 1 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>Little_Deviants_WORKING_READNFO_EUR_MULTi13_PSV-PUSSYCAT</sourceRom>
+			<language>16123</language>
+			<files>
+				<romCRC extension=".vpk">39F0F233</romCRC>
+			</files>
+			<im1CRC>8D4EEDE8</im1CRC>
+			<im2CRC>D6F309CC</im2CRC>
+			<comment>0048</comment>
+			<duplicateID>1833</duplicateID>
+		</game>
+		<game>
+			<imageNumber>55</imageNumber>
+			<releaseNumber>55</releaseNumber>
+			<title>Gal Gun - Double Peace</title>
+			<saveType>Minimum 1024 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Pqube</publisher>
+			<location>0</location>
+			<sourceRom>Gal_Gun_Double_Peace_EUR_PSV-PUSSYCAT</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">617FC8C8</romCRC>
+			</files>
+			<im1CRC>EB3E03CF</im1CRC>
+			<im2CRC>86502382</im2CRC>
+			<comment>0049</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>56</imageNumber>
+			<releaseNumber>56</releaseNumber>
+			<title>Ultimate Marvel vs Capcom 3</title>
+			<saveType>Required 4096 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Capcom</publisher>
+			<location>0</location>
+			<sourceRom>Ultimate_Marvel_vs_Capcom_3_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">54297BAC</romCRC>
+			</files>
+			<im1CRC>F3446ECB</im1CRC>
+			<im2CRC>5F4EEC83</im2CRC>
+			<comment>0050</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>57</imageNumber>
+			<releaseNumber>57</releaseNumber>
+			<title>Ys - Memories of Celceta</title>
+			<saveType>Required 1024 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>XSEED Games</publisher>
+			<location>1</location>
+			<sourceRom>Ys_Memories_of_Celceta_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">4B6CFB0A</romCRC>
+			</files>
+			<im1CRC>4E6B0151</im1CRC>
+			<im2CRC>DC89C90D</im2CRC>
+			<comment>0051</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>58</imageNumber>
+			<releaseNumber>58</releaseNumber>
+			<title>Persona 4 - Dancing All Night</title>
+			<saveType>Minimum 8192 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Atlus</publisher>
+			<location>1</location>
+			<sourceRom>Persona_4_Dancing_All_Night_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">FD532246</romCRC>
+			</files>
+			<im1CRC>D99D4CE4</im1CRC>
+			<im2CRC>9C390BCC</im2CRC>
+			<comment>0052</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>59</imageNumber>
+			<releaseNumber>59</releaseNumber>
+			<title>Toukiden - Kiwami</title>
+			<saveType>Minimum 8192 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Koei Tecmo Games</publisher>
+			<location>0</location>
+			<sourceRom>Toukiden_Kiwami_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">1144B2B3</romCRC>
+			</files>
+			<im1CRC>70D82E58</im1CRC>
+			<im2CRC>29CA896B</im2CRC>
+			<comment>0053</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>60</imageNumber>
+			<releaseNumber>60</releaseNumber>
+			<title>Shinobido 2 - Revenge of Zen</title>
+			<saveType>Minimum 4096 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Namco Bandai Games</publisher>
+			<location>0</location>
+			<sourceRom>Shinobido_2_Revenge_of_Zen_PSV-VENOM</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">4E88F822</romCRC>
+			</files>
+			<im1CRC>BFCE573D</im1CRC>
+			<im2CRC>1AC5B058</im2CRC>
+			<comment>0054</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>61</imageNumber>
+			<releaseNumber>61</releaseNumber>
+			<title>Psycho Pass - Mandatory Happiness</title>
+			<saveType>Required 1024 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>NIS America</publisher>
+			<location>1</location>
+			<sourceRom>Psycho_Pass_Mandatory_Happiness_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">B351C3DA</romCRC>
+			</files>
+			<im1CRC>D2C97CAB</im1CRC>
+			<im2CRC>5BEA0EF6</im2CRC>
+			<comment>0055</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>62</imageNumber>
+			<releaseNumber>62</releaseNumber>
+			<title>One Piece - Burning Blood</title>
+			<saveType>Minimum 2 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Bandai Namco Gemes</publisher>
+			<location>0</location>
+			<sourceRom>One_Piece_Burning_Blood_EUR_MULTi7_PSV-PUSSYCAT</sourceRom>
+			<language>5315</language>
+			<files>
+				<romCRC extension=".vpk">0E1C41B5</romCRC>
+			</files>
+			<im1CRC>631094EB</im1CRC>
+			<im2CRC>00207AF1</im2CRC>
+			<comment>0056</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>63</imageNumber>
+			<releaseNumber>63</releaseNumber>
+			<title>Ben 10 - Galactic Racing</title>
+			<saveType>Required 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>D3Publisher</publisher>
+			<location>1</location>
+			<sourceRom>Ben_10_Galactic_Racing_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>3</language>
+			<files>
+				<romCRC extension=".vpk">5838A7CF</romCRC>
+			</files>
+			<im1CRC>9B8756EE</im1CRC>
+			<im2CRC>1C718B4F</im2CRC>
+			<comment>0057</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>64</imageNumber>
+			<releaseNumber>64</releaseNumber>
+			<title>Dungeon Hunter Alliance</title>
+			<saveType>TBC</saveType>
+			<romSize>0</romSize>
+			<publisher>UbiSoft</publisher>
+			<location>0</location>
+			<sourceRom>Dungeon_Hunter_Alliance_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>4307</language>
+			<files>
+				<romCRC extension=".vpk">48C15260</romCRC>
+			</files>
+			<im1CRC>88CCCFEA</im1CRC>
+			<im2CRC>010F9931</im2CRC>
+			<comment>0058</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>65</imageNumber>
+			<releaseNumber>65</releaseNumber>
+			<title>LEGO Batman 2 - DC Super Heroes</title>
+			<saveType>Required 530 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Warner Bros. Interactive</publisher>
+			<location>1</location>
+			<sourceRom>LEGO_Batman_2_DC_Super_Heroes_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>4099</language>
+			<files>
+				<romCRC extension=".vpk">DDD91A76</romCRC>
+			</files>
+			<im1CRC>59A773F3</im1CRC>
+			<im2CRC>D07651C2</im2CRC>
+			<comment>0059</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>66</imageNumber>
+			<releaseNumber>66</releaseNumber>
+			<title>LEGO Harry Potter - Years 5-7</title>
+			<saveType>Required 530 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Warner Bros. Interactive</publisher>
+			<location>1</location>
+			<sourceRom>LEGO_Harry_Potter_Years_5_to_7_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>4099</language>
+			<files>
+				<romCRC extension=".vpk">1D9F8A69</romCRC>
+			</files>
+			<im1CRC>C60FE952</im1CRC>
+			<im2CRC>C27135FA</im2CRC>
+			<comment>0060</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>67</imageNumber>
+			<releaseNumber>67</releaseNumber>
+			<title>LEGO Legends of Chima - Laval's Journey</title>
+			<saveType>Required 530 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Warner Bros. Interactive</publisher>
+			<location>1</location>
+			<sourceRom>LEGO_Legends_of_Chima_Lavals_Journey_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>6147</language>
+			<files>
+				<romCRC extension=".vpk">0354B972</romCRC>
+			</files>
+			<im1CRC>5742AFC0</im1CRC>
+			<im2CRC>595DE7E4</im2CRC>
+			<comment>0061</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>68</imageNumber>
+			<releaseNumber>68</releaseNumber>
+			<title>LEGO The Lord of the Rings</title>
+			<saveType>Required 5 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Warner Bros. Interactive</publisher>
+			<location>1</location>
+			<sourceRom>LEGO_The_Lord_of_the_Rings_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>6147</language>
+			<files>
+				<romCRC extension=".vpk">AE3093E6</romCRC>
+			</files>
+			<im1CRC>351A8806</im1CRC>
+			<im2CRC>55638A59</im2CRC>
+			<comment>0062</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>69</imageNumber>
+			<releaseNumber>69</releaseNumber>
+			<title>Handball 16</title>
+			<saveType>Minimum 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Bigben Interactive</publisher>
+			<location>0</location>
+			<sourceRom>Handball_16_EUR_MULTi5_PSV-PUSSYCAT</sourceRom>
+			<language>4171</language>
+			<files>
+				<romCRC extension=".vpk">47D777D6</romCRC>
+			</files>
+			<im1CRC>667156F2</im1CRC>
+			<im2CRC>90CF39B0</im2CRC>
+			<comment>0063</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>70</imageNumber>
+			<releaseNumber>70</releaseNumber>
+			<title>Ragnarok Odyssey</title>
+			<saveType>TBC</saveType>
+			<romSize>0</romSize>
+			<publisher>XSEED Games</publisher>
+			<location>1</location>
+			<sourceRom>Ragnarok_Odyssey_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">67B06CBB</romCRC>
+			</files>
+			<im1CRC>6C83C5EB</im1CRC>
+			<im2CRC>D33764EF</im2CRC>
+			<comment>0064</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>71</imageNumber>
+			<releaseNumber>71</releaseNumber>
+			<title>Touch My Katamari</title>
+			<saveType>Required 3072 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Namco Bandai Games</publisher>
+			<location>1</location>
+			<sourceRom>Touch_My_Katamari_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">226258AD</romCRC>
+			</files>
+			<im1CRC>A252B572</im1CRC>
+			<im2CRC>DEF40180</im2CRC>
+			<comment>0065</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>72</imageNumber>
+			<releaseNumber>72</releaseNumber>
+			<title>Virtua Tennis 4 - World Tour Edition</title>
+			<saveType>Required 1180 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>SEGA</publisher>
+			<location>0</location>
+			<sourceRom>Virtua_Tennis_4_World_Tour_Edition_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>4099</language>
+			<files>
+				<romCRC extension=".vpk">42F34408</romCRC>
+			</files>
+			<im1CRC>FDDFA139</im1CRC>
+			<im2CRC>A8DC679C</im2CRC>
+			<comment>0066</comment>
+			<duplicateID>1834</duplicateID>
+		</game>
+		<game>
+			<imageNumber>73</imageNumber>
+			<releaseNumber>73</releaseNumber>
+			<title>FIFA 15 - Legacy Edition</title>
+			<saveType>Minimum 4096 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Electronic Arts</publisher>
+			<location>2</location>
+			<sourceRom>FIFA_15_Legacy_Edition_GERMAN_PSV-LiGHTFORCE</sourceRom>
+			<language>64</language>
+			<files>
+				<romCRC extension=".vpk">15D9C24C</romCRC>
+			</files>
+			<im1CRC>87D2FDDA</im1CRC>
+			<im2CRC>8C09ACB8</im2CRC>
+			<comment>0067</comment>
+			<duplicateID>1835</duplicateID>
+		</game>
+		<game>
+			<imageNumber>74</imageNumber>
+			<releaseNumber>74</releaseNumber>
+			<title>Angry Birds - Star Wars</title>
+			<saveType>Minimum 5 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Activision</publisher>
+			<location>0</location>
+			<sourceRom>Angry_Birds_Star_Wars_EUR_MULTi5_PSV-PUSSYCAT</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">07680938</romCRC>
+			</files>
+			<im1CRC>5E07C608</im1CRC>
+			<im2CRC>C05024A1</im2CRC>
+			<comment>0068</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>75</imageNumber>
+			<releaseNumber>75</releaseNumber>
+			<title>Natural Doctrine</title>
+			<saveType>Minimum 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>NIS America</publisher>
+			<location>0</location>
+			<sourceRom>Natural_Doctrine_EUR_MULTi2_PSV-PUSSYCAT</sourceRom>
+			<language>258</language>
+			<files>
+				<romCRC extension=".vpk">00778F02</romCRC>
+			</files>
+			<im1CRC>DCA567B8</im1CRC>
+			<im2CRC>3F35E80F</im2CRC>
+			<comment>0069</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>76</imageNumber>
+			<releaseNumber>76</releaseNumber>
+			<title>Tokyo Twilight - Ghost Hunters</title>
+			<saveType>Minimum 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>NIS America</publisher>
+			<location>0</location>
+			<sourceRom>Tokyo_Twilight_Ghost_Hunters_EUR_PSV-PUSSYCAT</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">A4FEBA74</romCRC>
+			</files>
+			<im1CRC>9D2B9270</im1CRC>
+			<im2CRC>8C8BE9D6</im2CRC>
+			<comment>0070</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>77</imageNumber>
+			<releaseNumber>77</releaseNumber>
+			<title>Unit 13</title>
+			<saveType>Required 8 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEA</publisher>
+			<location>1</location>
+			<sourceRom>Unit_13_WORKING_READNFO_MULTI4_PSV-VENOM</sourceRom>
+			<language>6147</language>
+			<files>
+				<romCRC extension=".vpk">90319E18</romCRC>
+			</files>
+			<im1CRC>B455D528</im1CRC>
+			<im2CRC>C40652DD</im2CRC>
+			<comment>0071</comment>
+			<duplicateID>1836</duplicateID>
+		</game>
+		<game>
+			<imageNumber>78</imageNumber>
+			<releaseNumber>78</releaseNumber>
+			<title>Crimsonland (PSN)</title>
+			<saveType>TBC</saveType>
+			<romSize>0</romSize>
+			<publisher>10tons</publisher>
+			<location>1</location>
+			<sourceRom>Crimsonland_PSN_PSV-TRSI</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">7349CC6C</romCRC>
+			</files>
+			<im1CRC>045347FA</im1CRC>
+			<im2CRC>E80CB147</im2CRC>
+			<comment>s007</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>79</imageNumber>
+			<releaseNumber>79</releaseNumber>
+			<title>Resogun (PSN)</title>
+			<saveType>TBC</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>1</location>
+			<sourceRom>Resogun_MULTi4_PSN_PSV-TRSI</sourceRom>
+			<language>6147</language>
+			<files>
+				<romCRC extension=".vpk">194B8F3B</romCRC>
+			</files>
+			<im1CRC>F49277A9</im1CRC>
+			<im2CRC>1238AA09</im2CRC>
+			<comment>s008</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>80</imageNumber>
+			<releaseNumber>80</releaseNumber>
+			<title>Disgaea 3 - Absence of Detention</title>
+			<saveType>Required 96 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>NIS America</publisher>
+			<location>1</location>
+			<sourceRom>Disgaea_3_Absence_of_Detention_PSV-VENOM</sourceRom>
+			<language>258</language>
+			<files>
+				<romCRC extension=".vpk">2FA2FA3C</romCRC>
+			</files>
+			<im1CRC>A4A57C22</im1CRC>
+			<im2CRC>CE858752</im2CRC>
+			<comment>0072</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>81</imageNumber>
+			<releaseNumber>81</releaseNumber>
+			<title>Disgaea 4 - A Promise Revisited</title>
+			<saveType>Required 4096 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>NIS America</publisher>
+			<location>1</location>
+			<sourceRom>Disgaea_4_A_Promise_Revisited_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">1E11864C</romCRC>
+			</files>
+			<im1CRC>995DF4EA</im1CRC>
+			<im2CRC>70D7B472</im2CRC>
+			<comment>0073</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>82</imageNumber>
+			<releaseNumber>82</releaseNumber>
+			<title>XBlaze Code - Embryo</title>
+			<saveType>Required 6000 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Aksys Games</publisher>
+			<location>1</location>
+			<sourceRom>XBlaze_Code_Embryo_USA_PSV-PUSSYCAT</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">0D1ED326</romCRC>
+			</files>
+			<im1CRC>8F7492A2</im1CRC>
+			<im2CRC>E39A3462</im2CRC>
+			<comment>0074</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>83</imageNumber>
+			<releaseNumber>83</releaseNumber>
+			<title>Army Corps of Hell</title>
+			<saveType>TBC</saveType>
+			<romSize>0</romSize>
+			<publisher>Square Enix</publisher>
+			<location>0</location>
+			<sourceRom>Army_Corps_Of_Hell_EUR_MULTi5_PSV-PUSSYCAT</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">990DEB70</romCRC>
+			</files>
+			<im1CRC>0C39DE44</im1CRC>
+			<im2CRC>146C4B4A</im2CRC>
+			<comment>0075</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>84</imageNumber>
+			<releaseNumber>84</releaseNumber>
+			<title>Asphalt - Injection</title>
+			<saveType>Minimum 1024 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>UbiSoft</publisher>
+			<location>0</location>
+			<sourceRom>Asphalt_Injection_EUR_MULTi5_PSV-PUSSYCAT</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">9B3576E0</romCRC>
+			</files>
+			<im1CRC>22510505</im1CRC>
+			<im2CRC>5AE7DF35</im2CRC>
+			<comment>0076</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>85</imageNumber>
+			<releaseNumber>85</releaseNumber>
+			<title>Virtua Tennis 4 - World Tour Edition</title>
+			<saveType>Minimum 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>SEGA</publisher>
+			<location>0</location>
+			<sourceRom>Virtua_Tennis_4_World_Tour_Edition_EUR_MULTi5_PSV-PUSSYCAT</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">55AD9769</romCRC>
+			</files>
+			<im1CRC>FDC9D235</im1CRC>
+			<im2CRC>38AB25B5</im2CRC>
+			<comment>0077</comment>
+			<duplicateID>1834</duplicateID>
+		</game>
+		<game>
+			<imageNumber>86</imageNumber>
+			<releaseNumber>86</releaseNumber>
+			<title>Mortal Kombat</title>
+			<saveType>Minimum 3072 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Warner Bros. Interactive </publisher>
+			<location>0</location>
+			<sourceRom>Mortal_Kombat_PSV-LiGHTFORCE</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">A58CD720</romCRC>
+			</files>
+			<im1CRC>1E7B962A</im1CRC>
+			<im2CRC>8B8FB784</im2CRC>
+			<comment>0078</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>87</imageNumber>
+			<releaseNumber>87</releaseNumber>
+			<title>Toukiden - The Age of Demons</title>
+			<saveType>Minimum 4096 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Tecmo Koei Games</publisher>
+			<location>0</location>
+			<sourceRom>Toukiden_The_Age_Of_Demons_EUR_PSV-PUSSYCAT</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">2052DE72</romCRC>
+			</files>
+			<im1CRC>4400EF1C</im1CRC>
+			<im2CRC>81B03CAC</im2CRC>
+			<comment>0079</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>88</imageNumber>
+			<releaseNumber>88</releaseNumber>
+			<title>Odin Sphere Leifthrasir</title>
+			<saveType>Minimum 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Atlus</publisher>
+			<location>0</location>
+			<sourceRom>Odin_Sphere_Leifthrasir_EUR_MULTi5_PSV-PUSSYCAT</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">C1BB9479</romCRC>
+			</files>
+			<im1CRC>21EAB536</im1CRC>
+			<im2CRC>67698816</im2CRC>
+			<comment>0080</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>89</imageNumber>
+			<releaseNumber>89</releaseNumber>
+			<title>Super Monkey Ball - Banana Splitz</title>
+			<saveType>Required 3072 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>SEGA</publisher>
+			<location>1</location>
+			<sourceRom>Super_Monkey_Ball_Banana_Splitz_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">90951955</romCRC>
+			</files>
+			<im1CRC>F27A7D86</im1CRC>
+			<im2CRC>9C15D6BB</im2CRC>
+			<comment>0081</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>90</imageNumber>
+			<releaseNumber>90</releaseNumber>
+			<title>Dynasty Warriors Next [bad]</title>
+			<saveType>Required 2 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Tecmo Koei Games</publisher>
+			<location>1</location>
+			<sourceRom>Dynasty_Warriors_Next_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">4A167B6B</romCRC>
+			</files>
+			<im1CRC>432AB77B</im1CRC>
+			<im2CRC>6D51E4EC</im2CRC>
+			<comment>0082</comment>
+			<duplicateID>1837</duplicateID>
+		</game>
+		<game>
+			<imageNumber>91</imageNumber>
+			<releaseNumber>91</releaseNumber>
+			<title>Ninja Gaiden Sigma Plus</title>
+			<saveType>Required 16 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Tecmo Koei Games</publisher>
+			<location>1</location>
+			<sourceRom>Ninja_Gaiden_Sigma_Plus_WORKING_READNFO_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">5492FCF6</romCRC>
+			</files>
+			<im1CRC>D17C4AAC</im1CRC>
+			<im2CRC>69C83390</im2CRC>
+			<comment>0083</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>92</imageNumber>
+			<releaseNumber>92</releaseNumber>
+			<title>Ratchet &amp; Clank Trilogy, The</title>
+			<saveType>Minimum 6 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>SCEE</publisher>
+			<location>0</location>
+			<sourceRom>The_Ratchet_And_Clank_Trilogy_MULTi5_PSV-TRSI</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">83DD0FCA</romCRC>
+			</files>
+			<im1CRC>75AFE0DC</im1CRC>
+			<im2CRC>0EDD407E</im2CRC>
+			<comment>0084</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>93</imageNumber>
+			<releaseNumber>93</releaseNumber>
+			<title>Putty Squad</title>
+			<saveType>Minimum 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>System 3</publisher>
+			<location>0</location>
+			<sourceRom>Putty_Squad_EUR_MULTi5_PSV-PUSSYCAT</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">AF31F4AF</romCRC>
+			</files>
+			<im1CRC>21FF97F7</im1CRC>
+			<im2CRC>8F90B8A2</im2CRC>
+			<comment>0085</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>94</imageNumber>
+			<releaseNumber>94</releaseNumber>
+			<title>God Eater 2 - Rage Burst</title>
+			<saveType>TBC</saveType>
+			<romSize>0</romSize>
+			<publisher>Bandai Namco Games</publisher>
+			<location>0</location>
+			<sourceRom>God_Eater_2_Rage_Burst_EUR_MULTi6_PSV-PUSSYCAT</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">D21EACB8</romCRC>
+			</files>
+			<im1CRC>7F053C64</im1CRC>
+			<im2CRC>28A4C9F2</im2CRC>
+			<comment>0086</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>95</imageNumber>
+			<releaseNumber>95</releaseNumber>
+			<title>Walking Dead - The Complete First Season, The</title>
+			<saveType>Required 12 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Telltale Games</publisher>
+			<location>1</location>
+			<sourceRom>The_Walking_Dead_The_Complete_First_Season_USA_MULTi5_PSV-PUSSYCAT</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">20E0E11B</romCRC>
+			</files>
+			<im1CRC>28A50E03</im1CRC>
+			<im2CRC>95039D0F</im2CRC>
+			<comment>0087</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>96</imageNumber>
+			<releaseNumber>96</releaseNumber>
+			<title>Walking Dead - Season Two, The</title>
+			<saveType>Required 60 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Telltale Games</publisher>
+			<location>1</location>
+			<sourceRom>The_Walking_Dead_Season_Two_USA_PSV-PUSSYCAT</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">54B6ADCD</romCRC>
+			</files>
+			<im1CRC>4756B62B</im1CRC>
+			<im2CRC>006FA133</im2CRC>
+			<comment>0088</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>97</imageNumber>
+			<releaseNumber>97</releaseNumber>
+			<title>Earth Defense Force 2 - Invaders From Planet Space</title>
+			<saveType>Required 997 KB</saveType>
+			<romSize>0</romSize>
+			<publisher> XSEED Games</publisher>
+			<location>1</location>
+			<sourceRom>Earth_Defense_Force_2_Invaders_From_Planet_Space_PSV-TRSI</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">263EA245</romCRC>
+			</files>
+			<im1CRC>74B2B1A2</im1CRC>
+			<im2CRC>B50A5B31</im2CRC>
+			<comment>0089</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>98</imageNumber>
+			<releaseNumber>98</releaseNumber>
+			<title>Madden NFL 13</title>
+			<saveType>Required 30 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Electronic Arts</publisher>
+			<location>1</location>
+			<sourceRom>Madden_NFL_13_PSV-TRSI</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">52F459A0</romCRC>
+			</files>
+			<im1CRC>985EA661</im1CRC>
+			<im2CRC>21C7D93F</im2CRC>
+			<comment>0090</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>99</imageNumber>
+			<releaseNumber>99</releaseNumber>
+			<title>Spy Hunter</title>
+			<saveType>Required 1024 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Warner Bros. Interactive </publisher>
+			<location>1</location>
+			<sourceRom>Spy_Hunter_PSV-TRSI</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">49D6C8EE</romCRC>
+			</files>
+			<im1CRC>18FC63A2</im1CRC>
+			<im2CRC>88DE0A90</im2CRC>
+			<comment>0091</comment>
+			<duplicateID>1838</duplicateID>
+		</game>
+		<game>
+			<imageNumber>100</imageNumber>
+			<releaseNumber>100</releaseNumber>
+			<title>Demon Gaze</title>
+			<saveType>Minimum 896 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>NIS America</publisher>
+			<location>0</location>
+			<sourceRom>Demon_Gaze_EUR_MULTi2_PSV-PUSSYCAT</sourceRom>
+			<language>258</language>
+			<files>
+				<romCRC extension=".vpk">D9DC4513</romCRC>
+			</files>
+			<im1CRC>DE59ACED</im1CRC>
+			<im2CRC>8BC146C2</im2CRC>
+			<comment>0092</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>101</imageNumber>
+			<releaseNumber>101</releaseNumber>
+			<title>Injustice - Gods Among Us - Ultimate Edition</title>
+			<saveType>Required 5120 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>Warner Bros. Interactive </publisher>
+			<location>1</location>
+			<sourceRom>Injustice_Gods_Among_Us_Ultimate_Edition_PSV-TRSI</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">618D69BC</romCRC>
+			</files>
+			<im1CRC>74E077D1</im1CRC>
+			<im2CRC>FEB30910</im2CRC>
+			<comment>0093</comment>
+			<duplicateID>1839</duplicateID>
+		</game>
+		<game>
+			<imageNumber>102</imageNumber>
+			<releaseNumber>102</releaseNumber>
+			<title>Silent Hill - Book of Memories</title>
+			<saveType>Minimum 10 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Konami</publisher>
+			<location>0</location>
+			<sourceRom>Silent_Hill_Book_of_Memories_PSV-VENOM</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">0B1BE61E</romCRC>
+			</files>
+			<im1CRC>A6FF21D3</im1CRC>
+			<im2CRC>83F23F8E</im2CRC>
+			<comment>0094</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>103</imageNumber>
+			<releaseNumber>103</releaseNumber>
+			<title>Arcana Heart 3 - LOVEMAX!!!!!</title>
+			<saveType>Minimum 1000 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>NIS America</publisher>
+			<location>0</location>
+			<sourceRom>Arcana_Heart_3_Love_Max_PSV-VENOM</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">68326B0D</romCRC>
+			</files>
+			<im1CRC>DD8479F7</im1CRC>
+			<im2CRC>AFBBB65F</im2CRC>
+			<comment>0095</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>104</imageNumber>
+			<releaseNumber>104</releaseNumber>
+			<title>Senran Kagura Estival Versus</title>
+			<saveType>Required 6144 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>XSEED Games</publisher>
+			<location>1</location>
+			<sourceRom>Senran_Kagura_Estival_Versus_PSV-VENOM</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">31CB8F3D</romCRC>
+			</files>
+			<im1CRC>137CCEEA</im1CRC>
+			<im2CRC>C174B269</im2CRC>
+			<comment>0096</comment>
+			<duplicateID>1840</duplicateID>
+		</game>
+		<game>
+			<imageNumber>105</imageNumber>
+			<releaseNumber>105</releaseNumber>
+			<title>Street Fighter X Tekken</title>
+			<saveType>Minimum 20 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Capcom</publisher>
+			<location>0</location>
+			<sourceRom>Street_Fighter_X_Tekken_PSV-VENOM</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">D8A9235A</romCRC>
+			</files>
+			<im1CRC>8701A634</im1CRC>
+			<im2CRC>648CB90E</im2CRC>
+			<comment>0097</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>106</imageNumber>
+			<releaseNumber>106</releaseNumber>
+			<title>Disney Epic Mickey 2 - The Power of Two</title>
+			<saveType>Minimum 192 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Disney Interactive Studios</publisher>
+			<location>0</location>
+			<sourceRom>Disney_Epic_Mickey_2_The_Power_Of_Two_EUR_MULTi5_PSV-PUSSYCAT</sourceRom>
+			<language>1026</language>
+			<files>
+				<romCRC extension=".vpk">4AE78640</romCRC>
+			</files>
+			<im1CRC>74537040</im1CRC>
+			<im2CRC>41831B3F</im2CRC>
+			<comment>0098</comment>
+			<duplicateID>1841</duplicateID>
+		</game>
+		<game>
+			<imageNumber>107</imageNumber>
+			<releaseNumber>107</releaseNumber>
+			<title>Operation Abyss - New Tokyo Legacy</title>
+			<saveType>Minimum 2048 KB</saveType>
+			<romSize>0</romSize>
+			<publisher>NIS America</publisher>
+			<location>0</location>
+			<sourceRom>Operation_Abyss_New_Tokyo_Legacy_EUR_PSV-PUSSYCAT</sourceRom>
+			<language>2</language>
+			<files>
+				<romCRC extension=".vpk">20F08B38</romCRC>
+			</files>
+			<im1CRC>D708E99C</im1CRC>
+			<im2CRC>26CC821F</im2CRC>
+			<comment>0099</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+		<game>
+			<imageNumber>108</imageNumber>
+			<releaseNumber>108</releaseNumber>
+			<title>WRC 3 - FIA World Rally Championship</title>
+			<saveType>Minimum 100 MB</saveType>
+			<romSize>0</romSize>
+			<publisher>Milestone S.r.l</publisher>
+			<location>0</location>
+			<sourceRom>WRC_3_FIA_World_Rally_Championship_EUR_MULTi5_PSV-PUSSYCAT</sourceRom>
+			<language>4291</language>
+			<files>
+				<romCRC extension=".vpk">AB9FF176</romCRC>
+			</files>
+			<im1CRC>D8EFD84C</im1CRC>
+			<im2CRC>39E1D3F9</im2CRC>
+			<comment>0100</comment>
+			<duplicateID>0</duplicateID>
+		</game>
+	</games>
+	<gui>
+		<images width="703" height="274">
+			<image x="0" y="0" width="216" height="272"/>
+			<image x="221" y="0" width="480" height="272"/>
+		</images>
+	</gui>
+</dat>
