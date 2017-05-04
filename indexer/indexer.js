@@ -5,12 +5,19 @@ var path = require('path');
 var Promise = require('bluebird')
 var hash_file = require('hash_file')
 var crc32 = require('buffer-crc32'); // https://github.com/brianloveswords/buffer-crc32
+var hashed = require('./hashed.json')
+
+var hashedPaths = {}
+for (const hash of hashed)  hashedPaths[hash.path] = true
+// console.log(typeof hashedPaths, hashedPaths.length, hashedPaths[0], hashedPaths[1])
 
 
 // creating filelist...
-const isSkippedFile = (filename) => {
+const isSkippedFile = (filename, fullpath) => {
   const skipPrefixes   = ['.']
-  const skipExtensions = ['.xml', '.jpg', '.png', '.log', '.nfo', '.url', '.txt', '.doc', '.docx', '.pdf', '.dll', '.conf', '.xdb', '.dtd', '.exe', '.bat', '.msg', '.manifest', '.mo', '.po', '.pot', '.def']
+  const skipExtensions = ['.xml', '.jpg', '.png', '.gif', '.bmp', '.log', '.nfo', '.url', '.txt', '.doc', '.docx', '.pdf', '.dll', '.conf', '.xdb', '.dtd', '.exe', '.bat', '.msg', '.manifest', '.mo', '.po', '.pot', '.def']
+
+  // XXX skip when file has no extension?
 
   const filenameLowercase = filename.toLowerCase()
   for (const pre of skipPrefixes) {
@@ -27,23 +34,28 @@ const isSkippedFile = (filename) => {
     }
   }
 
+  if (hashedPaths[fullpath]) {
+    // console.log('Skipping (path):', fullpath)
+    return true
+  }
+
   return false
 }
 
 var walk = function(directoryName, filelist=[]) {
   const files = fs.readdirSync(directoryName)
 
-  files.forEach(function(file) {
-    if (isSkippedFile(file))  return
+  files.forEach(filename => {
+    const fullpath = directoryName + path.sep + filename
+    if (isSkippedFile(filename, fullpath))  return
 
-    const d = directoryName + path.sep + file
-    const f = fs.statSync(d)
+    const f = fs.statSync(fullpath)
 
     if (f.isDirectory()) {
-      walk(d, filelist)
+      walk(fullpath, filelist)
     }
     else {
-      filelist.push(d)
+      filelist.push(fullpath)
     }
   })
 
@@ -62,11 +74,13 @@ const hashFilelist = (filelist, maxIndex, index = 0) => {
   try {
     content = fs.readFileSync(filename)
   } catch(e) {
-    throw new Error(e)
+    // skip erroring file by not setting content variable (often the reason is that files are larger then 2Gb on a Fat32 partition)
+    // XXX should we mark the file so we will not try to read it again?
   }
 
   if (!content) {
-    if (index < maxIndex-1) return hashFilelist(filelist, maxIndex, index+1)
+    if (index < maxIndex-1) hashFilelist(filelist, maxIndex, index+1)
+    return
   }
 
   const crc32_ = crc32.unsigned(content).toString(16)
