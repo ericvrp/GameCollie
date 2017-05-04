@@ -1,17 +1,13 @@
-# The Meteor Chef - Base
-A starting point for Meteor apps.
+# GameCollie
+GameCollie keeps track of all your game collection needs
 
-<table>
-  <tbody>
-    <tr>
-      <th>Base Version</th>
-      <td>v4.15.0</td>
-    </tr>
-    <tr>
-      <th>Meteor Version</th>
-      <td>v1.4.4.1</td>
-    </tr>
-  </tbody>
-</table>
+This is the app we run on our servers. We need you, the community, to make this
+app even better. We welcome pull requests by community contributions!  
 
-[Read the Documentation](http://themeteorchef.com/base)
+As a developer you can run this project locally also by following these steps:
+
+	# install Meteor from https://www.meteor.com/install
+	npm install
+	npm start
+
+"Let the games begin!"

@@ -10,7 +10,7 @@ var crc32 = require('buffer-crc32'); // https://github.com/brianloveswords/buffe
 // creating filelist...
 const isSkippedFile = (filename) => {
   const skipPrefixes   = ['.']
-  const skipExtensions = ['.xml', '.jpg', '.png', '.log', '.nfo', '.url', '.txt', '.doc', '.docx', '.dll', '.conf', '.xdb', '.dtd', '.exe', '.bat', '.msg', '.manifest', '.mo', '.po', '.pot', '.def']
+  const skipExtensions = ['.xml', '.jpg', '.png', '.log', '.nfo', '.url', '.txt', '.doc', '.docx', '.pdf', '.dll', '.conf', '.xdb', '.dtd', '.exe', '.bat', '.msg', '.manifest', '.mo', '.po', '.pot', '.def']
 
   const filenameLowercase = filename.toLowerCase()
   for (const pre of skipPrefixes) {
