@@ -4,3 +4,6 @@ settings-master-branch.json
 npm-debug.log
 
 node_modules
+
+version.desktop
+.desktop-installer
