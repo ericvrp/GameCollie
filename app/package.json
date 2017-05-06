@@ -1,15 +1,16 @@
 {
-  "name": "application-name",
+  "name": "GameCollie",
   "version": "1.0.0",
-  "description": "Application description.",
+  "description": "GameCollie keeps track of all your game collection needs.",
   "license": "MIT",
   "scripts": {
     "start": "meteor --settings settings-development.json",
     "start-develop-branch": "git checkout develop && git pull && meteor npm install && meteor --production --port 127.0.0.1:3000 --settings settings-develop-branch.json",
-    "start-master-branch" : "git checkout master  && git pull && meteor npm install && meteor --production --port 127.0.0.1:4000 --settings settings-master-branch.json",
+    "start-master-branch": "git checkout master  && git pull && meteor npm install && meteor --production --port 127.0.0.1:4000 --settings settings-master-branch.json",
     "test": "meteor test --driver-package practicalmeteor:mocha --port 5000",
     "chimp-watch": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests",
-    "chimp-test": "chimp --ddp=http://localhost:3000 --mocha --path=tests"
+    "chimp-test": "chimp --ddp=http://localhost:3000 --mocha --path=tests",
+    "desktop": "meteor-desktop"
   },
   "devDependencies": {
     "chimp": "^0.41.2",
@@ -65,11 +66,16 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "bcrypt": "^1.0.2",
+    "bluebird": "^3.5.0",
     "bootstrap": "^3.3.7",
+    "buffer-crc32": "^0.2.13",
     "elementtree": "^0.1.7",
+    "hash_file": "^0.1.1",
     "jquery": "^2.2.4",
     "jquery-validation": "^1.15.1",
+    "meteor-desktop": "^0.7.0",
     "meteor-node-stubs": "^0.2.6",
+    "mkdirp": "^0.5.1",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-addons-pure-render-mixin": "^15.5.2",
