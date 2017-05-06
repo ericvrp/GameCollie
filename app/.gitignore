@@ -1,6 +1,6 @@
 .DS_Store
-settings-staging.json
-settings-production.json
+settings-develop-branch.json
+settings-master-branch.json
 npm-debug.log
 
 node_modules
