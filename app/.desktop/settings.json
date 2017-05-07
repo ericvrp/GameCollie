@@ -43,7 +43,7 @@
         "icon": ".desktop/assets/meteor.ico",
         "appId": "meteor.app",
         "productName": "GameCollie",
-        "compression": "maximum",
+        "compression": "minimum",
         "mac": {
             "icon": ".desktop/assets/meteor.icns"
         },
