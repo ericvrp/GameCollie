@@ -11,6 +11,8 @@
     "chimp-watch": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests",
     "chimp-test": "chimp --ddp=http://localhost:3000 --mocha --path=tests",
     "#build-installer-dev": "npm run desktop -- build-installer -b http://gamecolliedev.addbrainz.org:80",
+    "#build-installer-local": "npm run desktop -- build-installer -b",
+    "#run-hcp-local": "meteor --mobile-server=127.0.0.1:3000 --production",
     "desktop": "meteor-desktop"
   },
   "devDependencies": {
@@ -70,6 +72,7 @@
     "bluebird": "^3.5.0",
     "bootstrap": "^3.3.7",
     "buffer-crc32": "^0.2.13",
+    "chokidar": "^1.6.1",
     "elementtree": "^0.1.7",
     "hash_file": "^0.1.1",
     "jquery": "^2.2.4",

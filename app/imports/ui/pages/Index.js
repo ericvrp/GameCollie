@@ -1,13 +1,13 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Jumbotron } from 'react-bootstrap';
 
 const Index = () => (
   <div className="Index">
     <Jumbotron className="text-center">
-      <h2>Base</h2>
-      <p>A starting point for Meteor applications.</p>
-      <p><a className="btn btn-success" href="https://themeteorchef.com/base" role="button">Read the Documentation</a></p>
-      <p style={ { fontSize: '16px', color: '#aaa' } }>Currently at v4.15.0</p>
+      <h2>GameCollie</h2>
+      <p>GameCollie keeps track of all your game collection needs</p>
+      {Meteor.isDesktop && <p>(desktop version)</p>}
     </Jumbotron>
   </div>
 );
