@@ -27,13 +27,13 @@
     "dependencies": {},
     "packageJsonFields": {
         "description": "GameCollie",
-        "author": "Marc Buma & Eric van Riet Paap",
+        "author": "Marc Buma and Eric van Riet Paap",
         "private": true
     },
     "builderOptions": {
         "win": {
             "title": "GameCollie",
-            "authors": "Marc Buma & Eric van Riet Paap",
+            "authors": "Marc Buma and Eric van Riet Paap",
             "target": "squirrel"
         },
         "squirrelWindows": {
