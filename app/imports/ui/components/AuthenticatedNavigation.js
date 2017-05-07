@@ -16,7 +16,7 @@ const AuthenticatedNavigation = () => (
   <div>
     <Nav>
       <LinkContainer to="/files">
-        <NavItem eventKey={ 2 } href="/files">files</NavItem>
+        <NavItem eventKey={ 2 } href="/files">Files</NavItem>
       </LinkContainer>
       <LinkContainer to="/items">
         <NavItem eventKey={ 2 } href="/items">Items</NavItem>
@@ -24,6 +24,10 @@ const AuthenticatedNavigation = () => (
       <LinkContainer to="/ingest">
         <NavItem eventKey={ 2 } href="/ingest">Ingest</NavItem>
       </LinkContainer>
+      {Meteor.isDesktop && 
+      <LinkContainer to="/desktop">
+        <NavItem eventKey={ 3 } href="/desktop">Desktop</NavItem>
+      </LinkContainer>}
     </Nav>
     <Nav pullRight>
       <NavDropdown eventKey={ 3 } title={ userName() } id="basic-nav-dropdown">
