@@ -4,8 +4,8 @@
   "description": "GameCollie keeps track of all your game collection needs.",
   "license": "MIT",
   "scripts": {
-    "start"       : "meteor --settings settings-development.json",
-    "start-mobile": "meteor --settings settings-development.json --mobile-server=http://127.0.0.1:3000 --production",
+    "start"    : "meteor --settings settings-development.json",
+    "start-hcp": "meteor --settings settings-development.json --mobile-server=127.0.0.1:3000",
     "start-develop-branch": "git checkout develop && git pull && meteor npm install && meteor --production --port 127.0.0.1:3000 --settings settings-develop-branch.json",
     "start-master-branch": "git checkout master  && git pull && meteor npm install && meteor --production --port 127.0.0.1:4000 --settings settings-master-branch.json",
     "test": "meteor test --driver-package practicalmeteor:mocha --port 5000",

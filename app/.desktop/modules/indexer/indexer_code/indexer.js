@@ -1,14 +1,14 @@
-#!/usr/bin/env node
+// #!/usr/bin/env node
 
 var fs = require('fs');
 var path = require('path');
 var Promise = require('bluebird')
 var hash_file = require('hash_file')
 var crc32 = require('buffer-crc32'); // https://github.com/brianloveswords/buffer-crc32
-var hashed = require('./hashed.json')
 
+// var hashed = require('./hashed.json')
 var hashedPaths = {}
-for (const hash of hashed)  hashedPaths[hash.path] = true
+// for (const hash of hashed)  hashedPaths[hash.path] = true
 // console.log(typeof hashedPaths, hashedPaths.length, hashedPaths[0], hashedPaths[1])
 
 
