@@ -49,7 +49,7 @@ var walk = function(directoryName, filelist=[]) {
     const fullpath = directoryName + path.sep + filename
     if (isSkippedFile(filename, fullpath))  return
 
-    const f = fs.statSync(fullpath)
+    const f = fs.statSync(fullpath) // TODO: catch errors
 
     if (f.isDirectory()) {
       walk(fullpath, filelist)
@@ -66,7 +66,7 @@ var walk = function(directoryName, filelist=[]) {
 // hashing...
 const hashFile = Promise.promisify(hash_file)
 
-const hashFilelist = (filelist, maxIndex, index = 0) => {
+const hashFilelist = (filelist, maxIndex, index, hashResults) => {
   const filename = filelist[index]
   // console.log(index, '/', maxIndex, filename)
 
@@ -79,7 +79,7 @@ const hashFilelist = (filelist, maxIndex, index = 0) => {
   }
 
   if (!content) {
-    if (index < maxIndex-1) hashFilelist(filelist, maxIndex, index+1)
+    if (index < maxIndex-1) hashFilelist(filelist, maxIndex, index+1, hashResults)
     return
   }
 
@@ -87,20 +87,26 @@ const hashFilelist = (filelist, maxIndex, index = 0) => {
 
   // or content instead of filename?
   Promise.join(hashFile(filename, 'md5'), hashFile(filename, 'sha256'), (md5_, sha256_) => {
-    console.log(`  \{"path":"${filename}", "sha256":"0x${sha256_.toUpperCase()}", "md5":"0x${md5_.toUpperCase()}", "crc32":"0x${crc32_.toUpperCase()}"\},`)
-    if (index < maxIndex-1) hashFilelist(filelist, maxIndex, index+1)
+    const newHashResult = {path: filename, sha256 : '0x'+sha256_.toUpperCase(), md5: '0x' + md5_.toUpperCase(), crc32: '0x' + crc32_.toUpperCase()}
+    hashResults.push(newHashResult)
+    // console.log(newHashResult)
+    if (index < maxIndex-1) hashFilelist(filelist, maxIndex, index+1, hashResults)
   })
 }
 
 
-// main...
-const filelist = walk('.')
-// filelist.splice(10) // keep only first 10 elements
-// console.log('filelist.length', filelist.length)
+const run = (dirname, hashResults) => {
+  // console.log('run sucker run!', dirname)
+  const filelist = walk(dirname)
 
-const maxBatchSize = 10000
-for (let index = 0;index < filelist.length;index += maxBatchSize) {
-  const maxIndex = Math.min(filelist.length, index + maxBatchSize)
-  // console.log('maxIndex', maxIndex)
-  hashFilelist(filelist, maxIndex, index)
+  const maxBatchSize = 10000
+  for (let index = 0;index < filelist.length;index += maxBatchSize) {
+    const maxIndex = Math.min(filelist.length, index + maxBatchSize)
+    // console.log('maxIndex', maxIndex)
+    hashFilelist(filelist, maxIndex, index, hashResults)
+  }
+
+  return filelist
 }
+
+export default run

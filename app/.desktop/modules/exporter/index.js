@@ -2,7 +2,7 @@
 import moduleJson from './module.json';
 
 /**
- * Example module.
+ * Exporter module.
  *
  * @param {Object} log         - Winston logger instance
  * @param {Object} skeletonApp - reference to the skeleton app instance
@@ -14,7 +14,7 @@ import moduleJson from './module.json';
  * @param {Object} Module      - reference to the Module class
  * @constructor
  */
-export default class Example {
+export default class {
     constructor({ log, skeletonApp, appSettings, eventsBus, modules, settings, Module }) {
         /**
          * You can delete unused vars from the param destructuring.
