@@ -1,24 +1,4 @@
 {
-	"gameCollection": {
-		"src": "/Volumes/GAMES/roms",
-		"dst": "/Volumes/roms"
-	},
-
-	"#gameCollection": {
-		"src": "testgames/src",
-		"dst": "testgames/dst"
-	},
-
-	"reorganize": {
-		"groupBy": "platform/genre/rating/<anyfieldname>"
-	},
-
-	"limit": {
-		"minRating": "0.3",
-		"maxGB": 32,
-		"maxGames": 99999
-	},
-
 	"platformWeight": {
 		"psx"      : 50,
 		"psp"      : 40,
@@ -32,8 +12,6 @@
 		"3ds"			 :  0,
 		"default"  :  1
 	},
-
-	"#ratingAdjustmentsFields": "id, source, srcPlatform, platform, developer, publisher, releasedate, image, name, path, desc, genre, players, region",
 
 	"ratingAdjustments": [
 		{"field": "name"     , "contains": "mario"     , "adjustment":  1.0},

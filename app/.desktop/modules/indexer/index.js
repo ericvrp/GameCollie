@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import moduleJson from './module.json';
 import fs from 'fs'
-import indexer from './indexer_code/indexer.js'
+import indexer from './indexer.js'
 
 
 /**

@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Row, Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+const exportProfile = require('../../exporterSettings/casualProfile.json')
+// console.log(exportProfile)
+const exportLimit = require('../../exporterSettings/32GbLimit.json')
+// console.log(exportLimit)
 
-
-// note: this file is called DesktopPage.js instead of Desktop.js because that would cause confusion with the global variable called Desktop provided by the meteor-desktop package
-
-// Desktop.fetch('indexer', 'getFile', timeout, '/Users/eric/Desktop/GameCollie.txt')
-//   .then(result => console.log(result))
 
 const timeout = 1000 * 60 * 60 // one hour
 let   indexerStarted = false
@@ -55,8 +54,7 @@ export default class extends React.Component {
 
     const gameCollectionPath   = document.querySelector('[name="gameCollectionPath"]').value.trim()
     const deviceCollectionPath = document.querySelector('[name="deviceCollectionPath"]').value.trim()
-    const exportProfile        = {type: 'casual'}
-    Desktop.fetch('exporter', 'run', timeout, gameCollectionPath, deviceCollectionPath, exportProfile)
+    Desktop.fetch('exporter', 'run', timeout, gameCollectionPath, deviceCollectionPath, exportProfile, exportLimit)
       .then(result => this.setState({exporterStatus: result}))
 	}
 

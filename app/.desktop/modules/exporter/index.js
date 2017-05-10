@@ -47,9 +47,9 @@ export default class {
     }
 
     registerApi() {
-      this.module.on('run', (event, fetchId, from, to, exportProfile) => {
+      this.module.on('run', (event, fetchId, from, to, exportProfile, exportLimit) => {
         // console.log('EXPORTER.registerApi', fetchId)
-        this.module.respond('run', fetchId, from + ' => ' + to + ' : ' + JSON.stringify(exportProfile))
+        this.module.respond('run', fetchId, from + ' => ' + to /*+ ' : ' + JSON.stringify(exportProfile)*/ )
       });
     } // end of registerApi()
 }
