@@ -47,13 +47,9 @@ export default class {
     }
 
     registerApi() {
-        // Lets create a test event.
-        this.module.on('start', (event, fetchId, where) => {
-            // Nothing fancy here, we will just respond with the result of testArg === 1.
-            // fetchId is necessary for the system to know to which request the response is for.
-            // It will be present if you will emit this event in Meteor app with `Desktop.fetch`.
-            console.log('EXPORTER.registerApi', fetchId)
-            this.module.respond('start', fetchId, 'EXPORTER ' + where + '->pong');
-        });
-    }
+      this.module.on('run', (event, fetchId, from, to, exportProfile) => {
+        // console.log('EXPORTER.registerApi', fetchId)
+        this.module.respond('run', fetchId, from + ' => ' + to + ' : ' + JSON.stringify(exportProfile))
+      });
+    } // end of registerApi()
 }

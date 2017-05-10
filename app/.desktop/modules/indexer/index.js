@@ -52,10 +52,7 @@ export default class {
   }
 
   registerApi() {
-    this.module.on('test', (event, fetchId, where) => {
-      console.log('indexer.test', where)
-      this.module.respond('test', fetchId, 'indexer.test ' + where + '->pong')
-    })
+    // note: currently we have no way to stop/pause/restart the indexer!
 
     this.module.on('run', (event, fetchId, dirname) => {
       // console.log('indexer.run', dirname, this.hashResults.length)
@@ -68,5 +65,6 @@ export default class {
       this.module.respond('getNewHashResults', fetchId, this.hashResults)
       this.hashResults.length = 0 // clear the array
     })
-  }
+
+  } // end of registerApi()
 }
