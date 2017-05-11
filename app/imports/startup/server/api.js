@@ -1,5 +1,7 @@
 import '../../api/documents/methods.js';
 import '../../api/documents/server/publications.js';
+import '../../api/exportprofiles/methods.js';
+import '../../api/exportprofiles/server/publications.js';
 import '../../api/files/methods.js';
 import '../../api/files/server/publications.js';
 import '../../api/items/methods.js';

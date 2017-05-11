@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Row, Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import ExportProfiles from '../../api/exportprofiles/exportprofiles';
+
 const exportProfile = require('../../exporterSettings/casualProfile.json')
 
 
+Meteor.subscribe('exportprofiles.list')
+// const subscription = Meteor.subscribe('exportprofiles.list');
+//     const exportprofiles = ExportProfiles.find().fetch();
 
 const statusUpdateInterval = 1000
 const timeout = 1000 * 60 * 60 // one hour
