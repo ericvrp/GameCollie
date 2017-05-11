@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 import moduleJson from './module.json';
+import exporter from './exporter.js'
+// const Games  = require('./Games')
+
 
 /**
  * Exporter module.
@@ -24,6 +27,8 @@ export default class {
          */
         this.module = new Module(moduleJson.name);
 
+        this.status = '<idle>'
+
         // Get the automatically predefined logger instance.
         this.log = log;
         this.eventsBus = eventsBus;
@@ -47,9 +52,40 @@ export default class {
     }
 
     registerApi() {
-      this.module.on('run', (event, fetchId, from, to, exportProfile, exportLimit) => {
-        // console.log('EXPORTER.registerApi', fetchId)
-        this.module.respond('run', fetchId, from + ' => ' + to /*+ ' : ' + JSON.stringify(exportProfile)*/ )
-      });
+
+      this.module.on('start', (event, fetchId, from, to, exportProfile, exportLimit) => {
+        this.module.respond('start', fetchId)
+
+        if (this.status === '<idle>') {
+          // console.log('exporter.start', from, to)
+          this.status = '<running>'
+          // exporter(from, to, exportProfile, exportLimit)
+          this.status = '<idle>'
+        } else {
+          console.warn('exporter already started')
+        }
+      })
+
+      this.module.on('pause', (event, fetchId) => {
+        // console.log('TODO: exporter.pause')
+        if (this.status !== '<idle>') {
+          this.status = '<paused>'
+        }
+        this.module.respond('pause', fetchId)
+      })
+
+      this.module.on('stop', (event, fetchId) => {
+        // console.log('TODO: exporter.stop')
+        if (this.status !== '<idle>') {
+          this.status = '<idle>'
+        }
+        this.module.respond('stop', fetchId)
+      })
+
+      this.module.on('getStatus', (event, fetchId) => {
+        // console.log('TODO: exporter.getStatus', this.status)
+        this.module.respond('getStatus', fetchId, this.status)
+      })
+
     } // end of registerApi()
 }

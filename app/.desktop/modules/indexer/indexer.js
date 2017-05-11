@@ -68,7 +68,7 @@ const hashFile = Promise.promisify(hash_file)
 
 const hashFilelist = (filelist, maxIndex, index, hashResults) => {
   const filename = filelist[index]
-  // console.log(index, '/', maxIndex, filename)
+  console.log(`${index+1}/${maxIndex} ${filename}`)
 
   let content = undefined
   try {
@@ -105,8 +105,6 @@ const run = (dirname, hashResults) => {
     // console.log('maxIndex', maxIndex)
     hashFilelist(filelist, maxIndex, index, hashResults)
   }
-
-  return filelist
 }
 
 export default run

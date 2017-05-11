@@ -27,6 +27,7 @@ export default class {
      */
     this.module = new Module(moduleJson.name);
 
+    this.status = '<idle>'
     this.hashResults = []
 
     // Get the automatically predefined logger instance.
@@ -52,17 +53,44 @@ export default class {
   }
 
   registerApi() {
-    // note: currently we have no way to stop/pause/restart the indexer!
 
-    this.module.on('run', (event, fetchId, dirname) => {
-      // console.log('indexer.run', dirname, this.hashResults.length)
-      this.module.respond('run', fetchId, '<running>')
-      indexer(dirname, this.hashResults)
+    this.module.on('start', (event, fetchId, dirname) => {
+      this.module.respond('start', fetchId)
+
+      if (this.status === '<idle>') {
+        // console.log('indexer.start', dirname, this.hashResults.length)
+        this.status = '<running>'
+        indexer(dirname, this.hashResults)
+        // this.status = '<idle>' // XXX indexer returns immidiately because the indexing itself happens in Promosis
+      } else {
+        console.warn('indexer already started')
+      }
     })
 
-    this.module.on('getNewHashResults', (event, fetchId) => {
-      // console.log('indexer.getNewHashResults', this.hashResults.length)
-      this.module.respond('getNewHashResults', fetchId, this.hashResults)
+    this.module.on('pause', (event, fetchId) => {
+      // console.log('TODO: indexer.pause')
+      if (this.status !== '<idle>') {
+        this.status = '<paused>'
+      }
+      this.module.respond('pause', fetchId)
+    })
+
+    this.module.on('stop', (event, fetchId) => {
+      // console.log('TODO: indexer.stop')
+      if (this.status !== '<idle>') {
+        this.status = '<idle>'
+      }
+      this.module.respond('stop', fetchId)
+    })
+
+    this.module.on('getStatus', (event, fetchId) => {
+      // console.log('TODO: indexer.getStatus', this.status)
+      this.module.respond('getStatus', fetchId, this.status)
+    })
+
+    this.module.on('getResults', (event, fetchId) => {
+      // console.log('indexer.getResults', this.hashResults.length)
+      this.module.respond('getResults', fetchId, this.hashResults)
       this.hashResults.length = 0 // clear the array
     })
 

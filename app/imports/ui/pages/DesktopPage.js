@@ -7,46 +7,47 @@ const exportLimit = require('../../exporterSettings/32GbLimit.json')
 // console.log(exportLimit)
 
 
+const statusUpdateInterval = 1000
 const timeout = 1000 * 60 * 60 // one hour
-let   indexerStarted = false
 
 
 export default class extends React.Component {
   constructor() {
     super()
+
     this.state = {
-      indexerStatus: '',
-      exporterStatus: ''
+      indexerStatus: '<idle>',
+      indexerLastResult: '',
+
+      exporterStatus: '<idle>',
+      exporterLastResult: '',
     }
+
+    setInterval(this.indexGamesCollectionGetUpdates.bind(this), statusUpdateInterval)
   }
 
   indexGamesCollectionGetUpdates() {
-    if (!indexerStarted) return
-
-    // const _this = this
-    Desktop.fetch('indexer', 'getNewHashResults', timeout)
-      .then(hashResults => {
-        if (hashResults.length === 0) return
-        console.log(hashResults)
-        this.setState({indexerStatus: hashResults[hashResults.length - 1].path})
+    Desktop.fetch('indexer', 'getResults', timeout)
+      .then(results => {
+        if (results.length === 0) return
+        console.log(results)
+        this.setState({indexerLastResult: results[results.length - 1].path})
       }
     )
+
+    Desktop.fetch('indexer', 'getStatus', timeout)
+      .then(status => this.setState({indexerStatus: status}))
+
+    Desktop.fetch('exporter', 'getStatus', timeout)
+      .then(status => this.setState({exporterStatus: status}))
   }
 
   indexGamesCollection(event) {
     event.preventDefault();
 
-    if (indexerStarted) {
-      console.info('Not starting the indexer more then once!')
-      return
-    }
-
     const gameCollectionPath = document.querySelector('[name="gameCollectionPath"]').value.trim()
-    Desktop.fetch('indexer', 'run', timeout, gameCollectionPath)
-      .then(result => this.setState({indexerStatus: result}))
-
-    setInterval(this.indexGamesCollectionGetUpdates.bind(this), 500) // or once in constructor
-    indexerStarted = true
+    Desktop.fetch('indexer', 'start', timeout, gameCollectionPath)
+      .then()
 	}
 
 	exportToDevice(event) {
@@ -54,8 +55,8 @@ export default class extends React.Component {
 
     const gameCollectionPath   = document.querySelector('[name="gameCollectionPath"]').value.trim()
     const deviceCollectionPath = document.querySelector('[name="deviceCollectionPath"]').value.trim()
-    Desktop.fetch('exporter', 'run', timeout, gameCollectionPath, deviceCollectionPath, exportProfile, exportLimit)
-      .then(result => this.setState({exporterStatus: result}))
+    Desktop.fetch('exporter', 'start', timeout, gameCollectionPath, deviceCollectionPath, exportProfile, exportLimit)
+      .then()
 	}
 
   render() {
@@ -74,7 +75,7 @@ export default class extends React.Component {
                   <ControlLabel>Game collection</ControlLabel>
                   <FormControl type="text" name="gameCollectionPath" placeholder="path" defaultValue={defaultGameCollectionPath} />
                 </FormGroup>
-                {this.state.indexerStatus}<br/>
+                {this.state.indexerStatus} {this.state.indexerLastResult}<br/>
                 <Button type="submit" bsStyle="success" onClick={this.indexGamesCollection.bind(this)}>Index Games Collection</Button>
               </form>
             </p>
@@ -85,7 +86,7 @@ export default class extends React.Component {
                   <ControlLabel>Device collection</ControlLabel>
                   <FormControl type="text" name="deviceCollectionPath" placeholder="path" defaultValue={defaultDeviceCollectionPath} />
                 </FormGroup>
-                {this.state.exporterStatus}<br/>
+                {this.state.exporterStatus} {this.state.exporterLastResult}<br/>
                 <Button type="submit" bsStyle="success" onClick={this.exportToDevice.bind(this)}>Export to Device</Button>
               </form>
             </p>
