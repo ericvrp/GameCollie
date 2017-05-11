@@ -61,7 +61,7 @@ export default class {
         // console.log('indexer.start', dirname, this.hashResults.length)
         this.status = '<running>'
         indexer(dirname, this.hashResults)
-        // this.status = '<idle>' // XXX indexer returns immidiately because the indexing itself happens in Promosis
+        // this.status = '<idle>' // TODO: detect when non-blocking indexing is finished
       } else {
         console.warn('indexer already started')
       }

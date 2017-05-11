@@ -1,5 +1,3 @@
-// const settings   = require('./settings.json')
-// console.log(JSON.stringify(settings, null, 2))
 const fs     = require('fs')
 const mkdirp = require('mkdirp') // https://github.com/substack/node-mkdirp
 const Games  = require('./Games')
@@ -11,11 +9,11 @@ let nBytesUsed = 0
 // returns list of subdirectories
 const lsdir = p => fs.readdirSync(p).filter(f => fs.statSync(p+'/'+f).isDirectory())
 
-const getDstPlatform = (srcPlatform) => {
+const getDstPlatform = (exportProfile, srcPlatform) => {
   const s = srcPlatform.toLowerCase()
-  for (const dstPlatform in settings.platformAliases) {
+  for (const dstPlatform in exportProfile.platformAliases) {
     const alias = dstPlatform.toLowerCase()
-    if (s === alias || settings.platformAliases[alias].includes(s)) {
+    if (s === alias || exportProfile.platformAliases[alias].includes(s)) {
       return alias
     }
   }
@@ -74,13 +72,13 @@ const random = () => {
 
 
 // copy the gamelist.xml files and images
-const copyGamelistsAndCreateImagesFolder = (srcPlatforms, skippedPlatforms) => {
+const copyGamelistsAndCreateImagesFolder = (from, to, exportProfile, srcPlatforms, skippedPlatforms) => {
   for (const srcPlatform of srcPlatforms) {
-    const dstPlatform = getDstPlatform(srcPlatform)
+    const dstPlatform = getDstPlatform(exportProfile, srcPlatform)
     if (skippedPlatforms.includes(dstPlatform)) continue
 
-    const srcDir = `${settings.gameCollection.src}/${srcPlatform}`
-    const dstDir = `${settings.gameCollection.dst}/${dstPlatform}`
+    const srcDir = `${from}/${srcPlatform}`
+    const dstDir = `${to}/${dstPlatform}`
     mkdirp.sync(`${dstDir}/images`)
 
     // const srcGamelistXml = `${srcDir}/gamelist.xml`
@@ -105,12 +103,12 @@ const run = (from, to, exportProfile, exportLimit) => {
   const platformGamesCopiedInfo = {} // extra info to prevend duplicate exports
   let   platformChoices  = [] // psx psx psx psp psp n64
   const skippedPlatforms = [] // per destinatin platform (no gamelist.xml)
-  const srcPlatforms = lsdir(settings.gameCollection.src)
+  const srcPlatforms = lsdir(from)
   for (const srcPlatform of srcPlatforms) {
-    const gamelistXml = settings.gameCollection.src + '/' + srcPlatform + '/gamelist.xml'
+    const gamelistXml = from + '/' + srcPlatform + '/gamelist.xml'
     const hasGameListXml = fs.existsSync(gamelistXml)
 
-    const dstPlatform = getDstPlatform(srcPlatform)
+    const dstPlatform = getDstPlatform(exportProfile, srcPlatform)
     platformGamesCopied[dstPlatform] = []
     if (!hasGameListXml) {
       skippedPlatforms.push(dstPlatform)
@@ -121,11 +119,11 @@ const run = (from, to, exportProfile, exportLimit) => {
     platformGames[dstPlatform] = Games.Xml2JSON(gamelistXml, srcPlatform, dstPlatform)
     // platformGames[dstPlatform].forEach(game => genres[game.genre] = true)
 
-    Games.AdjustRating(platformGames[dstPlatform], settings.ratingAdjustments)
+    Games.AdjustRating(platformGames[dstPlatform], exportProfile.ratingAdjustments)
     Games.SortByRating(platformGames[dstPlatform])
 
-    const c = settings.platformWeight[dstPlatform]
-    const nNewChoices = typeof c !== 'undefined' ? c : settings.platformWeight['default']
+    const c = exportProfile.platformWeight[dstPlatform]
+    const nNewChoices = typeof c !== 'undefined' ? c : exportProfile.platformWeight['default']
     for (let n = 0;n < nNewChoices;n++) {
       platformChoices.push(dstPlatform)
     }
@@ -133,18 +131,18 @@ const run = (from, to, exportProfile, exportLimit) => {
     debug && console.log(srcPlatform, '=>', dstPlatform, 'with', Games.NumberOfGamesWithID(platformGames[dstPlatform]), 'out of', platformGames[dstPlatform].length, 'games found')
   }
 
-  copyGamelistsAndCreateImagesFolder(srcPlatforms, skippedPlatforms) // TODO: do this later when first game for a given platform is copied.
+  copyGamelistsAndCreateImagesFolder(from, to, exportProfile, srcPlatforms, skippedPlatforms) // TODO: do this later when first game for a given platform is copied.
 
   // debug && console.log('Genres:' + Object.keys(genres).join(' '))
   // debug && console.log('Platform choices:', platformChoices.join(' '))
   for (const skippedPlatform of skippedPlatforms) {
-    // TODO: pretend all unknown games have the same rating (or determined by settings?)
+    // TODO: pretend all unknown games have the same rating (or determined by exportProfile?)
     console.warn('Skipped platforms (without gamelist.xml):', skippedPlatform)
   }
 
 
   // pick and copy the games
-  for (let n = 0;n < settings.limit.maxGames && platformChoices.length > 0 && nBytesUsed < settings.limit.maxGB * 1024 * 1024 * 1024;n++) {
+  for (let n = 0;n < exportLimit.maxGames && platformChoices.length > 0 && nBytesUsed < exportLimit.maxGB * 1024 * 1024 * 1024;n++) {
     const choice = platformChoices[Math.floor(random() * platformChoices.length)]
     const game   = platformGames[choice].pop()
 
@@ -152,15 +150,15 @@ const run = (from, to, exportProfile, exportLimit) => {
       platformChoices = platformChoices.filter(v => v !== choice)
     }
 
-    const srcFilename = `${settings.gameCollection.src}/${game.srcPlatform}/${game.path}`
+    const srcFilename = `${from}/${game.srcPlatform}/${game.path}`
   /*  if (game.platform === 'psx') {
       game.path = `./${getFileName(game.path)}` // move file to this platform's root but don't rename (because it will be referenced by name in the associated .cue file!)
     } else*/ {
       game.path = `./${game.name}.${getFileExtension(game.path)}` // move file to this platform's root
     }
-    const dstFilename = `${settings.gameCollection.dst}/${game.platform}/${game.path}`
+    const dstFilename = `${to}/${game.platform}/${game.path}`
 
-    if (!fs.existsSync(srcFilename) || game.rating < settings.limit.minRating || platformGamesCopiedInfo[game.platform][game.name] || platformGamesCopiedInfo[game.platform][getWithoutFileExtension(game.path)]) {
+    if (!fs.existsSync(srcFilename) || game.rating < exportLimit.minRating || platformGamesCopiedInfo[game.platform][game.name] || platformGamesCopiedInfo[game.platform][getWithoutFileExtension(game.path)]) {
       // console.info('Not found or rating too low or already copied', choice, ':', game.name)
       n-- // try another one
       continue
@@ -171,7 +169,7 @@ const run = (from, to, exportProfile, exportLimit) => {
     platformGamesCopied[game.platform].push(game)
     platformGamesCopiedInfo[game.platform][game.name] = true
     platformGamesCopiedInfo[game.platform][getWithoutFileExtension(game.path)] = true
-    mkdirp.sync(`${settings.gameCollection.dst}/${game.platform}`)
+    mkdirp.sync(`${to}/${game.platform}`)
     copyFile(srcFilename, dstFilename)
 
 
@@ -183,7 +181,7 @@ const run = (from, to, exportProfile, exportLimit) => {
 
     // note: also copy dependent files
     const fileExtension = '.' + getFileExtension(srcFilename).toLowerCase()
-    for (const dependency of settings.dependencies) {
+    for (const dependency of exportProfile.dependencies) {
       if (fileExtension !== dependency.ext) continue
 
       const srcFilename2 = srcFilename.replace(fileExtension, dependency.dependencyExt)
@@ -196,8 +194,8 @@ const run = (from, to, exportProfile, exportLimit) => {
 
     // if possible add a thumbnail to the images folder
     if (game.image) {
-      const srcImageFilename = `${settings.gameCollection.src}/${game.srcPlatform}/${game.image}`
-      const dstImageFilename = `${settings.gameCollection.dst}/${game.platform}/${game.image}`
+      const srcImageFilename = `${from}/${game.srcPlatform}/${game.image}`
+      const dstImageFilename = `${to}/${game.platform}/${game.image}`
       copyFile(srcImageFilename, dstImageFilename)
     }
   } // next game, until a limit is reached
@@ -205,10 +203,10 @@ const run = (from, to, exportProfile, exportLimit) => {
 
   // Output gamelist.xml per platform
   for (const srcPlatform of srcPlatforms) {
-    const dstPlatform = getDstPlatform(srcPlatform)
+    const dstPlatform = getDstPlatform(exportProfile, srcPlatform)
     if (skippedPlatforms.includes(dstPlatform)) continue
 
-    Games.JSON2Xml(`${settings.gameCollection.dst}/${dstPlatform}/gamelist.xml`, platformGamesCopied[dstPlatform])
+    Games.JSON2Xml(`${to}/${dstPlatform}/gamelist.xml`, platformGamesCopied[dstPlatform])
   } // next srcPlatform
 
 } // end of run(from, to, exportProfile, exportLimit)

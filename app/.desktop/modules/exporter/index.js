@@ -59,7 +59,7 @@ export default class {
         if (this.status === '<idle>') {
           // console.log('exporter.start', from, to)
           this.status = '<running>'
-          // exporter(from, to, exportProfile, exportLimit)
+          exporter(from, to, exportProfile, exportLimit) // note: this is blocking at the moment
           this.status = '<idle>'
         } else {
           console.warn('exporter already started')
