@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Row, Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 const exportProfile = require('../../exporterSettings/casualProfile.json')
-// console.log(exportProfile)
-const exportLimit = require('../../exporterSettings/32GbLimit.json')
-// console.log(exportLimit)
+
 
 
 const statusUpdateInterval = 1000
@@ -55,6 +53,13 @@ export default class extends React.Component {
 
     const gameCollectionPath   = document.querySelector('[name="gameCollectionPath"]').value.trim()
     const deviceCollectionPath = document.querySelector('[name="deviceCollectionPath"]').value.trim()
+
+    const exportLimit = {
+      minRating: parseFloat(document.querySelector('[name="deviceLimitMinRating"]').value.trim()),
+      maxGB    : parseInt(document.querySelector('[name="deviceLimitMaxGb"]').value.trim(), 10),
+      maxGames : parseInt(document.querySelector('[name="deviceLimitMaxGames"]').value.trim(), 10)
+    }
+
     Desktop.fetch('exporter', 'start', timeout, gameCollectionPath, deviceCollectionPath, exportProfile, exportLimit)
       .then()
 	}
@@ -62,6 +67,9 @@ export default class extends React.Component {
   render() {
     const defaultGameCollectionPath   = '/Users/eric/Downloads/testgames/collection'
     const defaultDeviceCollectionPath = '/Users/eric/Downloads/testgames/device'
+    const defaultDeviceLimitMinRating = 0.3
+    const defaultDeviceLimitMaxGb     = 32
+    const defaultDeviceLimitMaxGames  = 99999
 
     return (
       <div className="Desktop">
@@ -84,7 +92,10 @@ export default class extends React.Component {
               <form>
                 <FormGroup>
                   <ControlLabel>Device collection</ControlLabel>
-                  <FormControl type="text" name="deviceCollectionPath" placeholder="path" defaultValue={defaultDeviceCollectionPath} />
+                  <FormControl type="text" name="deviceLimitMinRating" placeholder="minimum rating" defaultValue={defaultDeviceLimitMinRating} />
+                  <FormControl type="text" name="deviceLimitMaxGb"     placeholder="max Gb"         defaultValue={defaultDeviceLimitMaxGb    } />
+                  <FormControl type="text" name="deviceLimitMaxGames"  placeholder="max games"      defaultValue={defaultDeviceLimitMaxGames } />
+                  <FormControl type="text" name="deviceCollectionPath" placeholder="path"           defaultValue={defaultDeviceCollectionPath} />
                 </FormGroup>
                 {this.state.exporterStatus} {this.state.exporterLastResult}<br/>
                 <Button type="submit" bsStyle="success" onClick={this.exportToDevice.bind(this)}>Export to Device</Button>
