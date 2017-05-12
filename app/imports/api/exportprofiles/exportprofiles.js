@@ -18,15 +18,23 @@ ExportProfiles.deny({
 });
 
 ExportProfiles.schema = new SimpleSchema({
-  json: {
+  owner: {
     type: String,
-    label: 'The content of the export profile.',
+    label: 'The owner of the export profile.',
   },
+  name: {
+    type: String,
+    label: 'The name of the export profile.',
+  },
+  profile: {
+      type: String,
+      label: 'The actual export profile.',
+    },
 });
 
 ExportProfiles.attachSchema(ExportProfiles.schema);
 
-Factory.define('exportprofile', ExportProfiles, {
-  title: () => 'Factory Title',
-  body: () => 'Factory Body',
-});
+// XXX I don't know what the following lines would do
+// Factory.define('exportprofile', ExportProfiles, {
+//   profile: () => 'Factory JSON',
+// });

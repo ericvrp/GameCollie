@@ -1,14 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Row, Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
-import ExportProfiles from '../../api/exportprofiles/exportprofiles';
+import ExportProfilesList from '../components/ExportProfilesList'
 
-const exportProfile = require('../../exporterSettings/casualProfile.json')
-
-
-Meteor.subscribe('exportprofiles.list')
-// const subscription = Meteor.subscribe('exportprofiles.list');
-//     const exportprofiles = ExportProfiles.find().fetch();
 
 const statusUpdateInterval = 1000
 const timeout = 1000 * 60 * 60 // one hour
@@ -101,6 +95,7 @@ export default class extends React.Component {
                   <FormControl type="text" name="deviceLimitMaxGb"     placeholder="max Gb"         defaultValue={defaultDeviceLimitMaxGb    } />
                   <FormControl type="text" name="deviceLimitMaxGames"  placeholder="max games"      defaultValue={defaultDeviceLimitMaxGames } />
                   <FormControl type="text" name="deviceCollectionPath" placeholder="path"           defaultValue={defaultDeviceCollectionPath} />
+                  <ExportProfilesList/>
                 </FormGroup>
                 {this.state.exporterStatus} {this.state.exporterLastResult}<br/>
                 <Button type="submit" bsStyle="success" onClick={this.exportToDevice.bind(this)}>Export to Device</Button>

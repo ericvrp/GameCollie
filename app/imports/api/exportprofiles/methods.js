@@ -7,10 +7,13 @@ export const upsertDocument = new ValidatedMethod({
   name: 'exportprofiles.upsert',
   validate: new SimpleSchema({
     _id: { type: String, optional: true },
-    json: { type: String, optional: true },
+    name: { type: String, optional: false },
+    profile: { type: String, optional: false },
   }).validator(),
   run(document) {
-    return ExportProfiles.upsert({ _id: document._id }, { $set: document });
+    document.owner = this.userId
+    // console.log(document)
+    return ExportProfiles.upsert({_id: document._id, owner: this.userId, name: document.name}, {$set: document});
   },
 });
 
@@ -20,7 +23,8 @@ export const removeDocument = new ValidatedMethod({
     _id: { type: String },
   }).validator(),
   run({ _id }) {
-    ExportProfiles.remove(_id);
+    // console.log('owner', this.userId)
+    ExportProfiles.remove({_id: _id, owner: this.userId});
   },
 });
 
