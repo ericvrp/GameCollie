@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Row, Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
-import ExportProfilesList from '../components/ExportProfilesList'
+import ExportProfilesSelect from '../components/ExportProfilesSelect'
+import ExportProfiles from '../../api/exportprofiles/exportprofiles';
 
 
 const statusUpdateInterval = 1000
@@ -59,6 +60,12 @@ export default class extends React.Component {
       maxGames : parseInt(document.querySelector('[name="deviceLimitMaxGames"]').value.trim(), 10)
     }
 
+    // console.log(ExportProfiles)
+    const exportProfileName = document.querySelector('[name="exportProfileName"]').value.trim()
+    // console.log('exportProfileName', exportProfileName)
+    const exportProfile = JSON.parse( ExportProfiles.findOne({name: exportProfileName}).profile )
+    console.log(exportProfile)
+
     Desktop.fetch('exporter', 'start', timeout, gameCollectionPath, deviceCollectionPath, exportProfile, exportLimit)
       .then()
 	}
@@ -95,7 +102,7 @@ export default class extends React.Component {
                   <FormControl type="text" name="deviceLimitMaxGb"     placeholder="max Gb"         defaultValue={defaultDeviceLimitMaxGb    } />
                   <FormControl type="text" name="deviceLimitMaxGames"  placeholder="max games"      defaultValue={defaultDeviceLimitMaxGames } />
                   <FormControl type="text" name="deviceCollectionPath" placeholder="path"           defaultValue={defaultDeviceCollectionPath} />
-                  <ExportProfilesList/>
+                  <ExportProfilesSelect name="exportProfileName" />
                 </FormGroup>
                 {this.state.exporterStatus} {this.state.exporterLastResult}<br/>
                 <Button type="submit" bsStyle="success" onClick={this.exportToDevice.bind(this)}>Export to Device</Button>
