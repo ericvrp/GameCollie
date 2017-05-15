@@ -5,50 +5,10 @@ const Games  = require('./Games')
 let debug = false
 let nBytesUsed = 0
 
-const dependencies = [
-  {"ext": ".bin", "dependencyExt": ".cue"}
-]
-
-const platformWeight = { // TODO: get this from device collection
-  "psx"      : 50,
-  "psp"      : 40,
-  "n64"      : 30,
-  "snes"     : 25,
-  "nes"      : 20,
-  "gba"      :  9,
-  "atari2600":  8,
-  "gb"       :  5,
-  "nds"      :  4,
-  "3ds"			 :  0,
-  "default"  :  1
-}
-
-const platformAliases = { // TODO: get this from platformAliases collection
-	"psx": ["sony - psx", "sony playstation", "sony - playstation"],
-	"psp": ["sony - psp", "sony playstation portable"],
-	"n64": ["nintendo 64", "nintendo - nintendo 64"],
-	"nds": ["nintendo - nds"],
-	"3ds": ["nintendo - 3ds"],
-	"gb": ["nintendo - game boy"],
-	"gba": ["nintendo - gba"],
-	"nes": ["nintendo - nintendo entertainment system"],
-	"snes": ["nintendo - super nintendo", "nintendo - super nintendo entertainment system"],
-	"c64": ["commodore 64", "commodore - commodore 64"],
-	"mame": ["arcade machines - mame", "mame-advmame", "mame-libretro", "mame-mame4all"],
-	"segacd": ["sega - sega cd"],
-	"mastersystem": ["sega - sega master system"],
-	"megadrive": ["sega - sega genesis"],
-	"gamegear": ["sega - game gear"],
-	"neogeo": ["snk - neo geo"],
-	"wonderswancolor": ["bandai - wonderswan color"],
-	"atarijaguar": ["atari - jaguar"],
-	"atari2600": ["atari - atari 2600"]
-}
-
 // returns list of subdirectories
 const lsdir = p => fs.readdirSync(p).filter(f => fs.statSync(p+'/'+f).isDirectory())
 
-const getDstPlatform = (exportProfile, srcPlatform) => {
+const getDstPlatform = (exportProfile, platformAliases, srcPlatform) => {
   const s = srcPlatform.toLowerCase()
   for (const dstPlatform in platformAliases) {
     const alias = dstPlatform.toLowerCase()
@@ -111,9 +71,9 @@ const random = () => {
 
 
 // copy the gamelist.xml files and images
-const copyGamelistsAndCreateImagesFolder = (from, to, exportProfile, srcPlatforms, skippedPlatforms) => {
+const copyGamelistsAndCreateImagesFolder = (from, to, exportProfile, platformAliases, srcPlatforms, skippedPlatforms) => {
   for (const srcPlatform of srcPlatforms) {
-    const dstPlatform = getDstPlatform(exportProfile, srcPlatform)
+    const dstPlatform = getDstPlatform(exportProfile, platformAliases, srcPlatform)
     if (skippedPlatforms.includes(dstPlatform)) continue
 
     const srcDir = `${from}/${srcPlatform}`
@@ -132,7 +92,7 @@ const copyGamelistsAndCreateImagesFolder = (from, to, exportProfile, srcPlatform
 //
 //
 //
-const run = (from, to, exportProfile, exportLimit) => {
+const run = (from, to, exportProfile, exportLimit, deviceProfile, platformAliases) => {
   nBytesUsed = 0
 
   // determine game ratings and platforms we will select games for
@@ -147,7 +107,7 @@ const run = (from, to, exportProfile, exportLimit) => {
     const gamelistXml = from + '/' + srcPlatform + '/gamelist.xml'
     const hasGameListXml = fs.existsSync(gamelistXml)
 
-    const dstPlatform = getDstPlatform(exportProfile, srcPlatform)
+    const dstPlatform = getDstPlatform(exportProfile, platformAliases, srcPlatform)
     platformGamesCopied[dstPlatform] = []
     if (!hasGameListXml) {
       skippedPlatforms.push(dstPlatform)
@@ -161,8 +121,8 @@ const run = (from, to, exportProfile, exportLimit) => {
     Games.AdjustRating(platformGames[dstPlatform], exportProfile.ratingAdjustments)
     Games.SortByRating(platformGames[dstPlatform])
 
-    const c = platformWeight[dstPlatform]
-    const nNewChoices = typeof c !== 'undefined' ? c : platformWeight['default']
+    const c = deviceProfile.platformWeight[dstPlatform]
+    const nNewChoices = typeof c !== 'undefined' ? c : deviceProfile.platformWeight['default']
     for (let n = 0;n < nNewChoices;n++) {
       platformChoices.push(dstPlatform)
     }
@@ -170,7 +130,7 @@ const run = (from, to, exportProfile, exportLimit) => {
     debug && console.log(srcPlatform, '=>', dstPlatform, 'with', Games.NumberOfGamesWithID(platformGames[dstPlatform]), 'out of', platformGames[dstPlatform].length, 'games found')
   }
 
-  copyGamelistsAndCreateImagesFolder(from, to, exportProfile, srcPlatforms, skippedPlatforms) // TODO: do this later when first game for a given platform is copied.
+  copyGamelistsAndCreateImagesFolder(from, to, exportProfile, platformAliases, srcPlatforms, skippedPlatforms) // TODO: do this later when first game for a given platform is copied.
 
   // debug && console.log('Genres:' + Object.keys(genres).join(' '))
   // debug && console.log('Platform choices:', platformChoices.join(' '))
@@ -220,6 +180,9 @@ const run = (from, to, exportProfile, exportLimit) => {
 
     // note: also copy dependent files
     const fileExtension = '.' + getFileExtension(srcFilename).toLowerCase()
+    const dependencies = [
+      {"ext": ".bin", "dependencyExt": ".cue"}
+    ]
     for (const dependency of dependencies) {
       if (fileExtension !== dependency.ext) continue
 
@@ -242,7 +205,7 @@ const run = (from, to, exportProfile, exportLimit) => {
 
   // Output gamelist.xml per platform
   for (const srcPlatform of srcPlatforms) {
-    const dstPlatform = getDstPlatform(exportProfile, srcPlatform)
+    const dstPlatform = getDstPlatform(exportProfile, platformAliases, srcPlatform)
     if (skippedPlatforms.includes(dstPlatform)) continue
 
     Games.JSON2Xml(`${to}/${dstPlatform}/gamelist.xml`, platformGamesCopied[dstPlatform])

@@ -53,13 +53,13 @@ export default class {
 
     registerApi() {
 
-      this.module.on('start', (event, fetchId, from, to, exportProfile, exportLimit) => {
+      this.module.on('start', (event, fetchId, from, to, exportProfile, exportLimit, deviceProfile, platformAliases) => {
         this.module.respond('start', fetchId)
 
         if (this.status === '<idle>') {
           // console.log('exporter.start', from, to)
           this.status = '<running>'
-          exporter(from, to, exportProfile, exportLimit) // note: this is blocking at the moment
+          exporter(from, to, exportProfile, exportLimit, deviceProfile, platformAliases) // note: this is blocking at the moment
           this.status = '<idle>'
         } else {
           console.warn('exporter already started')
