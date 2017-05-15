@@ -54,6 +54,13 @@ const copyFile = (srcFilename, dstFilename, copyAlways = false) => {
     return 0 // copied 0 bytes with read error
   }
 
+  if (getFileExtension(srcFilename) === 'cue') {
+    srcFile = srcFile.toString().split('\n')
+    srcFile[0] = `FILE "${getFilename(getWithoutFileExtension(dstFilename))}.bin" BINARY`
+    srcFile = srcFile.join('\n')
+    // console.log(srcFile)
+  } // else not a .cue file
+
   // note: an optimization would be to queue a (max) number of writes which would works well when we read from and write to different physical devices.
 
   // console.log('srcFilename is ', srcFile.length, 'bytes.', srcFilename, 'nBytesUsed', nBytesUsed, 'dstFilename', dstFilename)
@@ -79,12 +86,6 @@ const copyGamelistsAndCreateImagesFolder = (from, to, exportProfile, platformAli
     const srcDir = `${from}/${srcPlatform}`
     const dstDir = `${to}/${dstPlatform}`
     mkdirp.sync(`${dstDir}/images`)
-
-    // const srcGamelistXml = `${srcDir}/gamelist.xml`
-    // const dstGamelistXml = `${dstDir}/gamelist.xml`
-    // const copyAlways     = true
-    // // console.log(srcGamelistXml, '=>', dstGamelistXml)
-    // copyFile(srcGamelistXml, dstGamelistXml, copyAlways)
   }
 }
 
@@ -171,28 +172,17 @@ const run = (from, to, exportProfile, exportLimit, deviceProfile, platformAliase
     mkdirp.sync(`${to}/${game.platform}`)
     copyFile(srcFilename, dstFilename)
 
-
-    // P.S. TODO'S
-    //    - often it's the cue files that have a rating. So we have to make this work the other way around to!
-    //    - cue files contain contain the .bin filename. This does not work when we rename the .bin file.
-    //      so either we do not rename psx .bin files or we patch the associated .cue file.
-    //    - when the original gamelist.xml contained.cue files then we need to add this 'game' to our newly generated gamelist.xml also.
-
-    // note: also copy dependent files
-    const fileExtension = '.' + getFileExtension(srcFilename).toLowerCase()
-    const dependencies = [
-      {"ext": ".bin", "dependencyExt": ".cue"}
-    ]
-    for (const dependency of dependencies) {
-      if (fileExtension !== dependency.ext) continue
-
-      const srcFilename2 = srcFilename.replace(fileExtension, dependency.dependencyExt)
-      if (!fs.existsSync(srcFilename2)) continue
-
-      const dstFilename2 = dstFilename.replace(fileExtension, dependency.dependencyExt)
-      // console.log(srcFilename2, dstFilename2)
-      copyFile(srcFilename2, dstFilename2) // this often gives NodeJS write errors. Is this a Samba problem? I don't understand.
-    }
+    // if .bin file then also copy dependent (.cue) files.
+    const fileExtension = getFileExtension(srcFilename).toLowerCase()
+    if (fileExtension === 'bin') {
+      const srcFilename2 = srcFilename.replace('.bin', '.cue')
+      if (fs.existsSync(srcFilename2)) {
+        const dstFilename2 = dstFilename.replace('.bin', '.cue')
+        // console.log(srcFilename2, dstFilename2)
+        // always create a fresh .cue because the name of the .bin might have changed
+        copyFile(srcFilename2, dstFilename2, true) // this often gives NodeJS write errors. Is this a Samba problem? I don't understand.
+      }
+    } // else not .bin file
 
     // if possible add a thumbnail to the images folder
     if (game.image) {

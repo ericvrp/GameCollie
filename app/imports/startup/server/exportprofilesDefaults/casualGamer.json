@@ -28,8 +28,6 @@
 		{"field": "players"  , "contains": "3"         , "adjustment":  0.5},
 		{"field": "players"  , "contains": "4"         , "adjustment":  0.5},
 
-		{"field": "path"     , "contains": ".cue"      , "adjustment": -9.9},
-
 		{"field": "region"   , "contains": "korea"     , "adjustment": -9.9},
 		{"field": "region"   , "contains": "j"      	 , "adjustment": -9.9}
 	]

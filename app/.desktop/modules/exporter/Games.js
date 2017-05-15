@@ -59,11 +59,11 @@ const Xml2JSON = (filename, srcPlatform, dstPlatform) => {
   for (const g of gameList.childrenNamed('game')) {
     const game = {id: g.attr.id, source: g.attr.source}
     g.eachChild(child => game[child.name] = child.val)
+
     // preprocess to make live it easier later on (sorting...)
     game.srcPlatform = srcPlatform
+    game.path        = game.path.replace('.cue', '.bin')
     game.platform    = dstPlatform
-    // game.path        = game.path.startsWith('./')  ? game.path.slice(2)  : game.path
-    // game.image       = game.image && game.image.startsWith('./') ? game.image.slice(2) : game.image
     game.players     = game.players || 1
     game.genre       = game.genre.toLowerCase()
     game.rating      = game.rating ? parseFloat(game.rating) : -0.5 // prefer identifyable games
@@ -87,14 +87,7 @@ const JSON2Xml = (filename, games) => {
     file.write(`    <game id="${game.id}" source="${game.source}">\n`)
     for (const key of Object.keys(game)) {
       if (key === 'id' || key === 'source') continue
-
-      let value = game[key]
-      // if (key.indexOf('psx') >= 0) and value.indexOf('.bin') >= 0) {
-      //   // XXX this is a little hack because RetroPie's emulationstation doesn't show pictures when we use the .bin extension
-      //   value = s.replace('.bin', '.cue')
-      // }
-
-      file.write(`      <${key}>${value}</${key}>\n`)
+      file.write(`      <${key}>${game[key]}</${key}>\n`)
     }
     file.write('    </game>\n')
   }
@@ -110,17 +103,19 @@ const AdjustRating = (games, ratingAdjustments) => {
       if (field && field.toString().toLowerCase().includes(ratingAdjustment.contains.toLowerCase())) {
         game.rating += ratingAdjustment.adjustment
 
-        if (game.platform === 'psx' && game.name.toLowerCase().includes('oddworld')) {
-          console.log('YES', ratingAdjustment)
-        }
-      } else         if (game.platform === 'psx' && game.name.toLowerCase().includes('oddworld')) {
-                console.log('NO ', ratingAdjustment)
-              }
+        // if (game.platform === 'psx' && game.name.toLowerCase().includes('oddworld')) {
+        //   console.log('YES', ratingAdjustment)
+        // }
+      }
+      // else if (game.platform === 'psx' && game.name.toLowerCase().includes('oddworld')) {
+      //   console.log('NO ', ratingAdjustment)
+      // }
 
     }
-    if (game.platform === 'psx' && game.name.toLowerCase().includes('oddworld')) {
-              console.log(game)
-            }
+
+    // if (game.platform === 'psx' && game.name.toLowerCase().includes('oddworld')) {
+    //   console.log(game)
+    // }
   })
 
 }
