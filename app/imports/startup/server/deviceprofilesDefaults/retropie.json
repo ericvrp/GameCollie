@@ -1,0 +1,15 @@
+{
+	"platformWeight": {
+		"psx"      : 50,
+		"psp"      : 40,
+		"n64"      : 30,
+		"snes"     : 25,
+		"nes"      : 20,
+		"gba"      :  9,
+		"atari2600":  8,
+		"gb"       :  5,
+		"nds"      :  4,
+		"3ds"			 :  0,
+		"default"  :  1
+	}
+}

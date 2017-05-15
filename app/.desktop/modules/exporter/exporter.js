@@ -5,15 +5,54 @@ const Games  = require('./Games')
 let debug = false
 let nBytesUsed = 0
 
+const dependencies = [
+  {"ext": ".bin", "dependencyExt": ".cue"}
+]
+
+const platformWeight = { // TODO: get this from device collection
+  "psx"      : 50,
+  "psp"      : 40,
+  "n64"      : 30,
+  "snes"     : 25,
+  "nes"      : 20,
+  "gba"      :  9,
+  "atari2600":  8,
+  "gb"       :  5,
+  "nds"      :  4,
+  "3ds"			 :  0,
+  "default"  :  1
+}
+
+const platformAliases = { // TODO: get this from platformAliases collection
+	"psx": ["sony - psx", "sony playstation", "sony - playstation"],
+	"psp": ["sony - psp", "sony playstation portable"],
+	"n64": ["nintendo 64", "nintendo - nintendo 64"],
+	"nds": ["nintendo - nds"],
+	"3ds": ["nintendo - 3ds"],
+	"gb": ["nintendo - game boy"],
+	"gba": ["nintendo - gba"],
+	"nes": ["nintendo - nintendo entertainment system"],
+	"snes": ["nintendo - super nintendo", "nintendo - super nintendo entertainment system"],
+	"c64": ["commodore 64", "commodore - commodore 64"],
+	"mame": ["arcade machines - mame", "mame-advmame", "mame-libretro", "mame-mame4all"],
+	"segacd": ["sega - sega cd"],
+	"mastersystem": ["sega - sega master system"],
+	"megadrive": ["sega - sega genesis"],
+	"gamegear": ["sega - game gear"],
+	"neogeo": ["snk - neo geo"],
+	"wonderswancolor": ["bandai - wonderswan color"],
+	"atarijaguar": ["atari - jaguar"],
+	"atari2600": ["atari - atari 2600"]
+}
 
 // returns list of subdirectories
 const lsdir = p => fs.readdirSync(p).filter(f => fs.statSync(p+'/'+f).isDirectory())
 
 const getDstPlatform = (exportProfile, srcPlatform) => {
   const s = srcPlatform.toLowerCase()
-  for (const dstPlatform in exportProfile.platformAliases) {
+  for (const dstPlatform in platformAliases) {
     const alias = dstPlatform.toLowerCase()
-    if (s === alias || exportProfile.platformAliases[alias].includes(s)) {
+    if (s === alias || platformAliases[alias].includes(s)) {
       return alias
     }
   }
@@ -122,8 +161,8 @@ const run = (from, to, exportProfile, exportLimit) => {
     Games.AdjustRating(platformGames[dstPlatform], exportProfile.ratingAdjustments)
     Games.SortByRating(platformGames[dstPlatform])
 
-    const c = exportProfile.platformWeight[dstPlatform]
-    const nNewChoices = typeof c !== 'undefined' ? c : exportProfile.platformWeight['default']
+    const c = platformWeight[dstPlatform]
+    const nNewChoices = typeof c !== 'undefined' ? c : platformWeight['default']
     for (let n = 0;n < nNewChoices;n++) {
       platformChoices.push(dstPlatform)
     }
@@ -181,7 +220,7 @@ const run = (from, to, exportProfile, exportLimit) => {
 
     // note: also copy dependent files
     const fileExtension = '.' + getFileExtension(srcFilename).toLowerCase()
-    for (const dependency of exportProfile.dependencies) {
+    for (const dependency of dependencies) {
       if (fileExtension !== dependency.ext) continue
 
       const srcFilename2 = srcFilename.replace(fileExtension, dependency.dependencyExt)

@@ -9,7 +9,8 @@ import Documents from '../../ui/pages/Documents.js';
 import Files from '../../ui/pages/Files.js';
 import Items from '../../ui/pages/Items.js';
 import Ingest from '../../ui/pages/Ingest.js';
-import DesktopPage from '../../ui/pages/DesktopPage.js';
+import Devices from '../../ui/pages/Devices.js';
+import Export from '../../ui/pages/Export.js';
 // import NewDocument from '../../ui/pages/NewDocument.js';
 // import EditDocument from '../../ui/pages/EditDocument.js';
 // import ViewDocument from '../../ui/pages/ViewDocument.js';
@@ -43,7 +44,8 @@ Meteor.startup(() => {
         <Route name="editItem" path="/items/:_id/edit" component={ EditItem } onEnter={ authenticate } />
         <Route name="viewItem" path="/items/:_id" component={ ViewItem } onEnter={ authenticate } />
         <Route name="ingest" path="/ingest" component={ Ingest } onEnter={ authenticate } />
-        <Route name="desktop" path="/desktop" component={ DesktopPage } onEnter={ authenticate } />
+        <Route name="devices" path="/devices" component={ Devices } onEnter={ authenticate } />
+        <Route name="export" path="/export" component={ Export } onEnter={ authenticate } />
         <Route name="login" path="/login" component={ Login } />
         <Route name="recover-password" path="/recover-password" component={ RecoverPassword } />
         <Route name="reset-password" path="/reset-password/:token" component={ ResetPassword } />

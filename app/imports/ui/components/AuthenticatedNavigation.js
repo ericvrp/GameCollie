@@ -4,6 +4,10 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 
+Meteor.subscribe('exportprofiles.list')
+Meteor.subscribe('deviceprofiles.list')
+Meteor.subscribe('platformaliases.list')
+
 const handleLogout = () => Meteor.logout(() => browserHistory.push('/login'));
 
 const userName = () => {
@@ -24,14 +28,18 @@ const AuthenticatedNavigation = () => (
       <LinkContainer to="/ingest">
         <NavItem eventKey={ 2 } href="/ingest">Ingest</NavItem>
       </LinkContainer>
-      {Meteor.isDesktop && 
-      <LinkContainer to="/desktop">
-        <NavItem eventKey={ 3 } href="/desktop">Desktop</NavItem>
+      {Meteor.isDesktop &&
+      <LinkContainer to="/devices">
+        <NavItem eventKey={ 3 } href="/devices">Devices</NavItem>
+      </LinkContainer>}
+      {Meteor.isDesktop &&
+      <LinkContainer to="/export">
+        <NavItem eventKey={ 4 } href="/export">Export</NavItem>
       </LinkContainer>}
     </Nav>
     <Nav pullRight>
-      <NavDropdown eventKey={ 3 } title={ userName() } id="basic-nav-dropdown">
-        <MenuItem eventKey={ 3.1 } onClick={ handleLogout }>Logout</MenuItem>
+      <NavDropdown eventKey={ 5 } title={ userName() } id="basic-nav-dropdown">
+        <MenuItem eventKey={ 5.1 } onClick={ handleLogout }>Logout</MenuItem>
       </NavDropdown>
     </Nav>
   </div>
