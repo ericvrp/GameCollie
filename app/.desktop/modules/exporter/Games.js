@@ -62,7 +62,7 @@ const Xml2JSON = (filename, srcPlatform, dstPlatform) => {
 
     // preprocess to make live it easier later on (sorting...)
     game.srcPlatform = srcPlatform
-    game.path        = game.path.replace('.cue', '.bin')
+    game.path        = game.path.replace('.bin', '.cue') // note: psx needs cue files in gamelist.xml
     game.platform    = dstPlatform
     game.players     = game.players || 1
     game.genre       = game.genre.toLowerCase()

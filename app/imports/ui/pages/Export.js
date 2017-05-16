@@ -10,7 +10,7 @@ import PlatformAliases from '../../api/platformaliases/platformaliases'
 
 
 const statusUpdateInterval = 1000
-const timeout = 1000 * 60 * 60 // one hour
+const timeout = 1000 * 60 * 60 * 2 // two hours
 
 
 export default class extends React.Component {

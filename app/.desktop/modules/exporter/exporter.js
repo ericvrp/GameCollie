@@ -151,11 +151,8 @@ const run = (from, to, exportProfile, exportLimit, deviceProfile, platformAliase
     }
 
     const srcFilename = `${from}/${game.srcPlatform}/${game.path}`
-  /*  if (game.platform === 'psx') {
-      game.path = `./${getFileName(game.path)}` // move file to this platform's root but don't rename (because it will be referenced by name in the associated .cue file!)
-    } else*/ {
-      game.path = `./${game.name}.${getFileExtension(game.path)}` // move file to this platform's root
-    }
+
+    game.path = `./${game.name}.${getFileExtension(game.path)}` // move file to this platform's root
     const dstFilename = `${to}/${game.platform}/${game.path}`
 
     if (!fs.existsSync(srcFilename) || game.rating < exportLimit.minRating || platformGamesCopiedInfo[game.platform][game.name] || platformGamesCopiedInfo[game.platform][getWithoutFileExtension(game.path)]) {
@@ -174,15 +171,14 @@ const run = (from, to, exportProfile, exportLimit, deviceProfile, platformAliase
 
     // if .bin file then also copy dependent (.cue) files.
     const fileExtension = getFileExtension(srcFilename).toLowerCase()
-    if (fileExtension === 'bin') {
-      const srcFilename2 = srcFilename.replace('.bin', '.cue')
-      if (fs.existsSync(srcFilename2)) {
-        const dstFilename2 = dstFilename.replace('.bin', '.cue')
-        // console.log(srcFilename2, dstFilename2)
-        // always create a fresh .cue because the name of the .bin might have changed
-        copyFile(srcFilename2, dstFilename2, true) // this often gives NodeJS write errors. Is this a Samba problem? I don't understand.
+    if (fileExtension === 'cue') {
+      const srcBinFilename = srcFilename.replace('.cue', '.bin')
+      if (fs.existsSync(srcBinFilename)) {
+        const dstBinFilename = dstFilename.replace('.cue', '.bin')
+        // console.log(srcBinFilename, dstBinFilename)
+        copyFile(srcBinFilename, dstBinFilename)
       }
-    } // else not .bin file
+    } // else not .cue file
 
     // if possible add a thumbnail to the images folder
     if (game.image) {
