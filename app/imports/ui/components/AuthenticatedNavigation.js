@@ -28,6 +28,9 @@ const AuthenticatedNavigation = () => (
       <LinkContainer to="/ingest">
         <NavItem eventKey={ 2 } href="/ingest">Ingest</NavItem>
       </LinkContainer>
+      <LinkContainer to="/ipfs">
+        <NavItem eventKey={ 2 } href="/ipfs">IPFS</NavItem>
+      </LinkContainer>
       {Meteor.isDesktop &&
       <LinkContainer to="/devices">
         <NavItem eventKey={ 3 } href="/devices">Devices</NavItem>

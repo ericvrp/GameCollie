@@ -9,6 +9,7 @@ import Documents from '../../ui/pages/Documents.js';
 import Files from '../../ui/pages/Files.js';
 import Items from '../../ui/pages/Items.js';
 import Ingest from '../../ui/pages/Ingest.js';
+import IPFS from '../../ui/pages/IPFS.js';
 import Devices from '../../ui/pages/Devices.js';
 import Export from '../../ui/pages/Export.js';
 // import NewDocument from '../../ui/pages/NewDocument.js';
@@ -44,6 +45,7 @@ Meteor.startup(() => {
         <Route name="editItem" path="/items/:_id/edit" component={ EditItem } onEnter={ authenticate } />
         <Route name="viewItem" path="/items/:_id" component={ ViewItem } onEnter={ authenticate } />
         <Route name="ingest" path="/ingest" component={ Ingest } onEnter={ authenticate } />
+        <Route name="ipfs" path="/ipfs" component={ IPFS } onEnter={ authenticate } />
         <Route name="devices" path="/devices" component={ Devices } onEnter={ authenticate } />
         <Route name="export" path="/export" component={ Export } onEnter={ authenticate } />
         <Route name="login" path="/login" component={ Login } />
