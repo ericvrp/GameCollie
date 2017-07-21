@@ -5,14 +5,14 @@ import { Row, Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bo
 
 import IPFS from 'ipfs' // https://github.com/ipfs/js-ipfs
 console.log(IPFS)
-
-const ipfs = new IPFS()
-console.log(ipfs)
-
-ipfs.once('ready', () => ipfs.id((err, info) => {
-  if (err) throw err
-  console.log('IPFS node ready with address', info.id)
-}))
+//
+// const ipfs = new IPFS()
+// console.log(ipfs)
+//
+// ipfs.once('ready', () => ipfs.id((err, info) => {
+//   if (err) throw err
+//   console.log('IPFS node ready with address', info.id)
+// }))
 
 export default class extends React.Component {
   render() {
